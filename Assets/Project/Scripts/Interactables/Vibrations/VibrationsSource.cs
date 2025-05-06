@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
@@ -7,14 +6,22 @@ namespace Airport.Interactables.Vibrations
 {
     public class VibrationsSource : MonoBehaviour
     {
+        [SerializeField] private float duration = 0.2F;
         [SerializeField] private float amplitude;
         [SerializeField] private float radius;
+        [SerializeField] private Transform leftHand;
+        [SerializeField] private Transform rightHand;
 
-        private Dictionary<XRNode, bool> _isInRange = new()
+        private float _leftFactor;
+        private float _rightFactor;
+        
+        private float _leftFactorOld;
+        private float _rightFactorOld;
+
+        private void Awake()
         {
-            { XRNode.LeftHand, false },
-            { XRNode.RightHand, false }
-        };
+            StartCoroutine(ContinuousShaking());
+        }
 
         private void Update()
         {
@@ -24,46 +31,49 @@ namespace Airport.Interactables.Vibrations
 
         private void ProcessController(XRNode node)
         {
-            var device = InputDevices.GetDeviceAtXRNode(node);
+            var target = node == XRNode.LeftHand ? leftHand : rightHand;
+            var distance = Vector3.Distance(transform.position, target.position);
+            var factor = 1 - Mathf.Clamp01(distance / radius);
 
-            var isInRange = device.TryGetFeatureValue(CommonUsages.devicePosition, out var position)
-                            && Vector3.Distance(transform.position, position) <= radius;
-
-            if (_isInRange[node] == isInRange)
+            if (node == XRNode.LeftHand)
             {
-                return;
-            }
-
-            _isInRange[node] = isInRange;
-
-            if (isInRange)
-            {
-                StartCoroutine(ContinuousShaking(node));
+                _leftFactor = factor;
             }
             else
             {
-                Shake(node, 0);
+                _rightFactor = factor;
             }
         }
 
-        private IEnumerator ContinuousShaking(XRNode node)
+        private IEnumerator ContinuousShaking()
         {
-            while (_isInRange[node])
+            while (true)
             {
-                Shake(node, 1);
+                if (!Mathf.Approximately(_leftFactor, _leftFactorOld))
+                {
+                    Shake(XRNode.LeftHand, amplitude * _leftFactor);
+                }
 
-                yield return new WaitForSeconds(1);
+                if (!Mathf.Approximately(_rightFactorOld, _rightFactor))
+                {
+                    Shake(XRNode.RightHand, amplitude * _rightFactor);
+                }
+
+                _leftFactorOld = _leftFactor;
+                _rightFactorOld = _rightFactor;
+                
+                yield return new WaitForSeconds(duration * 2.3F);
             }
         }
 
-        private void Shake(XRNode node, float duration)
+        private void Shake(XRNode node, float factor)
         {
             var device = InputDevices.GetDeviceAtXRNode(node);
 
             if (device.TryGetHapticCapabilities(out var capabilities) &&
                 capabilities.supportsImpulse)
             {
-                device.SendHapticImpulse(0u, amplitude, duration);
+                device.SendHapticImpulse(0u, factor, duration);
             }
         }
     }
