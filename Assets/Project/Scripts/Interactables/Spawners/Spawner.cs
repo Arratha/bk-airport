@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Airport.Development
+namespace Airport.Interactables.Spawners
 {
     public class Spawner : MonoBehaviour
     {

@@ -1022,6 +1022,18 @@ Transform:
   - {fileID: 199816471718422193}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &585983614 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7295459410183905076, guid: 1225939add18a9847962ca1a3945c8cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 2080773873889014739}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4253f32900bcc4d499d675566142ded0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &594952908
 GameObject:
   m_ObjectHideFlags: 0
@@ -2307,6 +2319,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1635676373 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5415843076199122065, guid: 1225939add18a9847962ca1a3945c8cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 2080773873889014739}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4253f32900bcc4d499d675566142ded0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1701049228
 GameObject:
   m_ObjectHideFlags: 0
@@ -2619,20 +2643,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3731210588296781128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6116820912473996812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6007f3cd49b34d4f8e97067405f19636, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amplitude: 1
-  radius: 0.5
 --- !u!1001 &5140751262535378684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2777,7 +2787,7 @@ GameObject:
   - component: {fileID: 199816471718422193}
   - component: {fileID: 2282408856103263769}
   - component: {fileID: 5330568513892080015}
-  - component: {fileID: 3731210588296781128}
+  - component: {fileID: 6116820912473996813}
   m_Layer: 0
   m_Name: MagicHatSpawner
   m_TagString: Untagged
@@ -2785,6 +2795,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6116820912473996813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6116820912473996812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a98832c5d0847d4a202f5ba889f44dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftGripAction: {fileID: -6131295136447488360, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  rightGripAction: {fileID: 187161793506945269, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  leftController: {fileID: 585983614}
+  rightController: {fileID: 1635676373}
+  radius: 0.5
+  prefab: {fileID: 7342920118063280298, guid: dcbb6721e5b36004a8c92e7b27d7c0f0, type: 3}
 --- !u!114 &6554719708380330717
 MonoBehaviour:
   m_ObjectHideFlags: 0

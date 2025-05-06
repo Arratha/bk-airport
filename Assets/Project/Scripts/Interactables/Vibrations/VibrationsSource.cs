@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
-namespace Airport.Project.Scripts.Interactables.Vibrations
+namespace Airport.Interactables.Vibrations
 {
     public class VibrationsSource : MonoBehaviour
     {
