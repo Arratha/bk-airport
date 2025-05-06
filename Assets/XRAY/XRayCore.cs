@@ -27,7 +27,6 @@ namespace Airport
             _xrayCamera.orthographic = true;
             _xrayCamera.orthographicSize = size * 0.5F;
             _xrayCamera.cullingMask = 1 << LayerMask.NameToLayer("XRayItems");
-            _xrayCamera.enabled = false;
             _xrayCamera.backgroundColor = Color.black;
             _xrayCamera.clearFlags = CameraClearFlags.Color;
             _xrayCamera.targetTexture = _outputTexture;
