@@ -65,7 +65,7 @@ Shader "Hidden/Xray"
 
                 float illumination = lerp(_MinIlluminationValue, _MaxIlluminationValue, steppedDiff);
                 
-                return fixed4(illumination, _Brightness, _Brightness, 0);
+                return fixed4(illumination, _Brightness, _Brightness, 1);
             }
             ENDCG
         }
