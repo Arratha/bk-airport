@@ -26,7 +26,13 @@ Material:
     m_Ints: []
     m_Floats:
     - _Brightness: 0.1
+    - _IlluminationSmoothness: 50
+    - _MaxIlluminationValue: 1
+    - _MinIlluminationValue: 0
+    - _Steps: 50
     m_Colors:
     - _Color: {r: 0, g: 0.6, b: 0.7, a: 0.75}
+    - _LightDir: {r: 0, g: 1, b: 0, a: 0}
+    - _LightPos: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
