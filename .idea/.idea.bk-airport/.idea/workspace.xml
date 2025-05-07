@@ -6,12 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="68d6b222-8719-4d8e-b579-dbc6c4abc527" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.bk-airport/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bk-airport/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Location/M_Display.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Location/M_Display.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Location/M_Walls.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Location/M_Walls.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/XRay/Xray_1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/XRay/Xray_1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/XRay/Xray_2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/XRay/Xray_2.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Settings/XRay_Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/XRay_Renderer.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/Xray.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/Xray.shader" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/XRay/XRayTexture.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/XRay/XRayTexture.renderTexture" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +22,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e509afeff7384f24a8f0ac30527ff01c1cbe00/ba/ea629d4a/ScriptableRenderContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Textures/XRay/NewBehaviourScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Development/InWorldButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@16.0.6/Editor/UniversalRendererDataEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@16.0.6/Runtime/Data/PostProcessData.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@16.0.6/Runtime/Passes/RenderObjectsPass.cs" root0="SKIP_HIGHLIGHTING" />

@@ -25,7 +25,7 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _Brightness: 0.6
+    - _Brightness: 0.3
     - _IlluminationSmoothness: 5
     - _MaxIlluminationValue: 1
     - _MinIlluminationValue: 0
