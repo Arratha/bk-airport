@@ -4,6 +4,7 @@ using UnityEngine.Rendering.Universal;
 
 public class ColorBlitRendererFeature : ScriptableRendererFeature
 {
+    [SerializeField][Range(0, 1)] private float noise = 0.01F;
     [SerializeField][Range(0, 1)] private float cutEdge = 0.01F;
     [SerializeField][Range(-5, 5)] private float minEdge = 0.5F;
     [SerializeField][Range(-5, 5)] private float maxEdge = 0.9F;
@@ -24,6 +25,15 @@ public class ColorBlitRendererFeature : ScriptableRendererFeature
     {
         if (renderingData.cameraData.cameraType == CameraType.Game)
         {
+            if (_material != null)
+            {
+                _material.SetFloat("_Noise", noise);
+                _material.SetFloat("_Cut", cutEdge);
+                _material.SetFloat("_Min", minEdge);
+                _material.SetFloat("_Max", maxEdge);
+                _material.SetTexture("_Gradient", gradient);
+            }
+
             // Calling ConfigureInput with the ScriptableRenderPassInput.Color argument
             // ensures that the opaque texture is available to the Render Pass.
             _renderPass.ConfigureInput(ScriptableRenderPassInput.Color);
@@ -35,10 +45,6 @@ public class ColorBlitRendererFeature : ScriptableRendererFeature
     {
         var shader = Shader.Find("Hidden/XRayColor");
         _material = CoreUtils.CreateEngineMaterial(shader);
-        _material.SetFloat("_Cut", cutEdge);
-        _material.SetFloat("_Min", minEdge);
-        _material.SetFloat("_Max", maxEdge);
-        _material.SetTexture("_Gradient", gradient);
         _renderPass = new ColorBlitPass(_material);
     }
 
