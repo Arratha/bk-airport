@@ -13,6 +13,10 @@ Shader "Hidden/Xray"
         
         Pass
         {
+            Stencil
+            {
+                Ref 2
+            }
             ZWrite On
             ZTest Always
             Blend OneMinusDstColor One
