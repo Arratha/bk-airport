@@ -5,12 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68d6b222-8719-4d8e-b579-dbc6c4abc527" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Development/Identifier.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Development/Identifier.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Development/Item.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Development/Item.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Development/ItemDatabase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Development/ItemDatabase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Development/ItemDefinition.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Development/ItemDefinition.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Development/ItemSpawner.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Development/ItemSpawner.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.bk-airport/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bk-airport/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/XRay/Xray_1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/XRay/Xray_1.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/XRay/Xray_2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/XRay/Xray_2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/Arrow.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/Arrow.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/Kettle_aluminum.FBX" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/Kettle_aluminum.FBX.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/M403_Calling_device.FBX" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/M403_Calling_device.FBX.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/M455 УРАЛ 4320 тент.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/M455 УРАЛ 4320 тент.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/М176_Fire_shield.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/М176_Fire_shield.fbx.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ColorBlitPass.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ColorBlitPass.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ColorBlitRendererFeature.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ColorBlitRendererFeature.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Development.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Development.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Development/ConveyerController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Development/ConveyerController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP-Balanced.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/URP-Balanced.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP-Performant.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/URP-Performant.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Settings/XRay_Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/XRay_Renderer.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/NewUnlitShader.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/NewUnlitShader.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/BurstAotSettings_StandaloneWindows.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/BurstAotSettings_StandaloneWindows.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/CommonBurstAotSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/CommonBurstAotSettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,6 +140,8 @@
       <workItem from="1746539737447" duration="8649000" />
       <workItem from="1746620743319" duration="7741000" />
       <workItem from="1746642712185" duration="1156000" />
+      <workItem from="1746698549119" duration="769000" />
+      <workItem from="1746817385038" duration="4420000" />
     </task>
     <servers />
   </component>
