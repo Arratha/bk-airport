@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71237778fc514f49b5b5dc77ea4541bb, type: 3}
+  m_Name: PlasticSpoon
+  m_EditorClassIdentifier: 
+  selfId: {fileID: 11400000, guid: f941bc11a947d214d9409901733dc12d, type: 2}
+  selfTags: 0
+  prefab: {fileID: 3201040894046025255, guid: fd17dc4d2ec6bf74b8b854e8141251ee, type: 3}

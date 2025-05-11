@@ -15,7 +15,10 @@ namespace Editor.Items
 
             if (GUILayout.Button("Select Identifier"))
             {
-                ((ItemDefinition)target).SelectIdentifier();
+                var id = ((ItemDefinition)target).id;
+                
+                Selection.activeObject = id;
+                EditorGUIUtility.PingObject(id);
             }
         }
     }

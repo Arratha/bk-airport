@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Items.Base;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -15,12 +14,17 @@ namespace Items.Base
         [Tooltip("View only, filled automatically")] [SerializeField]
         private List<ItemDefinition> definitions;
 
+        public ItemDefinition GetDefinition(ItemIdentifier id)
+        {
+            return definitions.First(x => x.id.Equals(id));
+        }
+
+#if UNITY_EDITOR
         public ItemDefinition TryGetDefinition(ItemIdentifier id)
         {
             return definitions.FirstOrDefault(x => x.id.Equals(id));
         }
 
-#if UNITY_EDITOR
         public void AddDefinition(ItemDefinition definition)
         {
             var existingDefinitions = definitions.FindAll(x => x.id.Equals(definition.id));
@@ -40,7 +44,7 @@ namespace Items.Base
         {
             definitions.RemoveAll(x => x.Equals(definition));
         }
-        
+
         public void FillIn()
         {
             var type = typeof(ItemDefinition).Name;
@@ -57,7 +61,7 @@ namespace Items.Base
                 AddDefinition(definition);
             }
         }
-        
+
         private void OnEnable()
         {
             FillIn();

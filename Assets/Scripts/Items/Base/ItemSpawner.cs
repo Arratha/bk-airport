@@ -14,7 +14,7 @@ namespace Items.Base
         [ContextMenu(nameof(Instantiate))]
         private void Instantiate()
         {
-            var definition = ItemDatabase.instance.TryGetDefinition(id);
+            var definition = ItemDatabase.instance.GetDefinition(id);
 
             Instantiate(definition.prefab);
         }
