@@ -1,21 +1,22 @@
 using System.Linq;
 using Extensions;
 using Items.Base;
+using Items.Storages;
 using Items.Trackable.Observables;
 using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Items.Trackable
 {
-    [RequireComponent(typeof(ItemStorage))]
+    [RequireComponent(typeof(StorageAbstract))]
     [DisallowMultipleComponent]
     public class TrackableResolver : MonoBehaviour
     {
-        private ItemStorage _storage;
+        private StorageAbstract _storage;
 
         private void Awake()
         {
-            _storage = GetComponent<ItemStorage>();
+            _storage = GetComponent<StorageAbstract>();
 
             TrackStorage();
             TrackMetallic();

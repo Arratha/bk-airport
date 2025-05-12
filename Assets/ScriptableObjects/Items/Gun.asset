@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Gun
   m_EditorClassIdentifier: 
   selfId: {fileID: 11400000, guid: 789e2bdffac101b4293e3cd2f832b3f9, type: 2}
-  selfTags: -1
+  selfTags: 3
   prefab: {fileID: 9162028246468310326, guid: f78ba6508a85cef498db5830a1b548d6, type: 3}

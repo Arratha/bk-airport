@@ -11,6 +11,11 @@ namespace Items.Base
         public ItemIdentifier identifier => selfId;
         [HideInInspector, SerializeField] private ItemIdentifier selfId;
 
+        public void Destroy()
+        {
+            Destroy(gameObject);
+        }
+
 #if UNITY_EDITOR
         public void SetPrefabId(ItemIdentifier id)
         {

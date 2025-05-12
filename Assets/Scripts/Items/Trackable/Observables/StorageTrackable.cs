@@ -1,18 +1,19 @@
 using System.Linq;
 using Items.Base;
+using Items.Storages;
 using UnityEngine;
 
 namespace Items.Trackable.Observables
 {
-    [RequireComponent(typeof(StorageTrackable))]
+    [RequireComponent(typeof(StorageAbstract))]
     [DisallowMultipleComponent]
     public class StorageTrackable : TrackableAbstract<StorageTrackable>
     {
-        private ItemStorage _storage;
+        private StorageAbstract _storage;
 
         protected override void OnInit()
         {
-            _storage = GetComponent<ItemStorage>();
+            _storage = GetComponent<StorageAbstract>();
 
             _storage.OnItemAdded += OnAddItem;
             _storage.OnItemRemoved += OnRemoveItem;

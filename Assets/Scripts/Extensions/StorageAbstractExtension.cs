@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
-using Items;
 using Items.Base;
+using Items.Storages;
 
 namespace Extensions
 {
-    public static class ItemStorageExtension
+    public static class StorageAbstractExtension
     {
-        public static ItemTags GetTags(this ItemStorage storage)
+        public static ItemTags GetTags(this StorageAbstract storage)
         {
             var definitions = storage.GetDefinitions();
 
@@ -17,7 +17,7 @@ namespace Extensions
             return tags;
         }
 
-        public static List<ItemDefinition> GetDefinitions(this ItemStorage storage)
+        public static List<ItemDefinition> GetDefinitions(this StorageAbstract storage)
         {
             return storage.items.Select(x => x.GetDefinition()).ToList();
         }

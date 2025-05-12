@@ -11,7 +11,8 @@ namespace Items.Base
     {
         None = 0,
         Illegal = 1 << 0,
-        Metallic = 1 << 1
+        Metallic = 1 << 1,
+        Bag = 1 << 2
     }
 
     public class ItemDefinition : ScriptableObject
