@@ -6,20 +6,25 @@ namespace Commands.Contexts
 {
     public class TransferItemToContext : ICommandContext
     {
-        public Action<bool> onComplete => _onComplete;
-        private Action<bool> _onComplete;
-
         public StorageAbstract storage => _storage;
         private StorageAbstract _storage;
 
-        public ItemIdentifier identifier => _identifier;
-        private ItemIdentifier _identifier;
+        public ItemIdentifier[] identifiers => _identifiers;
+        private ItemIdentifier[] _identifiers;
 
-        public TransferItemToContext(Action<bool> onComplete, StorageAbstract storage, ItemIdentifier identifier)
+        public Func<ItemIdentifier, bool> compareFunction => _compareFunction;
+        private Func<ItemIdentifier, bool> _compareFunction;
+        
+        public TransferItemToContext(StorageAbstract storage, params ItemIdentifier[] identifiers)
         {
-            _onComplete = onComplete;
             _storage = storage;
-            _identifier = identifier;
+            _identifiers = identifiers;
+        }
+        
+        public TransferItemToContext(StorageAbstract storage, Func<ItemIdentifier, bool> compareFunction)
+        {
+            _storage = storage;
+            _compareFunction = compareFunction;
         }
     }
 }

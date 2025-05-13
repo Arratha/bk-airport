@@ -11,14 +11,41 @@ namespace Passenger
 {
     [RequireComponent(typeof(IMovable))]
     [RequireComponent(typeof(StorageAbstract))]
-    public class PassengerController : MonoBehaviour
+    public class PassengerController : MonoBehaviour, ICommandExecutor
     {
         private Queue<ICommand> _commands = new();
 
         private CommandFactory _factory;
 
         private ICommand _currentCommand;
+        
+        public ICompletable EnqueueCommand(ICommandContext context)
+        {
+            var command = _factory.CreateCommand(context);
+            _commands.Enqueue(command);
 
+            return command;
+        }
+
+        public void StopCommands()
+        {
+            if (_currentCommand != null)
+            {
+                _currentCommand.Dispose();
+                _currentCommand = null;
+            }
+
+            while (_commands.Any())
+            {
+                _commands.Dequeue().Dispose();
+            }
+        }
+
+        public void Dispose()
+        {
+            StopCommands();
+        }
+        
         private void Awake()
         {
             var movable = GetComponent<IMovable>();
@@ -29,32 +56,28 @@ namespace Passenger
 
         private void FixedUpdate()
         {
-            if (_currentCommand != null)
+            if (_currentCommand == null)
             {
-                _currentCommand.Execute(Time.fixedDeltaTime);
-            }
+                if (_commands.Any())
+                {
+                    _currentCommand = _commands.Dequeue();
+                }
 
-            if (_currentCommand != null && !_currentCommand.isCompleted)
-            {
                 return;
             }
 
-            if (_commands.Any())
+            _currentCommand.Execute(Time.fixedDeltaTime);
+
+            if (_currentCommand.isCompleted)
             {
-                _currentCommand = _commands.Dequeue();
+                _currentCommand.Dispose();
+                _currentCommand = null;
             }
         }
 
-        public void EnqueueCommand(ICommandContext context)
+        private void OnDestroy()
         {
-            var command = _factory.CreateCommand(context);
-            _commands.Enqueue(command);
-        }
-
-        public void StopCommands()
-        {
-            _currentCommand = null;
-            _commands.Clear();
+            Dispose();
         }
     }
 }

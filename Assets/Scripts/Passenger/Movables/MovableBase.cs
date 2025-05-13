@@ -5,26 +5,28 @@ namespace Passenger.Movables
     public class MovableBase : MonoBehaviour, IMovable
     {
         [SerializeField] private float moveSpeed;
-        [SerializeField] private float rotationSpeed;
 
-        public void Move(Vector3 direction, float deltaTime)
+        public bool MoveTo(Vector3 destination, float deltaTime)
         {
+            var modifiedSpeed = moveSpeed * deltaTime;
+
+            if (Vector3.Distance(transform.position, destination) <= modifiedSpeed)
+            {
+                transform.position = destination;
+
+                return true;
+            }
+
+            var direction = destination - transform.position;
             direction.Normalize();
 
-            var modifiedSpeed = moveSpeed * deltaTime;
-            var translation = direction * modifiedSpeed;
-
-            transform.Translate(translation);
+            transform.Translate(direction * modifiedSpeed);
+            return false;
         }
 
         public void Rotate(float direction, float deltaTime)
         {
-            direction = Mathf.Sign(direction);
 
-            var modifiedSpeed = rotationSpeed * deltaTime;
-            var rotation = direction * modifiedSpeed;
-
-            transform.Rotate(Vector3.up, rotation);
         }
     }
 }

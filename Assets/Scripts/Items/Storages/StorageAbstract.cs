@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Items.Base;
 using UnityEngine;
 
@@ -9,38 +10,46 @@ namespace Items.Storages
     {
         public abstract IReadOnlyCollection<ItemIdentifier> items { get; }
 
-        public event Action<ItemIdentifier> OnItemAdded;
-        public event Action<ItemIdentifier> OnItemRemoved;
-        
+        public event Action<ItemIdentifier[]> OnItemAdded;
+        public event Action<ItemIdentifier[]> OnItemRemoved;
+
+        public int freeSpace => maxItems - items.Count;
         [Tooltip("MaxItems less than 1 counts as infinity"), SerializeField]
         private int maxItems;
 
-        public bool TryAddItem(ItemIdentifier identifier)
+        public bool TryAddItem(params ItemIdentifier[] identifiers)
         {
-            if (identifier == null || GetFreeSpace() < 1)
+            if (identifiers == null
+                || identifiers.Any(x => x == null))
             {
                 return false;
             }
 
-            if (TryAddItemInternal(identifier))
+            if (GetFreeSpace() < identifiers.Length)
             {
-                OnItemAdded?.Invoke(identifier);
+                return false;
+            }
+
+            if (TryAddItemInternal(identifiers))
+            {
+                OnItemAdded?.Invoke(identifiers);
                 return true;
             }
 
             return false;
         }
 
-        public bool TryRemoveItem(ItemIdentifier identifier)
+        public bool TryRemoveItem(params ItemIdentifier[] identifiers)
         {
-            if (identifier == null)
+            if (identifiers == null 
+                || identifiers.Any(x => x == null))
             {
                 return false;
             }
 
-            if (TryRemoveItemInternal(identifier))
+            if (TryRemoveItemInternal(identifiers))
             {
-                OnItemRemoved?.Invoke(identifier);
+                OnItemRemoved?.Invoke(identifiers);
                 return true;
             }
 
@@ -59,9 +68,9 @@ namespace Items.Storages
 
         protected abstract void InitializeStorage();
 
-        protected abstract bool TryAddItemInternal(ItemIdentifier identifier);
+        protected abstract bool TryAddItemInternal(params ItemIdentifier[] identifiers);
 
-        protected abstract bool TryRemoveItemInternal(ItemIdentifier identifier);
+        protected abstract bool TryRemoveItemInternal(params ItemIdentifier[] identifiers);
 
         private int GetFreeSpace()
         {

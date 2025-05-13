@@ -11,6 +11,9 @@ namespace Commands.Commands
 
         public bool isCompleted => _isCompleted;
         private bool _isCompleted;
+        
+        public bool isDisposed => _isDisposed;
+        private bool _isDisposed;
 
         private IMovable _movable;
 
@@ -20,8 +23,6 @@ namespace Commands.Commands
         {
             _movable = movable;
             _destination = context.destination;
-
-            OnComplete += context.onComplete;
         }
 
         public void Execute(float deltaTime)
@@ -31,21 +32,16 @@ namespace Commands.Commands
                 return;
             }
 
-            var movablePosition = _movable.gameObject.transform.position;
-
-            if (Vector3.Distance(movablePosition, _destination) <= 0.01f)
+            if (_movable.MoveTo(_destination, deltaTime))
             {
-                _movable.gameObject.transform.position = _destination;
-
                 _isCompleted = true;
                 OnComplete?.Invoke(true);
-
-                return;
             }
+        }
 
-            var direction = (_destination - movablePosition).normalized;
-
-            _movable.Move(direction, deltaTime);
+        public void Dispose()
+        {
+            OnComplete = null;
         }
     }
 }

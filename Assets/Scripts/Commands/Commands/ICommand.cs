@@ -1,13 +1,7 @@
-using System;
-
 namespace Commands.Commands
 {
-    public interface ICommand
+    public interface ICommand : ICompletable
     {
-        public event Action<bool> OnComplete;
-
-        public bool isCompleted { get; }
-
         public void Execute(float deltaTime);
     }
 }

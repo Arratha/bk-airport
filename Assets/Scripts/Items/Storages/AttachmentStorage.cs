@@ -33,25 +33,55 @@ namespace Items.Storages
             selfItems.AddRange(attachedIDs);
         }
 
-        protected override bool TryAddItemInternal(ItemIdentifier identifier)
+        protected override bool TryAddItemInternal(params ItemIdentifier[] identifiers)
         {
-            selfItems.Add(identifier);
-            AddItemInstance(identifier);
+            foreach (var identifier in identifiers)
+            {
+                selfItems.Add(identifier);
+                AddItemInstance(identifier);
+            }
 
             return true;
         }
 
-        protected override bool TryRemoveItemInternal(ItemIdentifier identifier)
+        protected override bool TryRemoveItemInternal(params ItemIdentifier[] identifiers)
         {
-            if (selfItems.Contains(identifier))
+            var removeCount = new Dictionary<ItemIdentifier, int>();
+            
+            foreach (var identifier in identifiers)
+            {
+                if (removeCount.TryGetValue(identifier, out var count))
+                {
+                    removeCount[identifier] = count + 1;
+                }
+                else
+                {
+                    removeCount[identifier] = 1;
+                }
+            }
+
+            foreach (var kvp in removeCount)
+            {
+                var actualCount = 0;
+                
+                foreach (var item in selfItems)
+                {
+                    if (item.Equals(kvp.Key)) actualCount++;
+                }
+
+                if (actualCount < kvp.Value)
+                {
+                    return false;
+                }
+            }
+
+            foreach (var identifier in identifiers)
             {
                 selfItems.Remove(identifier);
                 RemoveItemInstance(identifier);
-
-                return true;
             }
 
-            return false;
+            return true;
         }
 
         protected virtual void AddItemInstance(ItemIdentifier identifier)

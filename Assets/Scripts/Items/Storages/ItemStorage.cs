@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Items.Base;
 using UnityEngine;
 
@@ -19,21 +20,53 @@ namespace Items.Storages
             selfItems.RemoveAll(x => x == null);
         }
 
-        protected override bool TryAddItemInternal(ItemIdentifier identifier)
+        protected override bool TryAddItemInternal(params ItemIdentifier[] identifiers)
         {
-            selfItems.Add(identifier);
+            foreach (var identifier in identifiers)
+            {
+                selfItems.Add(identifier);
+            }
+
             return true;
         }
 
-        protected override bool TryRemoveItemInternal(ItemIdentifier identifier)
+        protected override bool TryRemoveItemInternal(params ItemIdentifier[] identifiers)
         {
-            if (selfItems.Contains(identifier))
+            var removeCount = new Dictionary<ItemIdentifier, int>();
+
+            foreach (var identifier in identifiers)
             {
-                selfItems.Remove(identifier);
-                return true;
+                if (removeCount.TryGetValue(identifier, out var count))
+                {
+                    removeCount[identifier] = count + 1;
+                }
+                else
+                {
+                    removeCount[identifier] = 1;
+                }
             }
 
-            return false;
+            foreach (var kvp in removeCount)
+            {
+                var actualCount = 0;
+
+                foreach (var item in selfItems)
+                {
+                    if (item.Equals(kvp.Key)) actualCount++;
+                }
+
+                if (actualCount < kvp.Value)
+                {
+                    return false;
+                }
+            }
+
+            foreach (var identifier in identifiers)
+            {
+                selfItems.Remove(identifier);
+            }
+
+            return true;
         }
     }
 }

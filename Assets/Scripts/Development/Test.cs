@@ -20,19 +20,19 @@ namespace Development
         [ContextMenu(nameof(EnqueueTransferFrom))]
         private void EnqueueTransferFrom()
         {
-            controller.EnqueueCommand(new TransferItemFromContext(null, storage, identifier));
+            controller.EnqueueCommand(new TransferItemFromContext(storage, identifier));
         }
         
         [ContextMenu(nameof(EnqueueTransferTo))]
         private void EnqueueTransferTo()
         {
-            controller.EnqueueCommand(new TransferItemToContext(null, storage, identifier));
+            controller.EnqueueCommand(new TransferItemToContext(storage, identifier));
         }
 
         [ContextMenu(nameof(EnqueueMoveCommand))]
         private void EnqueueMoveCommand()
         {
-            controller.EnqueueCommand(new MoveToContext(null, destination.position));
+            controller.EnqueueCommand(new MoveToContext(destination.position));
         }
 
         [ContextMenu(nameof(StopCommands))]
