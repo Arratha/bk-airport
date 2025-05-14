@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Bag_2
   m_EditorClassIdentifier: 
   selfId: {fileID: 11400000, guid: b74b8afec7e0020448c9ee3f35f932cc, type: 2}
-  selfTags: 4
+  selfTag: 4
   prefab: {fileID: 7221432085408743651, guid: f998f92f15dea214d9582b84d02279e8, type: 3}

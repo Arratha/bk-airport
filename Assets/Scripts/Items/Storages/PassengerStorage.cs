@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Extensions;
@@ -6,21 +7,20 @@ using UnityEngine;
 
 namespace Items.Storages
 {
+    public enum StorageTag
+    {
+        Bag,
+        Illegal,
+        Pocket,
+        All
+    }
+
     public sealed class PassengerStorage : StorageAbstract
     {
-        public override IReadOnlyCollection<ItemIdentifier> items
-        {
-            get
-            {
-                var result = new List<ItemIdentifier>();
-
-                result.AddRange(pocketStorages.SelectMany(x => x.items));
-                result.AddRange(bagStorages.SelectMany(x => x.items));
-                result.AddRange(illegalStorages.SelectMany(x => x.items));
-
-                return result;
-            }
-        }
+        public override IReadOnlyCollection<ItemIdentifier> items => pocketStorages.SelectMany(x => x.items)
+            .Concat(bagStorages.SelectMany(x => x.items))
+            .Concat(illegalStorages.SelectMany(x => x.items))
+            .ToArray();
 
         [SerializeField] private List<StorageAbstract> pocketStorages;
         [SerializeField] private List<StorageAbstract> bagStorages;
@@ -33,138 +33,117 @@ namespace Items.Storages
 
         protected override bool TryAddItemInternal(params ItemIdentifier[] identifiers)
         {
-            var bagIdentifiers = identifiers
-                .Where(x => (x.GetDefinition().tags & ItemTags.Bag) != 0)
-                .ToList();
-            var pocketIdentifiers = identifiers
-                .Where(x => (x.GetDefinition().tags & ItemTags.Bag) == 0 &&
-                            (x.GetDefinition().tags & ItemTags.Illegal) == 0)
-                .ToList();
-            var illegalIdentifiers = identifiers
-                .Where(x => (x.GetDefinition().tags & ItemTags.Bag) == 0 &&
-                            (x.GetDefinition().tags & ItemTags.Illegal) != 0)
-                .ToList();
+            var placeCount = identifiers
+                .GroupBy(item => GetStorageTag(item.GetDefinition().tag))
+                .ToDictionary(
+                    group => group.Key,
+                    group => group.ToList()
+                );
+            
+            var storages = Enum.GetValues(typeof(StorageTag))
+                .Cast<StorageTag>().ToDictionary(
+                    x => x,
+                    x => GetStorages(x));
+            
+            var isExceed = placeCount.Any(x =>!storages[x.Key].Any(storage => storage.freeSpace == int.MaxValue) 
+                                              && x.Value.Count > storages[x.Key].Sum(storage => storage.freeSpace));
 
-            var storagesBag = GetSuitableStorages(ItemTags.Bag);
-            var storagesPocket = GetSuitableStorages(ItemTags.None);
-            var storagesIllegal = GetSuitableStorages(ItemTags.Illegal);
-
-            var freeSpaceBag = storagesBag.Sum(x => x.freeSpace);
-            var freeSpacePocket = storagesPocket.Sum(x => x.freeSpace);
-            var freeSpaceIllegal = storagesIllegal.Sum(x => x.freeSpace);
-
-            var canAddBags = freeSpaceBag >= bagIdentifiers.Count;
-            var canAddPockets = freeSpacePocket >= pocketIdentifiers.Count;
-            var canAddIllegals = (freeSpaceIllegal + freeSpacePocket) >= illegalIdentifiers.Count;
-
-            if (!canAddBags || !canAddPockets || !canAddIllegals)
+            if (isExceed)
             {
                 return false;
             }
+            
+            foreach (var kvp in placeCount)
+            {
+                var suitableStorages = storages[kvp.Key].Randomize();
 
-            PlaceItemsInStorage(bagIdentifiers, storagesBag);
-            PlaceItemsInStorage(pocketIdentifiers, storagesPocket);
-            PlaceItemsInStorage(illegalIdentifiers, storagesIllegal);
-            return false;
+                while (kvp.Value.Any())
+                {
+                    var storage = suitableStorages.First();
+                    suitableStorages.Remove(storage);
+                    
+                    var placementBatch = kvp.Value.Take(storage.freeSpace).ToArray();
+
+                    storage.TryAddItem(placementBatch);
+
+                    foreach (var identifier in placementBatch)
+                    {
+                        kvp.Value.Remove(identifier);
+                    }
+                }
+            }
+            
+            return true;
         }
 
         protected override bool TryRemoveItemInternal(params ItemIdentifier[] identifiers)
         {
             var selfItems = items;
-            var availableStorages = GetSuitableStorages();
+            var storages = GetStorages(StorageTag.All);
+            
+            var removeCount = identifiers
+                .GroupBy(item => item)
+                .ToDictionary(
+                    group => group.Key,
+                    group => group.Count()
+                );
 
-            var removeCount = new Dictionary<ItemIdentifier, int>();
-
-            foreach (var identifier in identifiers)
+            if (removeCount.Any(kvp =>
+                    selfItems.Count(x => x.Equals(kvp.Key)) < kvp.Value))
             {
-                if (removeCount.TryGetValue(identifier, out var count))
-                {
-                    removeCount[identifier] = count + 1;
-                }
-                else
-                {
-                    removeCount[identifier] = 1;
-                }
+                return false;
             }
 
-            foreach (var kvp in removeCount)
+            foreach (var storage in storages)
             {
-                var actualCount = 0;
-
-                foreach (var item in selfItems)
+                var removeBatch = storage.items.Where(x =>
                 {
-                    if (item.Equals(kvp.Key)) actualCount++;
-                }
+                    if (removeCount.TryGetValue(x, out var count) && count > 0)
+                    {
+                        removeCount[x]--;
+                        return true;
+                    }
 
-                if (actualCount < kvp.Value)
-                {
                     return false;
-                }
-            }
+                }).ToArray();
 
-            foreach (var identifier in identifiers)
-            {
-                var storage = availableStorages.First(x => x.items.Contains(identifier));
-
-                storage.TryRemoveItem(identifier);
+                storage.TryRemoveItem(removeBatch);
             }
 
             return true;
         }
 
-        private void PlaceItemsInStorage(List<ItemIdentifier> identifiers, List<StorageAbstract> storages)
+        private StorageTag GetStorageTag(ItemTag itemTag)
         {
-            var availableStorages = new List<StorageAbstract>(storages);
-
-            
-            while (identifiers.Any())
+            if ((itemTag & ItemTag.Bag) != 0)
             {
-                var identifier = identifiers.First();
-
-                var storage = availableStorages.First();
-
-                if (storage.TryAddItem(identifier))
-                {
-                    identifiers.Remove(identifier);
-                }
-                else
-                {
-                    availableStorages.Remove(storage);
-                }
+                return StorageTag.Bag;
             }
+
+            if ((itemTag & ItemTag.Illegal) != 0)
+            {
+                return StorageTag.Illegal;
+            }
+
+            return StorageTag.Pocket;
         }
 
-        private List<StorageAbstract> GetSuitableStorages(ItemTags? itemTags = null)
+        private List<StorageAbstract> GetStorages(StorageTag itemTag)
         {
-            var result = new List<StorageAbstract>();
-
-            if (itemTags == null)
+            switch (itemTag)
             {
-                result.AddRange(bagStorages);
-                result.AddRange(pocketStorages);
-                result.AddRange(pocketStorages);
-
-                return result;
+                case StorageTag.Bag:
+                    return bagStorages.ToList();
+                case StorageTag.Illegal:
+                    return pocketStorages.Concat(illegalStorages).ToList();
+                case StorageTag.Pocket:
+                    return pocketStorages.ToList();
             }
 
-            if ((itemTags & ItemTags.Bag) != 0)
-            {
-                result.AddRange(bagStorages);
-
-                return result;
-            }
-
-            if ((itemTags & ItemTags.Illegal) != 0)
-            {
-                result.AddRange(pocketStorages);
-                result.AddRange(illegalStorages);
-
-                return result;
-            }
-
-            result.AddRange(pocketStorages);
-
-            return result;
+            return bagStorages
+                .Concat(pocketStorages)
+                .Concat(illegalStorages)
+                .ToList();
         }
     }
 }

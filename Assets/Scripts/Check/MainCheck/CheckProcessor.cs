@@ -120,7 +120,7 @@ namespace Check.MainCheck
             result.Add(new MoveToContext(pointIntroscope.position));
             result.Add(new WaitContext(0.5f));
             result.Add(new TransferItemToContext(introscopeStorage,
-                (identifier) => (identifier.GetDefinition().tags & ItemTags.Bag) != 0));
+                (identifier) => (identifier.GetDefinition().tag & ItemTag.Bag) != 0));
 
             return result;
         }
@@ -134,10 +134,10 @@ namespace Check.MainCheck
             result.Add(new TransferItemToContext(metallicStorage,
                 (identifier) =>
                 {
-                    var tags = identifier.GetDefinition().tags;
+                    var tags = identifier.GetDefinition().tag;
 
-                    return (tags & ItemTags.Bag) == 0 && (tags & ItemTags.Illegal) == 0 &&
-                           (tags & ItemTags.Metallic) != 0;
+                    return (tags & ItemTag.Bag) == 0 && (tags & ItemTag.Illegal) == 0 &&
+                           (tags & ItemTag.Metallic) != 0;
                 }));
 
             return result;

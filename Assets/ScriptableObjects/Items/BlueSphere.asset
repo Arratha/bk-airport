@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BlueSphere
   m_EditorClassIdentifier: 
   selfId: {fileID: 11400000, guid: b6da326910e5f104b9afd9df378b4386, type: 2}
-  selfTags: 0
+  selfTag: 2
   prefab: {fileID: 2926759286471670658, guid: c0f741d5109f03e43a23ad93fd1ee800, type: 3}

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Knife
   m_EditorClassIdentifier: 
   selfId: {fileID: 11400000, guid: 1f8d5ceb5f6f87144bc3b8f41900ef3d, type: 2}
-  selfTags: 3
+  selfTag: 3
   prefab: {fileID: 1685821585871627074, guid: d6b998f635f1d844982f9615fff8f69d, type: 3}

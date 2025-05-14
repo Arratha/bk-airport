@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BlueCube
   m_EditorClassIdentifier: 
   selfId: {fileID: 11400000, guid: 8bde9dacdc1320f4a80b97bdbdb3eb37, type: 2}
-  selfTags: 2
+  selfTag: 3
   prefab: {fileID: 9055412031178188188, guid: d98dfe38ab9e82e4db332549b2e6cf57, type: 3}

@@ -35,7 +35,7 @@ namespace Trackables.Items
 
         private void OnAddItem(params ItemIdentifier[] identifiers)
         {
-            if (identifiers.Any(x => (x.GetDefinition().tags & ItemTags.Metallic) != 0))
+            if (identifiers.Any(x => (x.GetDefinition().tag & ItemTag.Metallic) != 0))
             {
                 enabled = true;
             }
@@ -51,7 +51,7 @@ namespace Trackables.Items
 
         private bool HasMetallic()
         {
-            return (_storage.GetTags() & ItemTags.Metallic) != 0;
+            return (_storage.GetTags() & ItemTag.Metallic) != 0;
         }
     }
 }

@@ -7,12 +7,12 @@ namespace Extensions
 {
     public static class StorageAbstractExtension
     {
-        public static ItemTags GetTags(this StorageAbstract storage)
+        public static ItemTag GetTags(this StorageAbstract storage)
         {
             var definitions = storage.GetDefinitions();
 
-            var tags = ItemTags.None;
-            definitions.ForEach(x => tags |= x.tags);
+            var tags = ItemTag.None;
+            definitions.ForEach(x => tags |= x.tag);
 
             return tags;
         }

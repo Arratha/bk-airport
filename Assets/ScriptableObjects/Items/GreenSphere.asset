@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GreenSphere
   m_EditorClassIdentifier: 
   selfId: {fileID: 11400000, guid: f431bd79f3830154bad495ed658cbf0f, type: 2}
-  selfTags: 0
+  selfTag: 1
   prefab: {fileID: 7950498833302252765, guid: a2a416fab2be41941ab679bd738491a8, type: 3}

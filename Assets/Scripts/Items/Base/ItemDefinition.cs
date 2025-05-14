@@ -1,27 +1,24 @@
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 using System;
 using UnityEngine;
 
 namespace Items.Base
 {
     [Flags]
-    public enum ItemTags
+    public enum ItemTag
     {
         None = 0,
         Illegal = 1 << 0,
         Metallic = 1 << 1,
         Bag = 1 << 2
-    }
+    }   
 
     public class ItemDefinition : ScriptableObject
     {
         public ItemIdentifier id => selfId;
         [HideInInspector, SerializeField] private ItemIdentifier selfId;
 
-        public ItemTags tags => selfTags;
-        [SerializeField] private ItemTags selfTags;
+        public ItemTag tag => selfTag;
+        [SerializeField] private ItemTag selfTag;
         
         public Item prefab;
         private Item _prefabCopy;

@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Items.Storages
 {
+    [DisallowMultipleComponent]
     public abstract class StorageAbstract : MonoBehaviour
     {
         public abstract IReadOnlyCollection<ItemIdentifier> items { get; }
@@ -13,11 +14,12 @@ namespace Items.Storages
         public event Action<ItemIdentifier[]> OnItemAdded;
         public event Action<ItemIdentifier[]> OnItemRemoved;
 
-        public int freeSpace => maxItems - items.Count;
+        public int freeSpace => GetFreeSpace();
+
         [Tooltip("MaxItems less than 1 counts as infinity"), SerializeField]
         private int maxItems;
 
-        public bool TryAddItem(params ItemIdentifier[] identifiers)
+        public bool TryAddItem(ItemIdentifier[] identifiers, bool invokeCallback = true)
         {
             if (identifiers == null
                 || identifiers.Any(x => x == null))
@@ -32,16 +34,20 @@ namespace Items.Storages
 
             if (TryAddItemInternal(identifiers))
             {
-                OnItemAdded?.Invoke(identifiers);
+                if (invokeCallback)
+                {
+                    OnItemAdded?.Invoke(identifiers);
+                }
+
                 return true;
             }
 
             return false;
         }
 
-        public bool TryRemoveItem(params ItemIdentifier[] identifiers)
+        public bool TryRemoveItem(ItemIdentifier[] identifiers, bool invokeCallback = true)
         {
-            if (identifiers == null 
+            if (identifiers == null
                 || identifiers.Any(x => x == null))
             {
                 return false;
@@ -49,7 +55,11 @@ namespace Items.Storages
 
             if (TryRemoveItemInternal(identifiers))
             {
-                OnItemRemoved?.Invoke(identifiers);
+                if (invokeCallback)
+                {
+                    OnItemRemoved?.Invoke(identifiers);
+                }
+
                 return true;
             }
 
