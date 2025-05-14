@@ -13,16 +13,16 @@ namespace Trackables.Usables
         [Space, SerializeField] private float distance = 5;
         [SerializeField] private float angle = 30;
 
-        private UsableBehaviour _currentUsable;
+        private TrackableUsable _currentUsable;
 
         private IObservableState<FocusedUsable> _state;
-        
+
         protected override void OnInit()
         {
             var serviceProvider = ServiceProvider.instance;
             _state = serviceProvider.Resolve<IObservableState<FocusedUsable>>();
         }
-        
+
         private void Update()
         {
             SearchForUsable();
@@ -36,7 +36,7 @@ namespace Trackables.Usables
                 return;
             }
 
-            UsableBehaviour tempUsable = null;
+            TrackableUsable tempUsable = null;
 
             var currentUsables = Usables.Where(IsVisible).Where(CanHit).ToArray();
 
@@ -74,9 +74,15 @@ namespace Trackables.Usables
             }
         }
 
-        private bool IsVisible(UsableBehaviour usable)
+        protected override void HandleDisable()
         {
-            var difference = usable.transform.position - cameraTransform.position;
+            _currentUsable = null;
+            _state.HandleUpdate(new FocusedUsable(_currentUsable));
+        }
+
+        private bool IsVisible(TrackableUsable usable)
+        {
+            var difference = usable.collider.bounds.center - cameraTransform.position;
 
             if (difference.magnitude > distance)
             {
@@ -95,7 +101,7 @@ namespace Trackables.Usables
 
         private bool CanHit(TrackableUsable usable)
         {
-            if (Physics.Linecast(cameraTransform.position, usable.transform.position, out var hit))
+            if (Physics.Linecast(cameraTransform.position, usable.collider.bounds.center, out var hit))
             {
                 return hit.collider == usable.collider;
             }
@@ -117,9 +123,8 @@ namespace Trackables.Usables
 
             foreach (var currentUsable in currentUsables)
             {
-                Gizmos.DrawLine(cameraTransform.position, currentUsable.transform.position);
+                Gizmos.DrawLine(cameraTransform.position, currentUsable.collider.bounds.center);
             }
         }
-
     }
 }

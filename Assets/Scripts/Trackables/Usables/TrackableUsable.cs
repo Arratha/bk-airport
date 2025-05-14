@@ -37,11 +37,13 @@ namespace Trackables.Usables
 
         private void OnEnable()
         {
+            collider.enabled = true;
             _collection.Add(this);
         }
 
         private void OnDisable()
         {
+            collider.enabled = false;
             _collection.Remove(this);
         }
 

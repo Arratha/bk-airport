@@ -57,8 +57,9 @@ namespace Check.MainCheck
 
         private void HandleComplete(bool isSuccessful)
         {
-            var passenger = _processor.TakePassenger();
-            passenger.EnqueueCommand(new MoveToContext(point.position));
+            var passenger = _processor.TakeProcessable().passenger;
+            passenger.EnqueueCommand(new MoveToContext(point.position)).OnComplete +=
+                (_) => passenger.gameObject.SetActive(false);
         }
 
         private void OnDestroy()

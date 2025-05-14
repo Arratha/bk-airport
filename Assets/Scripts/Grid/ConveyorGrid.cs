@@ -20,11 +20,11 @@ namespace Grid
                 {
                     return false;
                 }
-                else if (!x.isEmpty)
+                else if (x.isEmpty)
                 {
                     warp = GetWarp(x.position + translation, x.size);
                 }
-
+                
                 translations.Add(translation + new Vector2(warp.x * gridSize.x, warp.y * gridSize.y));
             }
 

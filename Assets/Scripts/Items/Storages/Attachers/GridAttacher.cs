@@ -13,6 +13,7 @@ namespace Items.Storages.Attachers
     public class GridAttacher<T> : StorageAttacherAbstract where T : AttachableCell
     {
         protected GridAbstract<T> Grid;
+        protected Dictionary<Transform, AttachableCell> CellsInUse = new();
         
         [Tooltip("If set as Vector2.zero, it will be calculated automatically"), SerializeField]
         protected Vector2 cellSize;
@@ -59,6 +60,16 @@ namespace Items.Storages.Attachers
             {
                 var instance = items.First(x => x.identifier.Equals(identifier));
                 items.Remove(instance);
+
+                if (CellsInUse.TryGetValue(instance.transform, out var cell))
+                {
+                    cell.Remove(instance.transform);
+                    
+                    if (cell.isEmpty)
+                    {
+                        CellsInUse.Remove(instance.transform);
+                    }
+                }
 
                 Destroy(instance.gameObject);
             }
@@ -119,10 +130,10 @@ namespace Items.Storages.Attachers
                     (cell.size.y - bounds.size.z) / 2);
 
                 offset += obj.transform.position - bounds.centralPoint.position;
-
             }
 
             cell.Attach(obj.transform, offset);
+            CellsInUse.Add(obj.transform, cell);
         }
 
         protected bool TryGetSize(List<GameObject> objects, out Vector2 size)

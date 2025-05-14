@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Commands.Commands;
 using Commands.Contexts;
 using Extensions;
@@ -57,7 +58,7 @@ namespace Check.MainCheck
             _processorState.HandleUpdate(ProcessorState.Idle);
         }
 
-        public PassengerController TakePassenger()
+        public ProcessedPassenger TakeProcessable()
         {
             if (_processedPassenger == null)
             {
@@ -66,10 +67,21 @@ namespace Check.MainCheck
 
             var passenger = _processedPassenger;
             _processedPassenger = null;
-         
-            _processorState.HandleUpdate(ProcessorState.Empty);
+
+            var bags = introscopeStorage.items.ToArray();
+            introscopeStorage.TryRemoveItem(bags);
+
+            var items = metallicStorage.items.ToArray();
+            metallicStorage.TryRemoveItem(items);
             
-            return passenger;
+            _processorState.HandleUpdate(ProcessorState.Empty);
+
+            return new ProcessedPassenger
+            {
+                passenger = passenger,
+                bags = bags,
+                items = items
+            };
         }
 
         public ICompletable AppointCommand(CheckStage stage)

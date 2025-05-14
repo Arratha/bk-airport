@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2905804798131830767}
   - component: {fileID: 1805462770706236917}
   - component: {fileID: 9169950065959539641}
+  - component: {fileID: 4543666843112908349}
+  - component: {fileID: 7442158538664479317}
   m_Layer: 0
   m_Name: IllegalStorage
   m_TagString: Untagged
@@ -81,6 +83,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b866fab79d314d25a3e2a6abe64a7aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4543666843112908349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544696619707693477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8495289dfe89495fa5197c32766626b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selfLabel: "\u041E\u0431\u044B\u0441\u043A\u0430\u0442\u044C"
+--- !u!114 &7442158538664479317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544696619707693477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b8ed19d1d944910a12a5d396e8c5401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1129817553208771356
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,6 +120,8 @@ GameObject:
   - component: {fileID: 2522292396200199821}
   - component: {fileID: 6360548096433573825}
   - component: {fileID: 4049703753133433826}
+  - component: {fileID: 4482704310967391913}
+  - component: {fileID: 6785375168366101013}
   m_Layer: 0
   m_Name: PocketStorage
   m_TagString: Untagged
@@ -162,6 +191,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b866fab79d314d25a3e2a6abe64a7aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4482704310967391913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129817553208771356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8495289dfe89495fa5197c32766626b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selfLabel: "\u041E\u0431\u044B\u0441\u043A\u0430\u0442\u044C"
+--- !u!114 &6785375168366101013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129817553208771356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b8ed19d1d944910a12a5d396e8c5401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2524893478718418137
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +228,8 @@ GameObject:
   - component: {fileID: 6591376433788381859}
   - component: {fileID: 6943056534830815924}
   - component: {fileID: 7323847382785131012}
+  - component: {fileID: 268351796565916727}
+  - component: {fileID: 2642159048887427667}
   m_Layer: 0
   m_Name: IllegalStorage
   m_TagString: Untagged
@@ -241,6 +297,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b866fab79d314d25a3e2a6abe64a7aa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &268351796565916727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2524893478718418137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8495289dfe89495fa5197c32766626b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selfLabel: "\u041E\u0431\u044B\u0441\u043A\u0430\u0442\u044C"
+--- !u!114 &2642159048887427667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2524893478718418137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b8ed19d1d944910a12a5d396e8c5401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2542250380790119567
@@ -521,6 +602,8 @@ GameObject:
   - component: {fileID: 7363709017547518750}
   - component: {fileID: 6976046399731058790}
   - component: {fileID: 5458897116867994937}
+  - component: {fileID: 7681204329972573580}
+  - component: {fileID: 2308061636479839269}
   m_Layer: 0
   m_Name: PocketStorage
   m_TagString: Untagged
@@ -588,6 +671,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b866fab79d314d25a3e2a6abe64a7aa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7681204329972573580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8158573172688961598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8495289dfe89495fa5197c32766626b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selfLabel: "\u041E\u0431\u044B\u0441\u043A\u0430\u0442\u044C"
+--- !u!114 &2308061636479839269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8158573172688961598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b8ed19d1d944910a12a5d396e8c5401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &7654289716921747952
