@@ -9,8 +9,10 @@ using Utils.SimpleDI;
 
 namespace UI
 {
+    //Creates preview for given item ids
+    //Disables player input while active
     [RequireComponent(typeof(Canvas))]
-    public class SearchCanvas : MonoBehaviour, IObserver<SearchItems>
+    public class SearchCanvas : MonoBehaviour, IObserver<PreviewItems>
     {
         [SerializeField] private Transform attachmentPoint;
         [SerializeField] private float radius = 1f;
@@ -19,7 +21,7 @@ namespace UI
         private int _currentItemIndex;
 
         private GameObject _currentInstance;
-        [SerializeField] private float rotationSpeed = 10f;
+        [SerializeField] private float rotationSpeed = 500;
 
         private Canvas _selfCanvas;
         
@@ -27,12 +29,12 @@ namespace UI
         {
             _selfCanvas = GetComponent<Canvas>();
             
-            var state = ServiceProvider.instance.Resolve<IObservableState<SearchItems>>();
+            var state = ServiceProvider.instance.Resolve<IObservableState<PreviewItems>>();
             state.RegisterObserver(this);
             HandleUpdate(state.GetState());
         }
 
-        public void HandleUpdate(SearchItems message)
+        public void HandleUpdate(PreviewItems message)
         {
             _currentItems = message.items;
             _currentItemIndex = 0;
@@ -150,7 +152,7 @@ namespace UI
 
         private void OnDestroy()
         {
-            var state = ServiceProvider.instance.Resolve<IObservableState<SearchItems>>();
+            var state = ServiceProvider.instance.Resolve<IObservableState<PreviewItems>>();
             state.RegisterObserver(this);
         }
     }

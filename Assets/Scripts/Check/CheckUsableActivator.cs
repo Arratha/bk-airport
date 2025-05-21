@@ -6,6 +6,7 @@ using Utils.SimpleDI;
 
 namespace Check
 {
+    //Manages whether usable is interactable based on current check type
     [RequireComponent(typeof(IUsable))]
     public class CheckUsableActivator : MonoBehaviour, IObserver<CheckType>, IObserver<ProcessorState>
     {

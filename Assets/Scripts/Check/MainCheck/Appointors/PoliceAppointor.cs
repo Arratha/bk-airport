@@ -3,8 +3,12 @@ using Commands.Contexts;
 using UnityEngine;
 using Usables;
 
-namespace Check.MainCheck
+namespace Check.MainCheck.Appointors
 {
+    //Initiates end of main check:
+    //- Returns items to passenger
+    //- Removes passenger from processor
+    //- Move passenger out of introscope area and then disables them
     public class PoliceAppointor : MonoBehaviour
     {
         [SerializeField] private UsableBehaviour usable;

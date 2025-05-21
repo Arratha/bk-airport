@@ -12,6 +12,8 @@ namespace Items.Base
         Bag = 1 << 2
     }   
 
+    //Defines item id, tags and prefab
+    //Id managed automatically
     public class ItemDefinition : ScriptableObject
     {
         public ItemIdentifier id => selfId;

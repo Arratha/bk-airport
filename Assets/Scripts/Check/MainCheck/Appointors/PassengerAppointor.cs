@@ -3,8 +3,10 @@ using UnityEngine;
 using Utils.Observable;
 using Utils.SimpleDI;
 
-namespace Check.MainCheck
+namespace Check.MainCheck.Appointors
 {
+    //Sets dequeued passenger as new processed passenger
+    //Initiates check
     [RequireComponent(typeof(CheckProcessor))]
     public class PassengerAppointor : MonoBehaviour, IObserver<DequeuedPassenger>
     {

@@ -9,6 +9,7 @@ using UnityEngine;
 
 namespace Passenger
 {
+    //Executes enqueued commands
     [RequireComponent(typeof(IMovable))]
     [RequireComponent(typeof(StorageAbstract))]
     public class PassengerController : MonoBehaviour, ICommandExecutor

@@ -28,6 +28,7 @@ namespace Check.MainCheck
         Processing
     }
 
+    //Enqueues standard commands to passenger
     public class CheckProcessor : MonoBehaviour
     {
         [SerializeField] private Transform pointIntroscope;

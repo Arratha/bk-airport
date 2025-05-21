@@ -8,6 +8,9 @@ using Utils.SimpleDI;
 
 namespace Check.AdditionalCheck
 {
+    //Automatically disables interaction when not in AdditionalCheck mode
+    //Requires both storage capacity and items to enable interaction
+    //Transfers all items to inspection when searched
     [RequireComponent(typeof(StorageAbstract))]
     [RequireComponent(typeof(IUsable))]
     public class SearchProvider : MonoBehaviour, IObserver<CheckType>
@@ -47,8 +50,8 @@ namespace Check.AdditionalCheck
             var items = _storage.items.ToArray();
             _storage.TryRemoveItem(items);
 
-            var state = ServiceProvider.instance.Resolve<IObservableState<SearchItems>>();
-            state.HandleUpdate(new SearchItems { items = items });
+            var state = ServiceProvider.instance.Resolve<IObservableState<PreviewItems>>();
+            state.HandleUpdate(new PreviewItems { items = items });
         }
 
         private void OnDestroy()

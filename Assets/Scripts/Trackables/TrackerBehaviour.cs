@@ -4,6 +4,7 @@ using Utils.SimpleDI;
 
 namespace Trackables
 {
+    //Manages self addition or removal from observers of type
     public abstract class TrackerBehaviour<T> : MonoBehaviour, IObserver<T>
     {
         private IObservable<T> _state;

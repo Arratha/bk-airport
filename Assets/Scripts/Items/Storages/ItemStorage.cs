@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using System.Linq;
 using Items.Base;
 using UnityEngine;
 
 namespace Items.Storages
 {
+    //Basic storage
     public class ItemStorage : StorageAbstract
     {
         public override IReadOnlyCollection<ItemIdentifier> items => selfItems;

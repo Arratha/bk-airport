@@ -6,6 +6,8 @@ using Utils.SimpleDI;
 
 namespace Check
 {
+    //Change current check type by interacting with usable
+    //Teleports player to given point
     public class CheckChanger : MonoBehaviour
     {
         [SerializeField] private CheckType newType;

@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Check.MainCheck.Conveyor
 {
+    //Defines conveyor move condition as any items placed on conveyor
     public class StorageDrivenConveyor : ConveyorAbstract
     {
         [SerializeField] private StorageAbstract storage;

@@ -1,11 +1,11 @@
 using UnityEngine;
 using Usables;
 using Utils;
-using Utils.Observable;
 using Utils.SimpleDI;
 
 namespace Trackables.Usables
 {
+    //
     [RequireComponent(typeof(Collider))]
     public class TrackableUsable : UsableBehaviour, ILabeled
     {

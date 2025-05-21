@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Grid
 {
-    public abstract class GridAbstract<T> : MonoBehaviour, IGrid where T : Cell
+    public abstract class GridAbstract<T> : MonoBehaviour, IGrid<T> where T : Cell
     {
         [SerializeField] protected Vector2 gridSize;
 

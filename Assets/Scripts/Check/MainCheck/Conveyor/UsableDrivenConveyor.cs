@@ -3,6 +3,7 @@ using Usables;
 
 namespace Check.MainCheck.Conveyor
 {
+    //Defines conveyor move condition by usable activation
     public class UsableDrivenConveyor : ConveyorAbstract
     {
         [SerializeField] private UsableBehaviour moveButton;

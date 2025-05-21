@@ -7,6 +7,8 @@ using Utils.SimpleDI;
 
 namespace Check.AdditionalCheck
 {
+    //Receives and places in the passenger's room for additional checking
+    //Hides the passenger when current check type changed to main check
     public class ProcessedPassengerHandler : MonoBehaviour, IObserver<ProcessedPassenger>, IObserver<CheckType>
     {
         [SerializeField] private Transform passengerPoint;
@@ -30,18 +32,16 @@ namespace Check.AdditionalCheck
 
         public void HandleUpdate(CheckType message)
         {
-            if (message == CheckType.AdditionalCheck)
-            {
-                return;
-            }
-
             if (_passenger != null)
             {
-                _passenger.SetActive(false);
-                _passenger = null;
+                _passenger.SetActive(message == CheckType.AdditionalCheck);
             }
 
-            bagStorage.TryRemoveItem(bagStorage.items.ToArray());
+            if (message != CheckType.AdditionalCheck)
+            {
+                _passenger = null;
+                bagStorage.TryRemoveItem(bagStorage.items.ToArray());
+            }
         }
 
         private void Awake()

@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Items.Storages.Attachers
 {
+    //Creates instances of given ids prefabs and attaches it to self transform
     public class StorageAttacher : StorageAttacherAbstract
     {
         protected override void Attach(ItemIdentifier[] identifiers)

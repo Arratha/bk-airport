@@ -6,6 +6,9 @@ using Utils.SimpleDI;
 
 namespace Trackables.Usables
 {
+    //Search for closest usable in front of player
+    //Updates focused usable state
+    //If any usable is focused allows interaction with it
     public class PlayerUsableDetector : UsableDetector
     {
         [SerializeField] private Transform cameraTransform;

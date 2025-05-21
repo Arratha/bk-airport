@@ -4,6 +4,7 @@ using Utils.SimpleDI;
 
 namespace Trackables
 {
+    //Manages self addition or removal from collection of trackable objects of type
     public abstract class TrackableAbstract<T> : MonoBehaviour where T : TrackableAbstract<T>
     {
         private IWriteOnlyCollection<T> _state;

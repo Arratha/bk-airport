@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Check.Queue
 {
+    //Creates queue of passengers and assigns random baggage preset to them
     public class PassengersQueue : MonoBehaviour
     {
         [SerializeField] private int initialCount;

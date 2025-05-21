@@ -1,8 +1,9 @@
 using UnityEngine;
 using Usables;
 
-namespace Check.MainCheck
+namespace Check.MainCheck.Appointors
 {
+    //Initiates pass through detector and back
     [RequireComponent(typeof(CheckProcessor))]
     public class SecondPassAppointor : MonoBehaviour
     {

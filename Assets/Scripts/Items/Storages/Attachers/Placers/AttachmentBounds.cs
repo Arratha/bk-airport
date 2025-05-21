@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Items.Storages.Attachers.Placers
 {
+    //Provide infromation to modify item placement
     public class AttachmentBounds : MonoBehaviour
     {
         public Transform centralPoint => selfCentralPoint;

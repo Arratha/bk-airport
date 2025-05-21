@@ -3,8 +3,11 @@ using Usables;
 using Utils.Observable;
 using Utils.SimpleDI;
 
-namespace Check.MainCheck
-{
+namespace Check.MainCheck.Appointors
+{   
+    //Initiates additional check
+    //- Removes passenger from processor
+    //- Updates processed passenger state
     public class AdditionalCheckAppointor : MonoBehaviour
     {
         [SerializeField] private UsableBehaviour usable;

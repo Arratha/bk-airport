@@ -3,6 +3,8 @@ using UnityEngine;
 
 namespace Check.MainCheck.Conveyor
 {
+    //Places object on grid and moves it
+    //The move condition should be defined in inheritors
     [RequireComponent(typeof(ConveyorGrid))]
     public abstract class ConveyorAbstract : MonoBehaviour
     {

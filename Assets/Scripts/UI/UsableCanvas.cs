@@ -7,6 +7,7 @@ using Utils.SimpleDI;
 
 namespace UI
 {
+    //Creates label to focused usable if any
     public class UsableCanvas : MonoBehaviour, IObserver<FocusedUsable>
     {
         [SerializeField] private TextMeshProUGUI usableLabel;

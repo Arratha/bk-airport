@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Items
 {
+    //Collection of items used by passenger generators
     [CreateAssetMenu(menuName = "Items/Preset")]
     public class ItemsPreset : ScriptableObject
     {

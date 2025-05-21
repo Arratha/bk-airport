@@ -6,6 +6,7 @@ using Utils.SimpleDI;
 
 namespace Check.Queue
 {
+    //Controls interactions with queue based on remaining passengers and emptiness of processor
     [RequireComponent(typeof(IUsable))]
     public class QueueUsableActivator : MonoBehaviour, IObserver<ProcessorState>
     {

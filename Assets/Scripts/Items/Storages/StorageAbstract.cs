@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Items.Storages
 {
+    //Stores items by their ids
     [DisallowMultipleComponent]
     public abstract class StorageAbstract : MonoBehaviour
     {

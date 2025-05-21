@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Extensions;
@@ -6,13 +7,15 @@ using Grid.Cells;
 using Items.Base;
 using Items.Storages.Attachers.Placers;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Items.Storages.Attachers
 {
+    //Creates instances of given ids prefabs and attaches it to grid
     [RequireComponent(typeof(GridAbstract<AttachableCell>))]
-    public class GridAttacher<T> : StorageAttacherAbstract where T : AttachableCell
+    public class GridAttacher : StorageAttacherAbstract
     {
-        protected GridAbstract<T> Grid;
+        protected IGrid<AttachableCell> Grid;
         protected Dictionary<Transform, AttachableCell> CellsInUse = new();
         
         [Tooltip("If set as Vector2.zero, it will be calculated automatically"), SerializeField]
@@ -22,13 +25,28 @@ namespace Items.Storages.Attachers
 
         protected override void OnInit()
         {
-            Grid = GetComponent<GridAbstract<T>>();
+            GetGrid();
 
             _isAutomatic = cellSize == Vector2.zero;
 
             if (!_isAutomatic)
             {
                 Grid.CreateCells(cellSize);
+            }
+        }
+
+        private void GetGrid()
+        {
+            Grid = GetComponent<IGrid<AttachableCell>>();
+
+            if (Grid == null)
+            {
+                Grid = GetComponent<IGrid<ConveyorCell>>();
+            }
+
+            if (Grid == null)
+            {
+                throw new NullReferenceException(nameof(Grid));
             }
         }
 

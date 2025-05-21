@@ -2,7 +2,7 @@ using Items.Base;
 
 namespace Check.AdditionalCheck
 {
-    public class SearchItems
+    public class PreviewItems
     {
         public ItemIdentifier[] items { get; set; }
     }

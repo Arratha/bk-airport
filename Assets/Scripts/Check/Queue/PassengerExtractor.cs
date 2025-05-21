@@ -5,6 +5,7 @@ using Utils.SimpleDI;
 
 namespace Check.Queue
 {
+    //Removes first passenger for queue and updates dequeued passenger state
     [RequireComponent(typeof(PassengersQueue))]
     [RequireComponent(typeof(IUsable))]
     public class PassengerExtractor : MonoBehaviour

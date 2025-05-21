@@ -15,6 +15,8 @@ namespace Items.Storages
         All
     }
 
+    //Stores items in given types of storages
+    //Storage for an item is defined by item tag
     public sealed class PassengerStorage : StorageAbstract
     {
         public override IReadOnlyCollection<ItemIdentifier> items => pocketStorages.SelectMany(x => x.items)
