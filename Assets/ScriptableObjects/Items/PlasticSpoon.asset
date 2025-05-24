@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: PlasticSpoon
   m_EditorClassIdentifier: 
   selfId: {fileID: 11400000, guid: f941bc11a947d214d9409901733dc12d, type: 2}
-  selfTags: 0
+  selfTag: 0
   prefab: {fileID: 3201040894046025255, guid: fd17dc4d2ec6bf74b8b854e8141251ee, type: 3}
+  interactivePrefab: {fileID: 3201040894046025255, guid: 879a76110928bb14b822b74cc44e3253,
+    type: 3}

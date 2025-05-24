@@ -1,6 +1,6 @@
 using Check.MainCheck;
 using UnityEngine;
-using Usables;
+using Interactive.Usables;
 using Utils.Observable;
 using Utils.SimpleDI;
 
@@ -31,7 +31,7 @@ namespace Check.Queue
             _usable = GetComponent<IUsable>();
 
             _usable.OnUsed += HandleUsed;
-            
+
             _processorState = ServiceProvider.instance.Resolve<IObservableState<ProcessorState>>();
         }
 
@@ -39,14 +39,13 @@ namespace Check.Queue
         {
             _isActiveQueue = _queue.count > 0;
 
-            _processorState.RegisterObserver(this);
-            HandleUpdate(_processorState.GetState());
+            _processorState.RegisterObserver(this, true);
         }
 
         private void HandleUsed()
         {
             _isActiveQueue = _queue.count > 0;
-            
+
             SetUsableActive();
         }
 
@@ -58,7 +57,7 @@ namespace Check.Queue
         private void OnDestroy()
         {
             _processorState.UnregisterObserver(this);
-                
+
             if (_usable == null)
             {
                 return;

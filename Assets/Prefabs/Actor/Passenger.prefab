@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 9215770444401436869}
   - component: {fileID: 2905804798131830767}
-  - component: {fileID: 1805462770706236917}
   - component: {fileID: 9169950065959539641}
-  - component: {fileID: 4543666843112908349}
-  - component: {fileID: 7442158538664479317}
+  - component: {fileID: 3472290500704309136}
+  - component: {fileID: 2021373162783133822}
+  - component: {fileID: 4493628040620181425}
   m_Layer: 0
   m_Name: IllegalStorage
   m_TagString: Untagged
@@ -50,27 +50,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxItems: 1
   selfItems: []
---- !u!135 &1805462770706236917
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544696619707693477}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9169950065959539641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b866fab79d314d25a3e2a6abe64a7aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4543666843112908349
+--- !u!114 &3472290500704309136
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,11 +71,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 544696619707693477}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8495289dfe89495fa5197c32766626b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 1935892e1a6e49bfb103eb02e4e16ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selfLabel: "\u041E\u0431\u044B\u0441\u043A\u0430\u0442\u044C"
---- !u!114 &7442158538664479317
+  radius: 0.1
+  offset: {x: 0, y: 0, z: 0}
+  amplitude: 1
+  baseVibrationInterval: 0.5
+  baseVibrationDuration: 0.1
+--- !u!114 &2021373162783133822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544696619707693477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb31fc9b3607461d883af90545ea389a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0.075
+  offset: {x: 0, y: 0, z: 0}
+--- !u!114 &4493628040620181425
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,10 +115,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7674571496355089855}
   - component: {fileID: 2522292396200199821}
-  - component: {fileID: 6360548096433573825}
   - component: {fileID: 4049703753133433826}
-  - component: {fileID: 4482704310967391913}
-  - component: {fileID: 6785375168366101013}
+  - component: {fileID: 6222582857706181827}
+  - component: {fileID: 2972266063739103066}
+  - component: {fileID: 3835391279923245924}
   m_Layer: 0
   m_Name: PocketStorage
   m_TagString: Untagged
@@ -158,27 +155,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxItems: 5
   selfItems: []
---- !u!135 &6360548096433573825
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1129817553208771356}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4049703753133433826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b866fab79d314d25a3e2a6abe64a7aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4482704310967391913
+--- !u!114 &6222582857706181827
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -200,11 +176,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 1129817553208771356}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8495289dfe89495fa5197c32766626b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 1935892e1a6e49bfb103eb02e4e16ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selfLabel: "\u041E\u0431\u044B\u0441\u043A\u0430\u0442\u044C"
---- !u!114 &6785375168366101013
+  radius: 0.1
+  offset: {x: 0, y: 0, z: 0}
+  amplitude: 1
+  baseVibrationInterval: 0.5
+  baseVibrationDuration: 0.1
+--- !u!114 &2972266063739103066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129817553208771356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb31fc9b3607461d883af90545ea389a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0.075
+  offset: {x: 0, y: 0, z: 0}
+--- !u!114 &3835391279923245924
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -226,10 +220,10 @@ GameObject:
   m_Component:
   - component: {fileID: 9018001856253149732}
   - component: {fileID: 6591376433788381859}
-  - component: {fileID: 6943056534830815924}
   - component: {fileID: 7323847382785131012}
-  - component: {fileID: 268351796565916727}
-  - component: {fileID: 2642159048887427667}
+  - component: {fileID: 9186294921597900990}
+  - component: {fileID: 4125338606399583757}
+  - component: {fileID: 1833950384445337360}
   m_Layer: 0
   m_Name: IllegalStorage
   m_TagString: Untagged
@@ -266,27 +260,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxItems: 1
   selfItems: []
---- !u!135 &6943056534830815924
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2524893478718418137}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7323847382785131012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b866fab79d314d25a3e2a6abe64a7aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &268351796565916727
+--- !u!114 &9186294921597900990
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -308,11 +281,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 2524893478718418137}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8495289dfe89495fa5197c32766626b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 1935892e1a6e49bfb103eb02e4e16ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selfLabel: "\u041E\u0431\u044B\u0441\u043A\u0430\u0442\u044C"
---- !u!114 &2642159048887427667
+  radius: 0.1
+  offset: {x: 0, y: 0, z: 0}
+  amplitude: 1
+  baseVibrationInterval: 0.5
+  baseVibrationDuration: 0.1
+--- !u!114 &4125338606399583757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2524893478718418137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb31fc9b3607461d883af90545ea389a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0.075
+  offset: {x: 0, y: 0, z: 0}
+--- !u!114 &1833950384445337360
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -600,10 +591,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4382271553097238331}
   - component: {fileID: 7363709017547518750}
-  - component: {fileID: 6976046399731058790}
   - component: {fileID: 5458897116867994937}
-  - component: {fileID: 7681204329972573580}
-  - component: {fileID: 2308061636479839269}
+  - component: {fileID: 828410452023302184}
+  - component: {fileID: 2607292171018739224}
+  - component: {fileID: 3233997259003542131}
   m_Layer: 0
   m_Name: PocketStorage
   m_TagString: Untagged
@@ -640,27 +631,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxItems: 5
   selfItems: []
---- !u!135 &6976046399731058790
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8158573172688961598}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5458897116867994937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -673,7 +643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b866fab79d314d25a3e2a6abe64a7aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7681204329972573580
+--- !u!114 &828410452023302184
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -682,11 +652,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 8158573172688961598}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8495289dfe89495fa5197c32766626b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 1935892e1a6e49bfb103eb02e4e16ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selfLabel: "\u041E\u0431\u044B\u0441\u043A\u0430\u0442\u044C"
---- !u!114 &2308061636479839269
+  radius: 0.1
+  offset: {x: 0, y: 0, z: 0}
+  amplitude: 1
+  baseVibrationInterval: 0.5
+  baseVibrationDuration: 0.1
+--- !u!114 &2607292171018739224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8158573172688961598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb31fc9b3607461d883af90545ea389a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0.075
+  offset: {x: 0, y: 0, z: 0}
+--- !u!114 &3233997259003542131
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

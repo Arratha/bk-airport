@@ -24,6 +24,9 @@ namespace Items.Base
         
         public Item prefab;
         private Item _prefabCopy;
+        
+        public Item interactivePrefab;
+        private Item _interactivePrefabCopy;
 
 #if UNITY_EDITOR
         private void OnValidate()
@@ -34,6 +37,7 @@ namespace Items.Base
             }
 
             ValidatePrefab();
+            ValidateInteractivePrefab();
         }
 
         private void ValidatePrefab()
@@ -54,6 +58,27 @@ namespace Items.Base
             {
                 prefab.SetPrefabId(selfId);
                 _prefabCopy = prefab;
+            }
+        }
+        
+        private void ValidateInteractivePrefab()
+        {
+            if (interactivePrefab == null && _interactivePrefabCopy == null)
+            {
+                return;
+            }
+
+            if (interactivePrefab == null)
+            {
+                _interactivePrefabCopy.SetPrefabId(null);
+                _interactivePrefabCopy = null;
+                return;
+            }
+
+            if (_interactivePrefabCopy == null)
+            {
+                interactivePrefab.SetPrefabId(selfId);
+                _interactivePrefabCopy = interactivePrefab;
             }
         }
 #endif

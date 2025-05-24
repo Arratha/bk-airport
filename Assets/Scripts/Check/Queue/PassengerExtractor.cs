@@ -1,5 +1,5 @@
 using UnityEngine;
-using Usables;
+using Interactive.Usables;
 using Utils.Observable;
 using Utils.SimpleDI;
 

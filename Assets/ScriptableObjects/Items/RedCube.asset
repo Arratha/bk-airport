@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: RedCube
   m_EditorClassIdentifier: 
   selfId: {fileID: 11400000, guid: e8efcb1676bd4024985a1a31b12307c6, type: 2}
-  selfTags: 2
+  selfTag: 0
   prefab: {fileID: 1756620892361186548, guid: 59e65af26125d3e49a98713deca3ae2a, type: 3}
+  interactivePrefab: {fileID: 1756620892361186548, guid: 9bd88f099185daa44b8544a64b88e642,
+    type: 3}

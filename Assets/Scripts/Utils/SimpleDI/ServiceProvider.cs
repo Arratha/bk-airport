@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Utils.SimpleDI
 {
@@ -20,9 +21,11 @@ namespace Utils.SimpleDI
 
         private static ServiceProvider _instance;
 
-        private Dictionary<Type, object> _services = new();
-        private Dictionary<Type, Func<object>> _serviceConstructors = new();
+        private Dictionary<Type, Dictionary<object, object>> _services = new();
+        private Dictionary<Type, Dictionary<object, Func<object>>> _serviceConstructors = new();
 
+        private object _defaultKey = new ();
+            
         private ServiceProvider()
         {
 
@@ -30,29 +33,60 @@ namespace Utils.SimpleDI
 
         public void Register<TService>(TService service) where TService : class
         {
-            _services.Add(typeof(TService), service);
+            Register(_defaultKey, service);
+        }
+
+        public void Register<TService>(object id, TService service)
+        {
+            var type = typeof(TService);
+            
+            if (!_services.ContainsKey(type))
+            {
+                _services[type] = new Dictionary<object, object>();
+            }
+
+            _services[type].Add(id, service);
         }
 
         public void Register<TService>(Func<TService> factory) where TService : class
         {
-            _serviceConstructors.Add(typeof(TService), factory);
+            Register(_defaultKey, factory);
+        }
+
+        public void Register<TService>(object id, Func<TService> factory) where TService : class
+        {
+            var type = typeof(TService);
+
+            if (!_serviceConstructors.ContainsKey(type))
+            {
+                _serviceConstructors[type] = new Dictionary<object, Func<object>>();
+            }
+
+            _serviceConstructors[type].Add(id, factory);
         }
 
         public TService Resolve<TService>() where TService : class
         {
+            return Resolve<TService>(_defaultKey);
+        }
+
+        public TService Resolve<TService>(object id) where TService : class
+        {
             var type = typeof(TService);
 
-            if (_services.TryGetValue(type, out var service))
+            if (_services.TryGetValue(type, out var serviceDictionary)
+                && serviceDictionary.TryGetValue(id, out var service))
             {
                 return (TService)service;
             }
 
-            if (_serviceConstructors.TryGetValue(type, out var factory))
+            if (_serviceConstructors.TryGetValue(type, out var factoryDictionary)
+                && factoryDictionary.TryGetValue(id, out var factory))
             {
                 var newService = (TService)factory();
+                factoryDictionary.Remove(factory);
 
-                _services.Add(type, newService);
-                _serviceConstructors.Remove(type);
+                Register(id, newService);
 
                 return newService;
             }

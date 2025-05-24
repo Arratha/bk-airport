@@ -2,10 +2,10 @@ namespace Utils.Observable
 {
     public interface IObservable<T>
     {
-        public void RegisterObserver(IObserver<T> observer);
+        public void RegisterObserver(IObserver<T> observer, bool immediatelyUpdate = false);
 
         public void UnregisterObserver(IObserver<T> observer);
 
-        public T GetState();
+        public bool TryGetState(out T state);
     }
 }

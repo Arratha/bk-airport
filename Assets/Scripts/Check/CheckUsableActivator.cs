@@ -1,6 +1,6 @@
 using Check.MainCheck;
 using UnityEngine;
-using Usables;
+using Interactive.Usables;
 using Utils.Observable;
 using Utils.SimpleDI;
 
@@ -8,7 +8,7 @@ namespace Check
 {
     //Manages whether usable is interactable based on current check type
     [RequireComponent(typeof(IUsable))]
-    public class CheckUsableActivator : MonoBehaviour, IObserver<CheckType>, IObserver<ProcessorState>
+    public class CheckUsableActivator : MonoBehaviour, Utils.Observable.IObserver<CheckType>, Utils.Observable.IObserver<ProcessorState>
     {
         [SerializeField] private CheckType targetType;
 
@@ -39,12 +39,13 @@ namespace Check
             _usable = GetComponent<IUsable>();
 
             _checkState = ServiceProvider.instance.Resolve<IObservableState<CheckType>>();
-            _checkState.RegisterObserver(this);
-            HandleUpdate(_checkState.GetState());
-
             _processorState = ServiceProvider.instance.Resolve<IObservableState<ProcessorState>>();
-            _processorState.RegisterObserver(this);
-            HandleUpdate(_processorState.GetState());
+        }
+
+        private void Start()
+        {
+            _checkState.RegisterObserver(this, true);
+            _processorState.RegisterObserver(this, true);
         }
 
         private void OnDestroy()

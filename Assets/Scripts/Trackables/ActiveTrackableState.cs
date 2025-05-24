@@ -9,9 +9,14 @@ namespace Trackables
         private HashSet<T> _currentTrackable = new();
         private HashSet<IObserver<IReadOnlyCollection<T>>> _observers = new();
 
-        public void RegisterObserver(IObserver<IReadOnlyCollection<T>> observer)
+        public void RegisterObserver(IObserver<IReadOnlyCollection<T>> observer, bool immediatelyUpdate)
         {
             _observers.Add(observer);
+
+            if (immediatelyUpdate)
+            {
+                observer.HandleUpdate(_currentTrackable);
+            }
         }
 
         public void UnregisterObserver(IObserver<IReadOnlyCollection<T>> observer)
@@ -19,11 +24,13 @@ namespace Trackables
             _observers.Remove(observer);
         }
 
-        public IReadOnlyCollection<T> GetState()
+        public bool TryGetState(out IReadOnlyCollection<T> state)
         {
-            return _currentTrackable;
+            state = _currentTrackable;
+            
+            return true;
         }
-
+        
         public void Add(T obj)
         {
             _currentTrackable.Add(obj);

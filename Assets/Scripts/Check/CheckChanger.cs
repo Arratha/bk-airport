@@ -1,6 +1,6 @@
-using Player;
+using Interactive.Usables;
+using Interactive.Teleport;
 using UnityEngine;
-using Usables;
 using Utils.Observable;
 using Utils.SimpleDI;
 

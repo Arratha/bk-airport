@@ -1,12 +1,16 @@
+using Runtime;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Utils.SimpleDI;
 
 namespace Animations
 {
     [RequireComponent(typeof(Animator))]
     public class HandAnimationInputProvider : MonoBehaviour
     {
-        [SerializeField] private InputActionReference gripAction;
+        [SerializeField] private Side side;
+        
+        private InputActionReference _gripActionReference;
 
         private Animator _animator;
 
@@ -19,18 +23,19 @@ namespace Animations
         {
             _animator = GetComponent<Animator>();
             _gripId = Animator.StringToHash(GripName);
+            _gripActionReference = ServiceProvider.instance.Resolve<InputActionReference>((side, PlayerActions.Select));
         }
 
         private void OnEnable()
         {
-            gripAction.action.performed += OnGripActionPerformed;
-            gripAction.action.canceled += OnGripActionCancelled;
+            _gripActionReference.action.performed += OnGripActionPerformed;
+            _gripActionReference.action.canceled += OnGripActionCancelled;
         }
 
         private void OnDisable()
         {
-            gripAction.action.performed -= OnGripActionPerformed;
-            gripAction.action.canceled -= OnGripActionCancelled;
+            _gripActionReference.action.performed -= OnGripActionPerformed;
+            _gripActionReference.action.canceled -= OnGripActionCancelled;
         }
 
         private void OnGripActionPerformed(InputAction.CallbackContext context)

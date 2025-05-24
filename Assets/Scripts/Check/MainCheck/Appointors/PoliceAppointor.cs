@@ -1,7 +1,7 @@
 using Commands.Commands;
 using Commands.Contexts;
 using UnityEngine;
-using Usables;
+using Interactive.Usables;
 
 namespace Check.MainCheck.Appointors
 {
@@ -41,7 +41,7 @@ namespace Check.MainCheck.Appointors
 
         private void OnDestroy()
         {
-            if (_completeCommand != null && _completeCommand.isDisposed)
+            if (_completeCommand != null)
             {
                 _completeCommand.OnComplete -= HandleComplete;
             }

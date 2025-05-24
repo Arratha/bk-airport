@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Items.Base
 {
     //Determines what item prefab belongs to
-    //Id managed automatically
+    //Id managed automaticallyz
     public class Item : MonoBehaviour
     {
         public ItemIdentifier identifier => selfId;

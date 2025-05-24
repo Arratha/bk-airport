@@ -2,7 +2,7 @@ using Check.Queue;
 using Commands.Commands;
 using Commands.Contexts;
 using UnityEngine;
-using Usables;
+using Interactive.Usables;
 using Utils.Observable;
 using Utils.SimpleDI;
 
@@ -46,8 +46,7 @@ namespace Check.MainCheck.Appointors
             usable.OnUsed += HandleUsed;
 
             _passengerState = ServiceProvider.instance.Resolve<IObservableState<DequeuedPassenger>>();
-            _passengerState.RegisterObserver(this);
-            HandleUpdate(_passengerState.GetState());
+            _passengerState.RegisterObserver(this, true);
         }
 
         private void Update()
@@ -82,7 +81,7 @@ namespace Check.MainCheck.Appointors
 
         private void OnDestroy()
         {
-            if (_completeCommand != null && _completeCommand.isDisposed)
+            if (_completeCommand != null)
             {
                 _completeCommand.OnComplete -= HandleComplete;
             }

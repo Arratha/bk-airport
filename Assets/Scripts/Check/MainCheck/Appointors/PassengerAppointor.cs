@@ -28,7 +28,7 @@ namespace Check.MainCheck.Appointors
             _processor = GetComponent<CheckProcessor>();
             
             _passengerState = ServiceProvider.instance.Resolve<IObservableState<DequeuedPassenger>>();
-            _passengerState.RegisterObserver(this);
+            _passengerState.RegisterObserver(this, true);
         }
 
         private void OnDestroy()

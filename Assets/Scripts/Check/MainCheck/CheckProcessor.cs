@@ -188,7 +188,7 @@ namespace Check.MainCheck
 
             _processorState.HandleUpdate(ProcessorState.Processing);
 
-            if (_lastIssuedCommand != null && !_lastIssuedCommand.isDisposed)
+            if (_lastIssuedCommand != null)
             {
                 _lastIssuedCommand.OnComplete -= HandleAppointmentCompletion;
             }
@@ -201,7 +201,7 @@ namespace Check.MainCheck
         {
             _processorState.HandleUpdate(ProcessorState.Idle);
 
-            if (_lastIssuedCommand == null || !_lastIssuedCommand.isDisposed)
+            if (_lastIssuedCommand == null)
             {
                 return;
             }
@@ -211,7 +211,7 @@ namespace Check.MainCheck
 
         private void OnDestroy()
         {
-            if (_lastIssuedCommand != null && _lastIssuedCommand.isDisposed)
+            if (_lastIssuedCommand != null)
             {
                 _lastIssuedCommand.OnComplete -= HandleAppointmentCompletion;
             }

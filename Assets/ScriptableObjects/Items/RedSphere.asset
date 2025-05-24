@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: RedSphere
   m_EditorClassIdentifier: 
   selfId: {fileID: 11400000, guid: 06c290144df2e8348ad7cde0f5884c86, type: 2}
-  selfTags: 1
+  selfTag: 0
   prefab: {fileID: 5146293078968103121, guid: 584d2d9928cad764ba90a443079f8398, type: 3}
+  interactivePrefab: {fileID: 5146293078968103121, guid: 996289f22d9cdbc4e9cb04f7a03c4946,
+    type: 3}

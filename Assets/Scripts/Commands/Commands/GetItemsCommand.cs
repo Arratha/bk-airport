@@ -2,7 +2,6 @@ using System;
 using Commands.Contexts;
 using Items.Base;
 using Items.Storages;
-using UnityEngine;
 
 namespace Commands.Commands
 {
@@ -13,9 +12,6 @@ namespace Commands.Commands
         public bool isCompleted => _isCompleted;
         private bool _isCompleted;
         
-        public bool isDisposed => _isDisposed;
-        private bool _isDisposed;
-
         private StorageAbstract _selfStorage;
 
         private ItemIdentifier[] _itemIDs;
@@ -44,13 +40,6 @@ namespace Commands.Commands
 
             _isCompleted = true;
             OnComplete?.Invoke(true);
-        }
-        
-        public void Dispose()
-        {
-            OnComplete = null;
-         
-            _isDisposed = true;
         }
     }
 }

@@ -11,9 +11,6 @@ namespace Commands.Commands
 
         public bool isCompleted => _isCompleted;
         private bool _isCompleted;
-        
-        public bool isDisposed => _isDisposed;
-        private bool _isDisposed;
 
         private IMovable _movable;
 
@@ -37,11 +34,6 @@ namespace Commands.Commands
                 _isCompleted = true;
                 OnComplete?.Invoke(true);
             }
-        }
-
-        public void Dispose()
-        {
-            OnComplete = null;
         }
     }
 }

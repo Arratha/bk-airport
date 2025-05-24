@@ -8,9 +8,16 @@ namespace Utils.Observable
 
         private HashSet<IObserver<T>> _observers = new();
 
-        public void RegisterObserver(IObserver<T> observer)
+        protected bool HasState;
+
+        public void RegisterObserver(IObserver<T> observer, bool immediatelyUpdate = false)
         {
             _observers.Add(observer);
+
+            if (HasState && immediatelyUpdate)
+            {
+                observer.HandleUpdate(CurrentState);
+            }
         }
 
         public void UnregisterObserver(IObserver<T> observer)
@@ -18,9 +25,11 @@ namespace Utils.Observable
             _observers.Remove(observer);
         }
 
-        public T GetState()
+        public bool TryGetState(out T state)
         {
-            return CurrentState;
+            state = HasState ? CurrentState : default;
+
+            return HasState;
         }
 
         protected void UpdateObservers()

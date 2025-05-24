@@ -19,7 +19,7 @@ namespace Passenger
         private CommandFactory _factory;
 
         private ICommand _currentCommand;
-        
+
         public ICompletable EnqueueCommand(ICommandContext context)
         {
             var command = _factory.CreateCommand(context);
@@ -30,23 +30,10 @@ namespace Passenger
 
         public void StopCommands()
         {
-            if (_currentCommand != null)
-            {
-                _currentCommand.Dispose();
-                _currentCommand = null;
-            }
-
-            while (_commands.Any())
-            {
-                _commands.Dequeue().Dispose();
-            }
+            _currentCommand = null;
+            _commands.Clear();
         }
 
-        public void Dispose()
-        {
-            StopCommands();
-        }
-        
         private void Awake()
         {
             var movable = GetComponent<IMovable>();
@@ -71,14 +58,8 @@ namespace Passenger
 
             if (_currentCommand.isCompleted)
             {
-                _currentCommand.Dispose();
                 _currentCommand = null;
             }
-        }
-
-        private void OnDestroy()
-        {
-            Dispose();
         }
     }
 }

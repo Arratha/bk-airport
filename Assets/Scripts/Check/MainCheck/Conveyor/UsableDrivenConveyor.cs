@@ -1,5 +1,5 @@
 using UnityEngine;
-using Usables;
+using Interactive.Usables;
 
 namespace Check.MainCheck.Conveyor
 {

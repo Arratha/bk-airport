@@ -47,9 +47,10 @@ namespace Check.AdditionalCheck
         private void Awake()
         {
             _processedState = ServiceProvider.instance.Resolve<IObservableState<ProcessedPassenger>>();
-            _processedState.RegisterObserver(this);
+            _processedState.RegisterObserver(this, true);
+            
             _checkState = ServiceProvider.instance.Resolve<IObservableState<CheckType>>();
-            _checkState.RegisterObserver(this);
+            _checkState.RegisterObserver(this, true);
         }
 
         private void OnDestroy()

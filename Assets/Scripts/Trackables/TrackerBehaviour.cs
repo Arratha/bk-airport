@@ -26,8 +26,7 @@ namespace Trackables
 
         private void OnEnable()
         {
-            _state.RegisterObserver(this);
-            HandleUpdate(_state.GetState());
+            _state.RegisterObserver(this, true);
             
             HandleEnable();
         }
