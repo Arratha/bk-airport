@@ -6,49 +6,54 @@ namespace Trackables
 {
     public class ActiveTrackableState<T> : IObservable<IReadOnlyCollection<T>>, IWriteOnlyCollection<T>
     {
-        private HashSet<T> _currentTrackable = new();
-        private HashSet<IObserver<IReadOnlyCollection<T>>> _observers = new();
+        protected HashSet<T> CurrentTrackable = new();
+        protected HashSet<IObserver<IReadOnlyCollection<T>>> Observers = new();
 
         public void RegisterObserver(IObserver<IReadOnlyCollection<T>> observer, bool immediatelyUpdate)
         {
-            _observers.Add(observer);
+            Observers.Add(observer);
 
             if (immediatelyUpdate)
             {
-                observer.HandleUpdate(_currentTrackable);
+                observer.HandleUpdate(CurrentTrackable);
             }
         }
 
         public void UnregisterObserver(IObserver<IReadOnlyCollection<T>> observer)
         {
-            _observers.Remove(observer);
+            Observers.Remove(observer);
         }
 
         public bool TryGetState(out IReadOnlyCollection<T> state)
         {
-            state = _currentTrackable;
+            state = CurrentTrackable;
             
             return true;
         }
         
         public void Add(T obj)
         {
-            _currentTrackable.Add(obj);
+            CurrentTrackable.Add(obj);
 
-            foreach (var observer in _observers)
+            foreach (var observer in Observers)
             {
-                observer.HandleUpdate(_currentTrackable);
+                observer.HandleUpdate(CurrentTrackable);
             }
         }
 
         public void Remove(T obj)
         {
-            _currentTrackable.Remove(obj);
+            CurrentTrackable.Remove(obj);
             
-            foreach (var observer in _observers)
+            foreach (var observer in Observers)
             {
-                observer.HandleUpdate(_currentTrackable);
+                observer.HandleUpdate(CurrentTrackable);
             }
+        }
+
+        public void Update(T obj)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

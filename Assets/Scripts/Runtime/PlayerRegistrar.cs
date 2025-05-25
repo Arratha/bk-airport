@@ -28,7 +28,9 @@ namespace Runtime
     [Serializable]
     public class PlayerRegistrar
     {
-        [SerializeField] private TeleportationProvider teleportationProvider;
+        [SerializeField] private Camera camera;
+         
+        [Space, SerializeField] private TeleportationProvider teleportationProvider;
 
         [Space, SerializeField] private XRDirectInteractor leftInteractor;
         [SerializeField] private XRDirectInteractor rightInteractor;
@@ -42,6 +44,8 @@ namespace Runtime
         {
             serviceProvider.Register(teleportationProvider);
 
+            serviceProvider.Register(camera);
+            
             serviceProvider.Register((Side.Left, PlayerActions.Select), leftSelectReference);
             serviceProvider.Register((Side.Right, PlayerActions.Select), rightSelectReference);
             serviceProvider.Register((Side.Left, PlayerActions.Activate), leftActivateReference);

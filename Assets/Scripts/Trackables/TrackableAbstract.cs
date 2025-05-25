@@ -16,11 +16,6 @@ namespace Trackables
             OnInit();
         }
 
-        protected virtual void OnInit()
-        {
-
-        }
-
         private void OnEnable()
         {
             _state.Add((T)this);
@@ -29,6 +24,11 @@ namespace Trackables
         private void OnDisable()
         {
             _state.Remove((T)this);
+        }
+        
+        protected virtual void OnInit()
+        {
+
         }
     }
 }
