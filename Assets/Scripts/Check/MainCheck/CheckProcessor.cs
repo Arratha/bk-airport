@@ -10,6 +10,7 @@ using Passenger;
 using UnityEngine;
 using Utils.Observable;
 using Utils.SimpleDI;
+using Random = UnityEngine.Random;
 
 namespace Check.MainCheck
 {
@@ -148,9 +149,19 @@ namespace Check.MainCheck
                 (identifier) =>
                 {
                     var tags = identifier.GetDefinition().tag;
+                    var accuracy = _processedPassenger.accuracy;
 
-                    return (tags & ItemTag.Bag) == 0 && (tags & ItemTag.Illegal) == 0 &&
-                           (tags & ItemTag.Metallic) != 0;
+                    var notBag = (tags & ItemTag.Bag) == 0;
+
+                    var notIllegal = Random.value < accuracy
+                        ? (tags & ItemTag.Illegal) == 0
+                        : true;
+
+                    var isMetallic = Random.value < accuracy
+                        ? (tags & ItemTag.Metallic) != 0
+                        : (tags & ItemTag.Metallic) == 0;
+
+                    return notBag && notIllegal && isMetallic;
                 }));
 
             return result;
@@ -161,6 +172,25 @@ namespace Check.MainCheck
             var result = new List<ICommandContext>();
 
             result.Add(new MoveToContext(pointIntroscope.position));
+            result.Add(new WaitContext(0.5f));
+            result.Add(new TransferItemToContext(metallicStorage,
+                (identifier) =>
+                {
+                    var tags = identifier.GetDefinition().tag;
+                    var accuracy = 0.5f + _processedPassenger.accuracy / 2;
+
+                    var notBag = (tags & ItemTag.Bag) == 0;
+
+                    var notIllegal = Random.value < accuracy
+                        ? (tags & ItemTag.Illegal) == 0
+                        : true;
+
+                    var isMetallic = Random.value < accuracy
+                        ? (tags & ItemTag.Metallic) != 0
+                        : (tags & ItemTag.Metallic) == 0;
+
+                    return notBag && notIllegal && isMetallic;
+                }));
             result.Add(new MoveToContext(pointDetector.position));
 
             return result;

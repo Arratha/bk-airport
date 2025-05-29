@@ -5,108 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68d6b222-8719-4d8e-b579-dbc6c4abc527" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/Interactive.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/Interactive/Activators.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/Interactive/Activators/SimpleActivatorEditor.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/Interactive/Activators/SimpleActivatorEditor.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/Trackables.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/Trackables/Items.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/Trackables/Items/MetallicTrackerEditor.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/Trackables/Items/MetallicTrackerEditor.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/Activators.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/Activators/Conditions.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/Activators/Conditions/ICondition.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/Activators/Conditions/ICondition.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/Activators/Conditions/QueueHasPassengers.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/Activators/Conditions/QueueHasPassengers.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/Activators/Conditions/RequiredCheckType.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/Activators/Conditions/RequiredCheckType.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/Activators/Conditions/RequiredProcessorState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/Activators/Conditions/RequiredProcessorState.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/Activators/Conditions/StorageHasItems.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/Activators/Conditions/StorageHasItems.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/Activators/SimpleActivator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/Activators/SimpleActivator.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/Labels/SimpleLabel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/Labels/SimpleLabel.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/Usables/UsableBatch.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/Usables/UsableBatch.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/XR/GrabAttacher.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/XR/GrabAttacher.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/XR/VibrationZone.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Player/DirectUser.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Player/DirectUser.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Trackables/Items/HandheldMetallicTracker.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Trackables/Items/HandheldMetallicTracker.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Trackables/Items/MetallicTrackerAbstract.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Trackables/Items/MetallicTrackerAbstract.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/Initializable.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/Initializable/IInitializable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/Initializable/IInitializable.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/Initializable/IInitializableWithArgs.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/Initializable/IInitializableWithArgs.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/Zones.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/Zones/CylinderZone.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/Zones/CylinderZone.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/Zones/IZone.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/Zones/IZone.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/Zones/SphereZone.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/Zones/SphereZone.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/Zones/ZoneAbstract.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/Zones/ZoneAbstract.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/Zones/ZoneInitArgs.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/Zones/ZoneInitArgs.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerCreator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerCreator.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.bk-airport/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bk-airport/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/XR/Settings/OpenXR Package Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/XR/Settings/OpenXR Package Settings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Actor/Passenger.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Actor/Passenger.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Actor/Player/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Actor/Player/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Bag (1).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Bag (1).prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Bag (2).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Bag (2).prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Bag (3).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Bag (3).prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Bag (4).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Bag (4).prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Bag.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Bag.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/LabelCanvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/LabelCanvas.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/LabelCard.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/LabelCard.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/0_MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/0_MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Check/AdditionalCheck/SearchActivator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Check/AdditionalCheck/SearchActivator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Check/CheckUsableActivator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Check/CheckUsableActivator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Check/MainCheck/Appointors/AdditionalCheckAppointor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Check/MainCheck/Appointors/AdditionalCheckAppointor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Check/MainCheck/Appointors/EndCheckAppointor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Check/MainCheck/Appointors/EndCheckAppointor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Check/MainCheck/Appointors/PassengerAppointor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Check/MainCheck/Appointors/PassengerAppointor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Check/MainCheck/Appointors/PoliceAppointor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Check/MainCheck/Appointors/PoliceAppointor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Check/MainCheck/Appointors/SecondPassAppointor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Check/MainCheck/Appointors/SecondPassAppointor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Check/Queue/DequeuedPassenger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Check/Queue/DequeuedPassenger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Check/Queue/PassengerExtractor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Check/Queue/PassengerExtractor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Check/Queue/QueueUsableActivator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Check/Queue/QueueUsableActivator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactive/Labels/IForcedLabel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactive/Labels/IForcedLabel.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactive/Search.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/XR.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactive/Search/SearchItemSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/XR/SearchItemSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactive/Search/SearchItemSpawner.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/XR/SearchItemSpawner.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactive/Search/VibrationZone.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactive/Search/VibrationZone.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/XR/VibrationZone.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/ControlModeResolver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/InteractorChanger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/ControlModeResolver.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/InteractorChanger.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Bootstrapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Bootstrapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/TrackableRegistrar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/TrackableRegistrar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Trackables/Items/MetallicTracker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Trackables/Items/MetallicTracker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Trackables/Labels.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Trackables/Labels/ForcedLabelTrackable.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Trackables/Labels/ForcedLabelTrackable.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Trackables/Labels/LabelTrackable.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Trackables/Labels/LabelTrackable.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Labels.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Labels/LabelCanvas.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Labels/LabelCanvas.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Labels/LabelCard.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Labels/LabelCard.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/XRay_Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/XRay_Renderer.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sounds/detector.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sounds/detector.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Check/MainCheck/CheckProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Check/MainCheck/CheckProcessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Check/Queue/PassengersQueue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Check/Queue/PassengersQueue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -254,7 +159,7 @@
       <workItem from="1748341360937" duration="8181000" />
       <workItem from="1748434282757" duration="8167000" />
       <workItem from="1748446697865" duration="1633000" />
-      <workItem from="1748513607696" duration="297000" />
+      <workItem from="1748513607696" duration="3906000" />
     </task>
     <servers />
   </component>

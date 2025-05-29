@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using System.Linq;
 using Commands.Contexts;
-using Items;
 using Passenger;
 using UnityEngine;
 
@@ -14,10 +12,8 @@ namespace Check.Queue
         [SerializeField] private Vector3 pointOffset;
         [SerializeField] private Transform startingPoint;
 
-        [Space, SerializeField] private List<ItemsPreset> itemPresets;
-
-        [Space, SerializeField] private PassengerController prefab;
-
+        [Space, SerializeField] private PassengerCreator creator;
+        
         public int count => _passengers.Count;
         private Queue<PassengerController> _passengers = new();
         
@@ -48,13 +44,12 @@ namespace Check.Queue
 
             for (var i = 0; i < initialCount; i++)
             {
-                var preset = itemPresets[Random.Range(0, itemPresets.Count)];
-                var items = preset.items.ToArray();
+                var passenger = creator.InstantiatePlayer();
 
-                var passenger = Instantiate(prefab, transform);
-                passenger.EnqueueCommand(new GetItemsContext(items));
-
+                var passengerTransform = passenger.transform;
+                passengerTransform.SetParent(transform);
                 passenger.transform.position = position;
+
                 position += pointOffset;
 
                 _passengers.Enqueue(passenger);

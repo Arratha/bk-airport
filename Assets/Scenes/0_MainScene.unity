@@ -3572,13 +3572,17 @@ MonoBehaviour:
   initialCount: 10
   pointOffset: {x: 1, y: 0, z: 0}
   startingPoint: {fileID: 376648651}
-  itemPresets:
-  - {fileID: 11400000, guid: 0528f88ab816c11409bff0058994df70, type: 2}
-  - {fileID: 11400000, guid: 80e0cec5f8c5efb48bfad2da3d75304c, type: 2}
-  - {fileID: 11400000, guid: aef3cf0f47496f74fab69270b6f3f840, type: 2}
-  - {fileID: 11400000, guid: 6a752f26cea11e9488217b0b29f62d7e, type: 2}
-  - {fileID: 11400000, guid: a23d7bff216f7d2459b11d0a8eef3e19, type: 2}
-  prefab: {fileID: 2203575525339133319, guid: 0f530eae21c095148a8661c599e9cbde, type: 3}
+  creator:
+    prefab: {fileID: 2203575525339133319, guid: 0f530eae21c095148a8661c599e9cbde,
+      type: 3}
+    minAccuracy: 0.85
+    maxAccuracy: 1
+    itemPresets:
+    - {fileID: 11400000, guid: 0528f88ab816c11409bff0058994df70, type: 2}
+    - {fileID: 11400000, guid: 80e0cec5f8c5efb48bfad2da3d75304c, type: 2}
+    - {fileID: 11400000, guid: aef3cf0f47496f74fab69270b6f3f840, type: 2}
+    - {fileID: 11400000, guid: 6a752f26cea11e9488217b0b29f62d7e, type: 2}
+    - {fileID: 11400000, guid: a23d7bff216f7d2459b11d0a8eef3e19, type: 2}
 --- !u!4 &1448771301
 Transform:
   m_ObjectHideFlags: 0

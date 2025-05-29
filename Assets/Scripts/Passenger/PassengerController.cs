@@ -14,6 +14,14 @@ namespace Passenger
     [RequireComponent(typeof(StorageAbstract))]
     public class PassengerController : MonoBehaviour, ICommandExecutor
     {
+        public float accuracy
+        {
+            get => _accuracy;
+            set => _accuracy = value;
+        }
+
+        private float _accuracy;
+
         private Queue<ICommand> _commands = new();
 
         private CommandFactory _factory;
