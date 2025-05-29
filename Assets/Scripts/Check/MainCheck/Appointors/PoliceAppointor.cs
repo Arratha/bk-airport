@@ -11,28 +11,26 @@ namespace Check.MainCheck.Appointors
     //- Move passenger out of introscope area and then disables them
     public class PoliceAppointor : MonoBehaviour
     {
-        [SerializeField] private UsableBehaviour usable;
+        [SerializeField] private CheckProcessor processor;
+        [Space, SerializeField] private UsableBehaviour usable;
         [SerializeField] private Transform point;
 
-        private CheckProcessor _processor;
         private ICompletable _completeCommand;
 
         private void Awake()
         {
-            _processor = GetComponent<CheckProcessor>();
-
             usable.OnUsed += HandleUsed;
         }
 
         private void HandleUsed()
         {
-            _completeCommand = _processor.AppointCommand(CheckStage.TakeItems);
+            _completeCommand = processor.AppointCommand(CheckStage.TakeItems);
             _completeCommand.OnComplete += HandleComplete;
         }
 
         private void HandleComplete(bool isSuccessful)
         {
-            var passenger = _processor.TakeProcessable().passenger;
+            var passenger = processor.TakeProcessable().passenger;
             passenger.EnqueueCommand(new MoveToContext(point.position)).OnComplete +=
                 (_) => passenger.gameObject.SetActive(false);
 

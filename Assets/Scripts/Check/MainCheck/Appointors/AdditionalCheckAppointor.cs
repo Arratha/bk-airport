@@ -4,29 +4,27 @@ using Utils.Observable;
 using Utils.SimpleDI;
 
 namespace Check.MainCheck.Appointors
-{   
+{
     //Initiates additional check
     //- Removes passenger from processor
     //- Updates processed passenger state
     public class AdditionalCheckAppointor : MonoBehaviour
     {
-        [SerializeField] private UsableBehaviour usable;
-
-        private CheckProcessor _processor;
+        [SerializeField] private CheckProcessor processor;
+        [Space, SerializeField] private UsableBehaviour usable;
 
         private IObservableState<ProcessedPassenger> _state;
-        
+
         private void Awake()
         {
-            _processor = GetComponent<CheckProcessor>();
             _state = ServiceProvider.instance.Resolve<IObservableState<ProcessedPassenger>>();
-            
+
             usable.OnUsed += HandleUsed;
         }
 
         private void HandleUsed()
         {
-            var processable = _processor.TakeProcessable();
+            var processable = processor.TakeProcessable();
             _state.HandleUpdate(processable);
         }
 

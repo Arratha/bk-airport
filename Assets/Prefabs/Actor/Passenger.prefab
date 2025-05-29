@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9169950065959539641}
   - component: {fileID: 3472290500704309136}
   - component: {fileID: 2021373162783133822}
-  - component: {fileID: 4493628040620181425}
+  - component: {fileID: 2878254667158552609}
   m_Layer: 0
   m_Name: IllegalStorage
   m_TagString: Untagged
@@ -74,11 +74,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1935892e1a6e49bfb103eb02e4e16ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.1
+  radius: 0.05
   offset: {x: 0, y: 0, z: 0}
   amplitude: 1
-  baseVibrationInterval: 0.5
-  baseVibrationDuration: 0.1
+  duration: 0.1
 --- !u!114 &2021373162783133822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,9 +90,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb31fc9b3607461d883af90545ea389a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.075
+  radius: 0.05
   offset: {x: 0, y: 0, z: 0}
---- !u!114 &4493628040620181425
+--- !u!114 &2878254667158552609
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,9 +101,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 544696619707693477}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b8ed19d1d944910a12a5d396e8c5401, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ca7391ddb8448ba9bda2808a4b653a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  managedComponents:
+  - {fileID: 3472290500704309136}
+  - {fileID: 2021373162783133822}
+  conditions:
+  - rid: 1321932437148926032
+  - rid: 1321932437148926033
+  references:
+    version: 2
+    RefIds:
+    - rid: 1321932437148926032
+      type: {class: RequiredCheckType, ns: Interactive.Activators.Conditions, asm: Assembly-CSharp}
+      data:
+        requiredState: 1
+    - rid: 1321932437148926033
+      type: {class: StorageHasItems, ns: Interactive.Activators.Conditions, asm: Assembly-CSharp}
+      data:
+        storage: {fileID: 2905804798131830767}
 --- !u!1 &1129817553208771356
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,7 +134,7 @@ GameObject:
   - component: {fileID: 4049703753133433826}
   - component: {fileID: 6222582857706181827}
   - component: {fileID: 2972266063739103066}
-  - component: {fileID: 3835391279923245924}
+  - component: {fileID: 6203310606225485463}
   m_Layer: 0
   m_Name: PocketStorage
   m_TagString: Untagged
@@ -179,11 +195,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1935892e1a6e49bfb103eb02e4e16ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.1
+  radius: 0.05
   offset: {x: 0, y: 0, z: 0}
   amplitude: 1
-  baseVibrationInterval: 0.5
-  baseVibrationDuration: 0.1
+  duration: 0.1
 --- !u!114 &2972266063739103066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,9 +211,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb31fc9b3607461d883af90545ea389a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.075
+  radius: 0.05
   offset: {x: 0, y: 0, z: 0}
---- !u!114 &3835391279923245924
+--- !u!114 &6203310606225485463
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -207,9 +222,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1129817553208771356}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b8ed19d1d944910a12a5d396e8c5401, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ca7391ddb8448ba9bda2808a4b653a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  managedComponents:
+  - {fileID: 6222582857706181827}
+  - {fileID: 2972266063739103066}
+  conditions:
+  - rid: 1321932437148926028
+  - rid: 1321932437148926029
+  references:
+    version: 2
+    RefIds:
+    - rid: 1321932437148926028
+      type: {class: RequiredCheckType, ns: Interactive.Activators.Conditions, asm: Assembly-CSharp}
+      data:
+        requiredState: 1
+    - rid: 1321932437148926029
+      type: {class: StorageHasItems, ns: Interactive.Activators.Conditions, asm: Assembly-CSharp}
+      data:
+        storage: {fileID: 2522292396200199821}
 --- !u!1 &2524893478718418137
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +255,7 @@ GameObject:
   - component: {fileID: 7323847382785131012}
   - component: {fileID: 9186294921597900990}
   - component: {fileID: 4125338606399583757}
-  - component: {fileID: 1833950384445337360}
+  - component: {fileID: 4177507451703113992}
   m_Layer: 0
   m_Name: IllegalStorage
   m_TagString: Untagged
@@ -284,11 +316,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1935892e1a6e49bfb103eb02e4e16ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.1
+  radius: 0.05
   offset: {x: 0, y: 0, z: 0}
   amplitude: 1
-  baseVibrationInterval: 0.5
-  baseVibrationDuration: 0.1
+  duration: 0.1
 --- !u!114 &4125338606399583757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,9 +332,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb31fc9b3607461d883af90545ea389a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.075
+  radius: 0.05
   offset: {x: 0, y: 0, z: 0}
---- !u!114 &1833950384445337360
+--- !u!114 &4177507451703113992
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -312,9 +343,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 2524893478718418137}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b8ed19d1d944910a12a5d396e8c5401, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ca7391ddb8448ba9bda2808a4b653a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  managedComponents:
+  - {fileID: 9186294921597900990}
+  - {fileID: 4125338606399583757}
+  conditions:
+  - rid: 1321932437148926034
+  - rid: 1321932437148926035
+  references:
+    version: 2
+    RefIds:
+    - rid: 1321932437148926034
+      type: {class: RequiredCheckType, ns: Interactive.Activators.Conditions, asm: Assembly-CSharp}
+      data:
+        requiredState: 1
+    - rid: 1321932437148926035
+      type: {class: StorageHasItems, ns: Interactive.Activators.Conditions, asm: Assembly-CSharp}
+      data:
+        storage: {fileID: 6591376433788381859}
 --- !u!1 &2542250380790119567
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,7 +642,7 @@ GameObject:
   - component: {fileID: 5458897116867994937}
   - component: {fileID: 828410452023302184}
   - component: {fileID: 2607292171018739224}
-  - component: {fileID: 3233997259003542131}
+  - component: {fileID: 8156341199200103495}
   m_Layer: 0
   m_Name: PocketStorage
   m_TagString: Untagged
@@ -655,11 +703,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1935892e1a6e49bfb103eb02e4e16ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.1
+  radius: 0.05
   offset: {x: 0, y: 0, z: 0}
   amplitude: 1
-  baseVibrationInterval: 0.5
-  baseVibrationDuration: 0.1
+  duration: 0.1
 --- !u!114 &2607292171018739224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -672,9 +719,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb31fc9b3607461d883af90545ea389a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.075
+  radius: 0.05
   offset: {x: 0, y: 0, z: 0}
---- !u!114 &3233997259003542131
+--- !u!114 &8156341199200103495
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -683,9 +730,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 8158573172688961598}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b8ed19d1d944910a12a5d396e8c5401, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ca7391ddb8448ba9bda2808a4b653a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  managedComponents:
+  - {fileID: 828410452023302184}
+  - {fileID: 2607292171018739224}
+  conditions:
+  - rid: 1321932437148926030
+  - rid: 1321932437148926031
+  references:
+    version: 2
+    RefIds:
+    - rid: 1321932437148926030
+      type: {class: RequiredCheckType, ns: Interactive.Activators.Conditions, asm: Assembly-CSharp}
+      data:
+        requiredState: 1
+    - rid: 1321932437148926031
+      type: {class: StorageHasItems, ns: Interactive.Activators.Conditions, asm: Assembly-CSharp}
+      data:
+        storage: {fileID: 7363709017547518750}
 --- !u!1001 &7654289716921747952
 PrefabInstance:
   m_ObjectHideFlags: 0

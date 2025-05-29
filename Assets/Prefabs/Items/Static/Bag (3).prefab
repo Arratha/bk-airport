@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3922975616336939939}
   - component: {fileID: 6375781283346742671}
   - component: {fileID: 2024793579095916092}
-  - component: {fileID: -4621174932383831028}
+  - component: {fileID: 7275549942452526843}
   m_Layer: 21
   m_Name: Bag (3)
   m_TagString: Untagged
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb31fc9b3607461d883af90545ea389a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.13
+  radius: 0.15
   offset: {x: -0.02, y: -0.2, z: 0}
 --- !u!114 &2024793579095916092
 MonoBehaviour:
@@ -130,12 +130,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1935892e1a6e49bfb103eb02e4e16ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.2
+  radius: 0.15
   offset: {x: -0.02, y: -0.2, z: 0}
   amplitude: 1
-  baseVibrationInterval: 0.5
-  baseVibrationDuration: 0.1
---- !u!114 &-4621174932383831028
+  duration: 0.1
+--- !u!114 &7275549942452526843
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,9 +143,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 2849622609431697644}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b8ed19d1d944910a12a5d396e8c5401, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ca7391ddb8448ba9bda2808a4b653a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  managedComponents:
+  - {fileID: 6375781283346742671}
+  - {fileID: 2024793579095916092}
+  conditions:
+  - rid: 1321932437148926042
+  - rid: 1321932437148926043
+  references:
+    version: 2
+    RefIds:
+    - rid: 1321932437148926042
+      type: {class: RequiredCheckType, ns: Interactive.Activators.Conditions, asm: Assembly-CSharp}
+      data:
+        requiredState: 1
+    - rid: 1321932437148926043
+      type: {class: StorageHasItems, ns: Interactive.Activators.Conditions, asm: Assembly-CSharp}
+      data:
+        storage: {fileID: 7163249658399351547}
 --- !u!1 &5475233650369084648
 GameObject:
   m_ObjectHideFlags: 0

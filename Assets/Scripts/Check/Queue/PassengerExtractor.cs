@@ -6,24 +6,16 @@ using Utils.SimpleDI;
 namespace Check.Queue
 {
     //Removes first passenger for queue and updates dequeued passenger state
-    [RequireComponent(typeof(PassengersQueue))]
-    [RequireComponent(typeof(IUsable))]
     public class PassengerExtractor : MonoBehaviour
     {
-        private PassengersQueue _queue;
-        private IUsable _usable;
+        [SerializeField] private PassengersQueue queue;
+        [SerializeField] private UsableBehaviour usable;
 
-        private void Awake()
-        {
-            _queue = GetComponent<PassengersQueue>();
-            _usable = GetComponent<IUsable>();
-
-            _usable.OnUsed += HandleUsed;
-        }
+        private void Awake() => usable.OnUsed += HandleUsed;
 
         private void HandleUsed()
         {
-            var dequeuedPassenger = _queue.Dequeue();
+            var dequeuedPassenger = queue.Dequeue();
             var dequeueState = ServiceProvider.instance.Resolve<IObservableState<DequeuedPassenger>>();
 
             dequeueState.HandleUpdate(new DequeuedPassenger(dequeuedPassenger));
@@ -31,12 +23,12 @@ namespace Check.Queue
 
         private void OnDestroy()
         {
-            if (_usable == null)
+            if (usable == null)
             {
                 return;
             }
 
-            _usable.OnUsed -= HandleUsed;
+            usable.OnUsed -= HandleUsed;
         }
     }
 }

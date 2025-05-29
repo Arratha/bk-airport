@@ -12,7 +12,7 @@ namespace Runtime
         
         private void Awake()
         {
-            Application.targetFrameRate = 10;
+            Application.targetFrameRate = 0;
             
             RegisterDependencies();
         }

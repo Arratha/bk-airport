@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Trackables;
 using Trackables.Items;
-using Trackables.Labels;
 using Utils;
 using Utils.SimpleDI;
 using uo = Utils.Observable;
@@ -19,11 +18,6 @@ namespace Runtime
             var metallicTrackable = new ActiveTrackableState<MetallicTrackable>();
             serviceProvider.Register<uo::IObservable<IReadOnlyCollection<MetallicTrackable>>>(metallicTrackable);
             serviceProvider.Register<IWriteOnlyCollection<MetallicTrackable>>(metallicTrackable);
-
-            var labelTrackable = new UpdatableTrackableState<LabelTrackable>();
-            serviceProvider.Register<uo::IObservable<IReadOnlyCollection<LabelTrackable>>>(labelTrackable);
-            serviceProvider.Register<uo::IObserver<LabelTrackable>>(labelTrackable);
-            serviceProvider.Register<IWriteOnlyCollection<LabelTrackable>>(labelTrackable);
         }
     }
 }

@@ -13,13 +13,12 @@ namespace Check.MainCheck.Appointors
     //- Removes passenger from processor
     //- Move passenger out of introscope area and then disables them
     //Attaches interaction point to dequeued passenger
-    [RequireComponent(typeof(CheckProcessor))]
     public class EndCheckAppointor : MonoBehaviour, IObserver<DequeuedPassenger>
     {
-        [SerializeField] private UsableBehaviour usable;
+        [SerializeField] private CheckProcessor processor;
+        [Space, SerializeField] private UsableBehaviour usable;
         [SerializeField] private Transform point;
 
-        private CheckProcessor _processor;
         private ICompletable _completeCommand;
 
         private IObservableState<DequeuedPassenger> _passengerState;
@@ -41,8 +40,6 @@ namespace Check.MainCheck.Appointors
 
         private void Awake()
         {
-            _processor = GetComponent<CheckProcessor>();
-
             usable.OnUsed += HandleUsed;
 
             _passengerState = ServiceProvider.instance.Resolve<IObservableState<DequeuedPassenger>>();
@@ -65,7 +62,7 @@ namespace Check.MainCheck.Appointors
 
         private void HandleUsed()
         {
-            _completeCommand = _processor.AppointCommand(CheckStage.TakeItems);
+            _completeCommand = processor.AppointCommand(CheckStage.TakeItems);
             _completeCommand.OnComplete += HandleComplete;
             
             usable.gameObject.SetActive(false);
@@ -74,7 +71,7 @@ namespace Check.MainCheck.Appointors
 
         private void HandleComplete(bool isSuccessful)
         {
-            var passenger = _processor.TakeProcessable().passenger;
+            var passenger = processor.TakeProcessable().passenger;
             passenger.EnqueueCommand(new MoveToContext(point.position)).OnComplete +=
                 (_) => passenger.gameObject.SetActive(false);
         }
