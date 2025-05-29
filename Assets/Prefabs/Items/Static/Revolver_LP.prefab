@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3107620238071872807
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8670871590972957682}
-  m_Layer: 21
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8670871590972957682
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3107620238071872807}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.006, z: 0.032}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3827667434982200996}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3644575647777206607
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -156,11 +125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6940fd40d4e0300479ab2c3c4e65c5c2,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8670871590972957682}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6940fd40d4e0300479ab2c3c4e65c5c2,
         type: 3}
@@ -171,12 +136,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 507850442719833155}
   m_SourcePrefab: {fileID: 100100000, guid: 6940fd40d4e0300479ab2c3c4e65c5c2, type: 3}
---- !u!4 &3827667434982200996 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6940fd40d4e0300479ab2c3c4e65c5c2,
-    type: 3}
-  m_PrefabInstance: {fileID: 3644575647777206607}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4491579680603868190 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6940fd40d4e0300479ab2c3c4e65c5c2,
@@ -208,5 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b8a0d3dacb34948a7810e5a5f1ff2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selfCentralPoint: {fileID: 8670871590972957682}
+  selfPositionOffset: {x: 0, y: 0, z: 0}
+  selfRotationOffset: {x: 0, y: 0, z: 0}
   selfSize: {x: 0.07, y: 0.19, z: 0.31}

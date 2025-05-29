@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Commands.Contexts;
 using Items.Base;
 using Items.Storages;
@@ -11,16 +13,16 @@ namespace Commands.Commands
 
         public bool isCompleted => _isCompleted;
         private bool _isCompleted;
-        
+
         private StorageAbstract _selfStorage;
 
-        private ItemIdentifier[] _itemIDs;
+        private List<ItemIdentifier> _itemIDs;
 
         public GetItemsCommand(GetItemsContext context, StorageAbstract selfStorage)
         {
             _selfStorage = selfStorage;
 
-            _itemIDs = context.identifiers;
+            _itemIDs = context.identifiers.Where(x => x != null).ToList();
         }
 
         public void Execute(float deltaTime)
@@ -30,11 +32,20 @@ namespace Commands.Commands
                 return;
             }
 
-            if (!_selfStorage.TryAddItem(_itemIDs))
-            {
-                _isCompleted = true;
-                OnComplete?.Invoke(false);
+            var notAddedItems = new List<ItemIdentifier>();
 
+            _itemIDs.ForEach(x =>
+            {
+                if (!_selfStorage.TryAddItem(x))
+                {
+                    notAddedItems.Add(x);
+                }
+            });
+
+            _itemIDs = notAddedItems;
+
+            if (_itemIDs.Any())
+            {
                 return;
             }
 

@@ -16,7 +16,14 @@ namespace Passenger
     {
         public float accuracy
         {
-            get => _accuracy;
+            get
+            {
+                var result = _accuracy;
+
+                _accuracy = 0.5f + _accuracy / 2;
+
+                return result;
+            }
             set => _accuracy = value;
         }
 
@@ -57,6 +64,7 @@ namespace Passenger
                 if (_commands.Any())
                 {
                     _currentCommand = _commands.Dequeue();
+                    Debug.Log($"New command started {_currentCommand}", gameObject);
                 }
 
                 return;

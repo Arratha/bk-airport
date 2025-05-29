@@ -2688,6 +2688,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 441902039447670449, guid: 1aa2cfaae4cd7db4cbf6e71d256e10c3,
+        type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 441902039447670449, guid: 1aa2cfaae4cd7db4cbf6e71d256e10c3,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 441902039447670449, guid: 1aa2cfaae4cd7db4cbf6e71d256e10c3,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 441902039447670449, guid: 1aa2cfaae4cd7db4cbf6e71d256e10c3,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5821058832257663077, guid: 1aa2cfaae4cd7db4cbf6e71d256e10c3,
         type: 3}
       propertyPath: m_audioClip
@@ -2773,9 +2793,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1087611397}
   - component: {fileID: 1087611398}
-  - component: {fileID: 1087611400}
-  - component: {fileID: 1087611401}
-  - component: {fileID: 1087611402}
   m_Layer: 0
   m_Name: MetallicStorage
   m_TagString: Untagged
@@ -2810,49 +2827,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d87be525fe714ce7b1e3e498b85999d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxItems: 0
   selfItems: []
---- !u!114 &1087611400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1087611396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f884ff9fd497455ca4dcf5c9403bec97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gridSize: {x: 0.37, y: 3.45}
---- !u!114 &1087611401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1087611396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f4f5195e2e24a59b49e9520e53de5d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: {x: 0, y: 0.2}
-  storage: {fileID: 1087611398}
---- !u!114 &1087611402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1087611396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc143a8936144b9fb10db9e6a57d42ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: []
-  cellSize: {x: 0, y: 0}
+  maxCount: 0
 --- !u!1 &1127929343
 GameObject:
   m_ObjectHideFlags: 0
@@ -4085,9 +4061,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1707846874}
   - component: {fileID: 1707846875}
-  - component: {fileID: 1707846877}
-  - component: {fileID: 1707846878}
-  - component: {fileID: 1707846879}
   m_Layer: 0
   m_Name: IntroscopeStorage
   m_TagString: Untagged
@@ -4122,50 +4095,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d87be525fe714ce7b1e3e498b85999d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxItems: 0
   selfItems: []
---- !u!114 &1707846877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1707846873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f884ff9fd497455ca4dcf5c9403bec97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gridSize: {x: 0.6, y: 3.71}
---- !u!114 &1707846878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1707846873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d292e0c6ff04a3cb79bf46b7137502e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: {x: 0, y: 0.2}
-  moveButton: {fileID: 634301319}
-  reverseButton: {fileID: 1779478040}
---- !u!114 &1707846879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1707846873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc143a8936144b9fb10db9e6a57d42ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: []
-  cellSize: {x: 0, y: 0}
+  maxCount: 0
 --- !u!114 &1753047757 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2876021037801880551, guid: 1aa2cfaae4cd7db4cbf6e71d256e10c3,
@@ -4514,7 +4445,6 @@ GameObject:
   - component: {fileID: 1848457776}
   - component: {fileID: 1848457779}
   - component: {fileID: 1848457778}
-  - component: {fileID: 1848457780}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -4549,8 +4479,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d87be525fe714ce7b1e3e498b85999d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxItems: 0
   selfItems: []
+  maxCount: 0
 --- !u!114 &1848457779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4564,20 +4494,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridSize: {x: 1.7, y: 0.55}
---- !u!114 &1848457780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1848457775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc143a8936144b9fb10db9e6a57d42ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: []
-  cellSize: {x: 0, y: 0}
 --- !u!1 &1895576377
 GameObject:
   m_ObjectHideFlags: 0

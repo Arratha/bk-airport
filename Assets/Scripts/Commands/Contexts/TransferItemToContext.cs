@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Items.Base;
 using Items.Storages;
 
@@ -6,25 +7,16 @@ namespace Commands.Contexts
 {
     public class TransferItemToContext : ICommandContext
     {
-        public StorageAbstract storage => _storage;
-        private StorageAbstract _storage;
-
-        public ItemIdentifier[] identifiers => _identifiers;
-        private ItemIdentifier[] _identifiers;
-
-        public Func<ItemIdentifier, bool> compareFunction => _compareFunction;
-        private Func<ItemIdentifier, bool> _compareFunction;
+        public StorageAbstract storageToPut => _storageToPut;
+        private StorageAbstract _storageToPut;
         
-        public TransferItemToContext(StorageAbstract storage, params ItemIdentifier[] identifiers)
+        public Func<StorageAbstract, List<ItemIdentifier>> selectItems => _selectItems;
+        private Func<StorageAbstract, List<ItemIdentifier>> _selectItems;
+
+        public TransferItemToContext(StorageAbstract storageToPut, Func<StorageAbstract, List<ItemIdentifier>> selectItems)
         {
-            _storage = storage;
-            _identifiers = identifiers;
-        }
-        
-        public TransferItemToContext(StorageAbstract storage, Func<ItemIdentifier, bool> compareFunction)
-        {
-            _storage = storage;
-            _compareFunction = compareFunction;
+            _storageToPut = storageToPut;
+            _selectItems = selectItems;
         }
     }
 }

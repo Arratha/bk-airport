@@ -5,13 +5,65 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68d6b222-8719-4d8e-b579-dbc6c4abc527" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerCreator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerCreator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/AttachmentStorage.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/AttachmentStorage.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.bk-airport/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bk-airport/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Actor/Passenger.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Actor/Passenger.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Interactive/BlueCube_Interactive.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Interactive/BlueCube_Interactive.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Interactive/BlueSphere_Interactive.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Interactive/BlueSphere_Interactive.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Interactive/Firstaid_Interactive.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Interactive/Firstaid_Interactive.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Interactive/GreenCube_Interactive.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Interactive/GreenCube_Interactive.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Interactive/GreenSphere_Interactive.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Interactive/GreenSphere_Interactive.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Interactive/Knife_Interactive.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Interactive/Knife_Interactive.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Interactive/Plastic Spoon_Interactive.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Interactive/Plastic Spoon_Interactive.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Interactive/RedCube_Interactive.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Interactive/RedCube_Interactive.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Interactive/RedSphere_Interactive.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Interactive/RedSphere_Interactive.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Interactive/Revolver_LP_Interactive.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Interactive/Revolver_LP_Interactive.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Interactive/Table Spoon_Interactive.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Interactive/Table Spoon_Interactive.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Bag (1).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Bag (1).prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Bag (2).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Bag (2).prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Bag (3).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Bag (3).prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Bag (4).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Bag (4).prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Bag.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Bag.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/BlueCube.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/BlueCube.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/BlueSphere.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/BlueSphere.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Firstaid.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Firstaid.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/GreenCube.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/GreenCube.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/GreenSphere.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/GreenSphere.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Knife.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Knife.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Plastic Spoon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Plastic Spoon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/RedCube.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/RedCube.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/RedSphere.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/RedSphere.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Revolver_LP.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Revolver_LP.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Table Spoon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Static/Table Spoon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/0_MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/0_MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Check/AdditionalCheck/ProcessedPassengerHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Check/AdditionalCheck/ProcessedPassengerHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Check/MainCheck/CheckProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Check/MainCheck/CheckProcessor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Check/Queue/PassengersQueue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Check/Queue/PassengersQueue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Check/MainCheck/Conveyor/StorageDrivenConveyor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Check/MainCheck/Conveyor/StorageDrivenConveyor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Check/MainCheck/ProcessedPassenger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Check/MainCheck/ProcessedPassenger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Commands/Commands/GetItemsCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Commands/Commands/GetItemsCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Commands/Commands/TransferItemFromCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Commands/Commands/TransferItemFromCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Commands/Commands/TransferItemToCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Commands/Commands/TransferItemToCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Commands/Contexts/TransferItemToContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Commands/Contexts/TransferItemToContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactive/Activators/Conditions/StorageHasItems.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/Activators/Conditions/StorageHasItems.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactive/XR/SearchItemSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/XR/SearchItemSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/Attachers.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/Attachers/GridAttacher.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/Attachers/GridAttacher.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/Attachers/Placers.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/Placers.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/Attachers/Placers/AttachmentBounds.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/Placers/AttachmentBounds.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/Attachers/Placers/AttachmentBounds.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/Placers/AttachmentBounds.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/Attachers/Placers/AttachmentPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/Placers/AttachmentPoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/Attachers/Placers/AttachmentPoint.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/Placers/AttachmentPoint.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/Attachers/StorageAttacher.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/Attachers/StorageAttacher.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/Attachers/StorageAttacherAbstract.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/Attachers/StorageAttacherAbstract.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/ItemStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/ItemStorage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/PassengerStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/PassengerStorage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/StorageAbstract.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Storages/StorageAbstract.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Trackables/Items/MetallicTrackable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Trackables/Items/MetallicTrackable.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +84,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/ContentSizeFitter/ContentSizeFitterCustom.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.7.0/InputSystem/Plugins/XR/TrackedPoseDriver.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@1.2.6/Unity.Mathematics/bool2.gen.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@1.2.6/Unity.Mathematics/quaternion.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@16.0.6/Editor/UniversalRendererDataEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@16.0.6/Runtime/Data/PostProcessData.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@16.0.6/Runtime/Passes/RenderObjectsPass.cs" root0="SKIP_HIGHLIGHTING" />
@@ -159,7 +212,7 @@
       <workItem from="1748341360937" duration="8181000" />
       <workItem from="1748434282757" duration="8167000" />
       <workItem from="1748446697865" duration="1633000" />
-      <workItem from="1748513607696" duration="3906000" />
+      <workItem from="1748513607696" duration="15317000" />
     </task>
     <servers />
   </component>
@@ -186,6 +239,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Items/Storages/Placers/AttachmentPoint.cs</url>
+          <line>65</line>
+          <properties documentPath="C:\Users\Arratha\Documents\GitHub\bk-airport\Assets\Scripts\Items\Storages\Placers\AttachmentPoint.cs" initialLine="31" containingFunctionPresentation="Method 'DrawAxis'">
+            <startOffsets>
+              <option value="2254" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2255" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

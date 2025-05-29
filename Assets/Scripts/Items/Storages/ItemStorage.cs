@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Items.Base;
 using UnityEngine;
 
@@ -10,6 +11,20 @@ namespace Items.Storages
         public override IReadOnlyCollection<ItemIdentifier> items => selfItems;
         [SerializeField] protected List<ItemIdentifier> selfItems;
 
+        [Min(0), SerializeField] private int maxCount;
+
+        public override ItemIdentifier GetFirstItem(bool invokeCallback = true)
+        {
+            var fistItem = selfItems.FirstOrDefault();
+
+            if (TryRemoveItem(fistItem, invokeCallback))
+            {
+                return fistItem;
+            }
+
+            return null;
+        }
+
         protected override void InitializeStorage()
         {
             if (selfItems == null)
@@ -20,53 +35,32 @@ namespace Items.Storages
             selfItems.RemoveAll(x => x == null);
         }
 
-        protected override bool TryAddItemInternal(params ItemIdentifier[] identifiers)
+        protected override bool TryAddItemInternal(ItemIdentifier identifier)
         {
-            foreach (var identifier in identifiers)
-            {
-                selfItems.Add(identifier);
-            }
+            selfItems.Add(identifier);
 
             return true;
         }
 
-        protected override bool TryRemoveItemInternal(params ItemIdentifier[] identifiers)
+        protected override bool TryRemoveItemInternal(ItemIdentifier identifier)
         {
-            var removeCount = new Dictionary<ItemIdentifier, int>();
-
-            foreach (var identifier in identifiers)
+            if (!selfItems.Contains(identifier))
             {
-                if (removeCount.TryGetValue(identifier, out var count))
-                {
-                    removeCount[identifier] = count + 1;
-                }
-                else
-                {
-                    removeCount[identifier] = 1;
-                }
+                return false;
             }
 
-            foreach (var kvp in removeCount)
-            {
-                var actualCount = 0;
-
-                foreach (var item in selfItems)
-                {
-                    if (item.Equals(kvp.Key)) actualCount++;
-                }
-
-                if (actualCount < kvp.Value)
-                {
-                    return false;
-                }
-            }
-
-            foreach (var identifier in identifiers)
-            {
-                selfItems.Remove(identifier);
-            }
-
+            selfItems.Remove(identifier);
             return true;
+        }
+
+        protected override float GetFreeSpaceFloat()
+        {
+            if (maxCount == 0)
+            {
+                return Mathf.Infinity;
+            }
+
+            return maxCount;
         }
     }
 }

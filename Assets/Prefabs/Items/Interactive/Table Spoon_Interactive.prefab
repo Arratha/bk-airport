@@ -116,7 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b8a0d3dacb34948a7810e5a5f1ff2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selfCentralPoint: {fileID: 792894064116583555}
+  selfPositionOffset: {x: 0, y: 0, z: 0}
+  selfRotationOffset: {x: 0, y: 0, z: 0}
   selfSize: {x: 0.05, y: 0.2, z: 0.03}
 --- !u!54 &-1915133211941878986
 Rigidbody:

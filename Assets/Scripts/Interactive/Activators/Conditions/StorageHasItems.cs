@@ -50,7 +50,7 @@ namespace Interactive.Activators.Conditions
             storage.OnItemRemoved -= HandleUpdate;
         }
 
-        private void HandleUpdate(ItemIdentifier[] items)
+        private void HandleUpdate(ItemIdentifier items)
         {
             OnChanged?.Invoke();
         }

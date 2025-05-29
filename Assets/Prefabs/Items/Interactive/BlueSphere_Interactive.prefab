@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -5541107094096930351}
   - component: {fileID: 2172420287659292433}
   - component: {fileID: 4944582916131809943}
-  - component: {fileID: 4381358298793023336}
+  - component: {fileID: 4277159726067929435}
   m_Layer: 21
   m_Name: BlueSphere_Interactive
   m_TagString: Untagged
@@ -115,7 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b8a0d3dacb34948a7810e5a5f1ff2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selfCentralPoint: {fileID: 3520105837784604204}
+  selfPositionOffset: {x: 0, y: 0, z: 0}
+  selfRotationOffset: {x: 0, y: 0, z: 0}
   selfSize: {x: 0.1, y: 0.1, z: 0.1}
 --- !u!54 &2172420287659292433
 Rigidbody:
@@ -296,8 +297,8 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
---- !u!135 &4381358298793023336
-SphereCollider:
+--- !u!65 &4277159726067929435
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -315,5 +316,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}

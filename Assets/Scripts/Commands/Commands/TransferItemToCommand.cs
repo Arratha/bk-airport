@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Commands.Contexts;
 using Items.Base;
 using Items.Storages;
+using UnityEngine;
 
 namespace Commands.Commands
 {
@@ -13,19 +15,19 @@ namespace Commands.Commands
         public bool isCompleted => _isCompleted;
         private bool _isCompleted;
 
-        private StorageAbstract _selfStorage; 
-        private StorageAbstract _storageToTransfer;
+        private StorageAbstract _storageToGet;
+        private StorageAbstract _storageToPut;
 
-        private Func<ItemIdentifier, bool> _compareFunction;
-        private ItemIdentifier[] _itemIDs;
+        private List<ItemIdentifier> _itemIDs;
 
-        public TransferItemToCommand(TransferItemToContext context, StorageAbstract selfStorage)
+        private Func<StorageAbstract, List<ItemIdentifier>> _selectItems;
+
+        public TransferItemToCommand(TransferItemToContext context, StorageAbstract storageToGet)
         {
-            _selfStorage = selfStorage;
-            _storageToTransfer = context.storage;
+            _storageToGet = storageToGet;
+            _storageToPut = context.storageToPut;
 
-            _itemIDs = context.identifiers;
-            _compareFunction = context.compareFunction;
+            _selectItems = context.selectItems;
         }
 
         public void Execute(float deltaTime)
@@ -35,29 +37,38 @@ namespace Commands.Commands
                 return;
             }
 
-            if (_compareFunction != null)
+            if (_itemIDs == null)
             {
-                _itemIDs = _selfStorage.items.Where(x => _compareFunction(x)).ToArray();
+                _itemIDs = _selectItems(_storageToGet).Where(x => x != null).ToList();
             }
 
-            if (!_selfStorage.TryRemoveItem(_itemIDs))
+            var notAddedItems = new List<ItemIdentifier>();
+
+            _itemIDs.ForEach(x =>
             {
-                _isCompleted = true;
-                OnComplete?.Invoke(false);
-                
+                if (!_storageToGet.TryRemoveItem(x))
+                {
+                    Debug.LogError($"Cannot remove {x}");
+                    notAddedItems.Add(x);
+                    return;
+                }
+
+                if (!_storageToPut.TryAddItem(x))
+                {
+                    Debug.LogError($"Cannot add {x}");
+                    _storageToGet.TryAddItem(x, false);
+                    notAddedItems.Add(x);
+                }
+            });
+
+            _itemIDs = notAddedItems;
+
+            
+            if (_itemIDs.Any())
+            {
                 return;
             }
-            
-            if (!_storageToTransfer.TryAddItem(_itemIDs))
-            {
-                _selfStorage.TryAddItem(_itemIDs);
-                
-                _isCompleted = true;
-                OnComplete?.Invoke(false);
-                
-                return;
-            }
-            
+
             _isCompleted = true;
             OnComplete?.Invoke(true);
         }

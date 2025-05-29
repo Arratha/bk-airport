@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Extensions;
@@ -19,100 +18,51 @@ namespace Items.Storages
     //Storage for an item is defined by item tag
     public sealed class PassengerStorage : StorageAbstract
     {
-        public override IReadOnlyCollection<ItemIdentifier> items => pocketStorages.SelectMany(x => x.items)
-            .Concat(bagStorages.SelectMany(x => x.items))
-            .Concat(illegalStorages.SelectMany(x => x.items))
-            .ToArray();
+        public override IReadOnlyCollection<ItemIdentifier> items =>
+            GetStorages(StorageTag.All).SelectMany(x => x.items).ToList();
 
         [SerializeField] private List<StorageAbstract> pocketStorages;
         [SerializeField] private List<StorageAbstract> bagStorages;
         [SerializeField] private List<StorageAbstract> illegalStorages;
+        
+        public override ItemIdentifier GetFirstItem(bool invokeCallback = true)
+        {
+            var fistItem = items.FirstOrDefault();
 
+            if (TryRemoveItem(fistItem, invokeCallback))
+            {
+                return fistItem;
+            }
+
+            return null;
+        }
+        
         protected override void InitializeStorage()
         {
-
+            
         }
 
-        protected override bool TryAddItemInternal(params ItemIdentifier[] identifiers)
+        protected override bool TryAddItemInternal(ItemIdentifier identifier)
         {
-            var placeCount = identifiers
-                .GroupBy(item => GetStorageTag(item.GetDefinition().tag))
-                .ToDictionary(
-                    group => group.Key,
-                    group => group.ToList()
-                );
-            
-            var storages = Enum.GetValues(typeof(StorageTag))
-                .Cast<StorageTag>().ToDictionary(
-                    x => x,
-                    x => GetStorages(x));
-            
-            var isExceed = placeCount.Any(x =>!storages[x.Key].Any(storage => storage.freeSpace == int.MaxValue) 
-                                              && x.Value.Count > storages[x.Key].Sum(storage => storage.freeSpace));
+            var storageTag = GetStorageTag(identifier.GetDefinition().tag);
+            var validStorages = GetStorages(storageTag).Randomize();
+            var storage = validStorages.FirstOrDefault(x => x.TryAddItem(identifier));
 
-            if (isExceed)
-            {
-                return false;
-            }
-            
-            foreach (var kvp in placeCount)
-            {
-                var suitableStorages = storages[kvp.Key].Randomize();
-
-                while (kvp.Value.Any())
-                {
-                    var storage = suitableStorages.First();
-                    suitableStorages.Remove(storage);
-                    
-                    var placementBatch = kvp.Value.Take(storage.freeSpace).ToArray();
-
-                    storage.TryAddItem(placementBatch);
-
-                    foreach (var identifier in placementBatch)
-                    {
-                        kvp.Value.Remove(identifier);
-                    }
-                }
-            }
-            
-            return true;
+            return storage != null;
         }
 
-        protected override bool TryRemoveItemInternal(params ItemIdentifier[] identifiers)
+        protected override bool TryRemoveItemInternal(ItemIdentifier identifier)
         {
-            var selfItems = items;
-            var storages = GetStorages(StorageTag.All);
-            
-            var removeCount = identifiers
-                .GroupBy(item => item)
-                .ToDictionary(
-                    group => group.Key,
-                    group => group.Count()
-                );
+            var randomizedStorages = GetStorages(StorageTag.All).Randomize();
+            var validStorages = randomizedStorages.Where(x => x.items.Contains(identifier));
+            var storage = validStorages.FirstOrDefault(x => x.TryRemoveItem(identifier));
 
-            if (removeCount.Any(kvp =>
-                    selfItems.Count(x => x.Equals(kvp.Key)) < kvp.Value))
-            {
-                return false;
-            }
+            return storage != null;
+        }
 
-            foreach (var storage in storages)
-            {
-                var removeBatch = storage.items.Where(x =>
-                {
-                    if (removeCount.TryGetValue(x, out var count) && count > 0)
-                    {
-                        removeCount[x]--;
-                        return true;
-                    }
-
-                    return false;
-                }).ToArray();
-
-                storage.TryRemoveItem(removeBatch);
-            }
-
-            return true;
+        protected override float GetFreeSpaceFloat()
+        {
+            return GetStorages(StorageTag.All).Sum(x => x.freeSpace);
         }
 
         private StorageTag GetStorageTag(ItemTag itemTag)

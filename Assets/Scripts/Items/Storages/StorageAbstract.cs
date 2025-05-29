@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Items.Base;
 using UnityEngine;
 
@@ -12,66 +11,64 @@ namespace Items.Storages
     {
         public abstract IReadOnlyCollection<ItemIdentifier> items { get; }
 
-        public event Action<ItemIdentifier[]> OnItemAdded;
-        public event Action<ItemIdentifier[]> OnItemRemoved;
+        public event Action<ItemIdentifier> OnItemAdded;
+        public event Action<ItemIdentifier> OnItemRemoved;
 
-        public int freeSpace => GetFreeSpace();
+        //We use float cause it can be infinite
+        public float freeSpace => GetFreeSpaceFloat();
 
-        [Tooltip("MaxItems less than 1 counts as infinity"), SerializeField]
-        private int maxItems;
-
-        public bool TryAddItem(ItemIdentifier[] identifiers, bool invokeCallback = true)
+        public bool TryAddItem(ItemIdentifier identifier, bool invokeCallback = true)
         {
-            if (identifiers == null
-                || identifiers.Any(x => x == null))
+            if (identifier == null)
             {
                 return false;
             }
 
-            if (GetFreeSpace() < identifiers.Length)
+            if (GetFreeSpaceFloat() < 1)
             {
                 return false;
             }
 
-            if (TryAddItemInternal(identifiers))
+            if (!TryAddItemInternal(identifier))
             {
-                if (invokeCallback)
-                {
-                    OnItemAdded?.Invoke(identifiers);
-                }
-
-                return true;
+                return false;
             }
 
-            return false;
+            if (invokeCallback)
+            {
+                OnItemAdded?.Invoke(identifier);
+            }
+
+            return true;
         }
 
-        public bool TryRemoveItem(ItemIdentifier[] identifiers, bool invokeCallback = true)
+        public bool TryRemoveItem(ItemIdentifier identifier, bool invokeCallback = true)
         {
-            if (identifiers == null
-                || identifiers.Any(x => x == null))
+            if (identifier == null)
             {
                 return false;
             }
 
-            if (TryRemoveItemInternal(identifiers))
+            if (!TryRemoveItemInternal(identifier))
             {
-                if (invokeCallback)
-                {
-                    OnItemRemoved?.Invoke(identifiers);
-                }
-
-                return true;
+                return false;
             }
 
-            return false;
+            if (invokeCallback)
+            {
+                OnItemRemoved?.Invoke(identifier);
+            }
+
+            return true;
         }
+
+        public abstract ItemIdentifier GetFirstItem(bool invokeCallback = true);
 
         private void Awake()
         {
             InitializeStorage();
 
-            if (GetFreeSpace() < 0)
+            if (GetFreeSpaceFloat() < 0)
             {
                 Debug.LogError($"Items count is exceeded.", gameObject);
             }
@@ -79,18 +76,11 @@ namespace Items.Storages
 
         protected abstract void InitializeStorage();
 
-        protected abstract bool TryAddItemInternal(params ItemIdentifier[] identifiers);
+        protected abstract bool TryAddItemInternal(ItemIdentifier identifier);
 
-        protected abstract bool TryRemoveItemInternal(params ItemIdentifier[] identifiers);
+        protected abstract bool TryRemoveItemInternal(ItemIdentifier identifier);
 
-        private int GetFreeSpace()
-        {
-            if (maxItems <= 0)
-            {
-                return int.MaxValue;
-            }
 
-            return maxItems - items.Count;
-        }
+        protected abstract float GetFreeSpaceFloat();
     }
 }

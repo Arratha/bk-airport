@@ -1,4 +1,3 @@
-using System.Linq;
 using Extensions;
 using Items.Storages;
 using Runtime;
@@ -61,8 +60,7 @@ namespace Interactive.XR
                 return;
             }
 
-            var item = _storage.items.FirstOrDefault();
-            _storage.TryRemoveItem(new[] { item });
+            var item = _storage.GetFirstItem();
 
             if (item == null)
             {

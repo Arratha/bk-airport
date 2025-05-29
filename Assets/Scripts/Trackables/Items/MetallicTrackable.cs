@@ -1,4 +1,3 @@
-using System.Linq;
 using Extensions;
 using Items.Base;
 using Items.Storages;
@@ -11,7 +10,7 @@ namespace Trackables.Items
     public class MetallicTrackable : TrackableAbstract<MetallicTrackable>
     {
         private StorageAbstract _storage;
-        
+
         protected override void OnInit()
         {
             _storage = GetComponent<StorageAbstract>();
@@ -19,7 +18,7 @@ namespace Trackables.Items
             _storage.OnItemAdded += OnAddItem;
             _storage.OnItemRemoved += OnRemoveItem;
 
-            enabled = HasMetallic();
+            enabled = (_storage.GetTags() & ItemTag.Metallic) != 0;
         }
 
         private void OnDestroy()
@@ -33,25 +32,22 @@ namespace Trackables.Items
             _storage.OnItemRemoved -= OnRemoveItem;
         }
 
-        private void OnAddItem(params ItemIdentifier[] identifiers)
+        private void OnAddItem(ItemIdentifier identifiers)
         {
-            if (identifiers.Any(x => (x.GetDefinition().tag & ItemTag.Metallic) != 0))
+            if ((identifiers.GetDefinition().tag & ItemTag.Metallic) != 0)
             {
                 enabled = true;
             }
         }
 
-        private void OnRemoveItem(params ItemIdentifier[] identifiers)
+        private void OnRemoveItem(ItemIdentifier identifiers)
         {
-            if (!HasMetallic())
+            if ((identifiers.GetDefinition().tag & ItemTag.Metallic) == 0)
             {
-                enabled = false;
+                return;
             }
-        }
 
-        private bool HasMetallic()
-        {
-            return (_storage.GetTags() & ItemTag.Metallic) != 0;
+            enabled = (_storage.GetTags() & ItemTag.Metallic) != 0;
         }
     }
 }

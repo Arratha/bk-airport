@@ -18,7 +18,7 @@ namespace Check.AdditionalCheck
         private IObservableState<CheckType> _checkState;
 
         private GameObject _passenger;
-        
+
         public void HandleUpdate(ProcessedPassenger message)
         {
             _passenger = message.passenger.gameObject;
@@ -27,7 +27,7 @@ namespace Check.AdditionalCheck
             passengerTransform.position = passengerPoint.position;
             passengerTransform.rotation = passengerPoint.rotation;
 
-            bagStorage.TryAddItem(message.bags);
+            message.bags.ForEach(x => bagStorage.TryAddItem(x));
         }
 
         public void HandleUpdate(CheckType message)
@@ -40,7 +40,7 @@ namespace Check.AdditionalCheck
             if (message != CheckType.AdditionalCheck)
             {
                 _passenger = null;
-                bagStorage.TryRemoveItem(bagStorage.items.ToArray());
+                bagStorage.items.ToList().ForEach(x => bagStorage.TryRemoveItem(x));
             }
         }
 

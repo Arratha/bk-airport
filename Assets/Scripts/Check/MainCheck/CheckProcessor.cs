@@ -70,11 +70,11 @@ namespace Check.MainCheck
             var passenger = _processedPassenger;
             _processedPassenger = null;
 
-            var bags = introscopeStorage.items.ToArray();
-            introscopeStorage.TryRemoveItem(bags);
+            var bags = introscopeStorage.items.ToList();
+            bags.ForEach(x => introscopeStorage.TryRemoveItem(x));
 
-            var items = metallicStorage.items.ToArray();
-            metallicStorage.TryRemoveItem(items);
+            var items = metallicStorage.items.ToList();
+            items.ForEach(x => metallicStorage.TryRemoveItem(x));
             
             _processorState.HandleUpdate(ProcessorState.Empty);
 
@@ -134,8 +134,8 @@ namespace Check.MainCheck
             result.Add(new MoveToContext(pointIntroscope.position));
             result.Add(new WaitContext(0.5f));
             result.Add(new TransferItemToContext(introscopeStorage,
-                (identifier) => (identifier.GetDefinition().tag & ItemTag.Bag) != 0));
-
+                (storage) => storage.items.Where(item => (item.GetDefinition().tag & ItemTag.Bag) != 0).ToList()));
+                
             return result;
         }
 
@@ -146,22 +146,25 @@ namespace Check.MainCheck
             result.Add(new MoveToContext(pointIntroscope.position));
             result.Add(new WaitContext(0.5f));
             result.Add(new TransferItemToContext(metallicStorage,
-                (identifier) =>
+                (storage) =>
                 {
-                    var tags = identifier.GetDefinition().tag;
                     var accuracy = _processedPassenger.accuracy;
+                    return storage.items.Where(item =>
+                    {
+                        var tags = item.GetDefinition().tag;
 
-                    var notBag = (tags & ItemTag.Bag) == 0;
+                        var notBag = (tags & ItemTag.Bag) == 0;
 
-                    var notIllegal = Random.value < accuracy
-                        ? (tags & ItemTag.Illegal) == 0
-                        : true;
+                        var notIllegal = Random.value < accuracy
+                            ? (tags & ItemTag.Illegal) == 0
+                            : true;
 
-                    var isMetallic = Random.value < accuracy
-                        ? (tags & ItemTag.Metallic) != 0
-                        : (tags & ItemTag.Metallic) == 0;
+                        var isMetallic = Random.value < accuracy
+                            ? (tags & ItemTag.Metallic) != 0
+                            : (tags & ItemTag.Metallic) == 0;
 
-                    return notBag && notIllegal && isMetallic;
+                        return notBag && notIllegal && isMetallic;
+                    }).ToList();
                 }));
 
             return result;
@@ -173,24 +176,6 @@ namespace Check.MainCheck
 
             result.Add(new MoveToContext(pointIntroscope.position));
             result.Add(new WaitContext(0.5f));
-            result.Add(new TransferItemToContext(metallicStorage,
-                (identifier) =>
-                {
-                    var tags = identifier.GetDefinition().tag;
-                    var accuracy = 0.5f + _processedPassenger.accuracy / 2;
-
-                    var notBag = (tags & ItemTag.Bag) == 0;
-
-                    var notIllegal = Random.value < accuracy
-                        ? (tags & ItemTag.Illegal) == 0
-                        : true;
-
-                    var isMetallic = Random.value < accuracy
-                        ? (tags & ItemTag.Metallic) != 0
-                        : (tags & ItemTag.Metallic) == 0;
-
-                    return notBag && notIllegal && isMetallic;
-                }));
             result.Add(new MoveToContext(pointDetector.position));
 
             return result;
@@ -202,9 +187,9 @@ namespace Check.MainCheck
 
             result.Add(new MoveToContext(pointDetector.position));
             result.Add(new WaitContext(0.5f));
-            result.Add(new TransferItemFromContext(introscopeStorage, (_) => true));
+            result.Add(new TransferItemFromContext(introscopeStorage, (storage) => storage.items.ToList()));
             result.Add(new WaitContext(0.5f));
-            result.Add(new TransferItemFromContext(metallicStorage, (_) => true));
+            result.Add(new TransferItemFromContext(metallicStorage, (storage) => storage.items.ToList()));
 
             return result;
         }

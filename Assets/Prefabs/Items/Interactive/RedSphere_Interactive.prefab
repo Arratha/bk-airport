@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2748850154737531188}
   - component: {fileID: -5531089971157542030}
   - component: {fileID: 5882086376286558020}
-  - component: {fileID: -2833644396566330501}
+  - component: {fileID: 4723716694742213558}
   m_Layer: 20
   m_Name: RedSphere_Interactive
   m_TagString: Untagged
@@ -115,7 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b8a0d3dacb34948a7810e5a5f1ff2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selfCentralPoint: {fileID: 5662783674781781123}
+  selfPositionOffset: {x: 0, y: 0, z: 0}
+  selfRotationOffset: {x: 0, y: 0, z: 0}
   selfSize: {x: 0.1, y: 0.1, z: 0.1}
 --- !u!54 &-5531089971157542030
 Rigidbody:
@@ -296,8 +297,8 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
---- !u!135 &-2833644396566330501
-SphereCollider:
+--- !u!65 &4723716694742213558
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -315,5 +316,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
