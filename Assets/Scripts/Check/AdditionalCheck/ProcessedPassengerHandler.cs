@@ -13,6 +13,7 @@ namespace Check.AdditionalCheck
     {
         [SerializeField] private Transform passengerPoint;
         [SerializeField] private StorageAbstract bagStorage;
+        [SerializeField] private StorageAbstract itemStorage;
 
         private IObservableState<ProcessedPassenger> _processedState;
         private IObservableState<CheckType> _checkState;
@@ -28,6 +29,7 @@ namespace Check.AdditionalCheck
             passengerTransform.rotation = passengerPoint.rotation;
 
             message.bags.ForEach(x => bagStorage.TryAddItem(x));
+            message.items.ForEach(x => itemStorage.TryAddItem(x));
         }
 
         public void HandleUpdate(CheckType message)
@@ -41,6 +43,7 @@ namespace Check.AdditionalCheck
             {
                 _passenger = null;
                 bagStorage.items.ToList().ForEach(x => bagStorage.TryRemoveItem(x));
+                itemStorage.items.ToList().ForEach(x => itemStorage.TryRemoveItem(x));
             }
         }
 

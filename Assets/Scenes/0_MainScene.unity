@@ -325,9 +325,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selfItems: []
   maxCount: 0
-  tryCreateInteractive: 0
-  size: {x: 1.7, y: 0.55}
-  prioritizeHorizontal: 1
+  tryCreateInteractive: 1
+  size: {x: 1.6, y: 0.45}
+  prioritizeHorizontal: 0
   horizontalPlacement: 0
   verticalPlacement: 1
   drawLines: 0
@@ -773,6 +773,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   passengerPoint: {fileID: 1936219081}
   bagStorage: {fileID: 1848457778}
+  itemStorage: {fileID: 96310544}
 --- !u!1 &346195458
 GameObject:
   m_ObjectHideFlags: 0
