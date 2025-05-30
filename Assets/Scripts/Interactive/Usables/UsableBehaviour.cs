@@ -8,6 +8,7 @@ namespace Interactive.Usables
         public event Action OnUsed;
         public event Action OnCancelled;
 
+        [ContextMenu(nameof(Use))]
         public void Use()
         {
             if (!TryUse())
@@ -18,6 +19,7 @@ namespace Interactive.Usables
             OnUsed?.Invoke();
         }
 
+        [ContextMenu(nameof(Cancel))]
         public void Cancel()
         {
             if (!TryCancel())

@@ -40,21 +40,21 @@ namespace Check.MainCheck.Conveyor
         protected override void FixedUpdate()
         {
             var objectsToMove = new List<Item>();
+            
+            var selfBounds = new Bounds(transform.position, new Vector3(size.x, Mathf.Infinity, size.y));
+
+            foreach (var kvp in ItemBounds)
+            {
+                if (!kvp.Value.bounds.Intersects(selfBounds))
+                {
+                    continue;
+                }
+
+                objectsToMove.Add(kvp.Key);
+            }
 
             if (shouldMove)
             {
-                var selfBounds = new Bounds(transform.position, new Vector3(size.x, Mathf.Infinity, size.y));
-
-                foreach (var kvp in ItemBounds)
-                {
-                    if (!kvp.Value.bounds.Intersects(selfBounds))
-                    {
-                        continue;
-                    }
-
-                    objectsToMove.Add(kvp.Key);
-                }
-
                 grid.Move(speed * Time.fixedDeltaTime, objectsToMove);
             }
 
