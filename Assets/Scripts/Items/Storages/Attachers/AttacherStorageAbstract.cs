@@ -1,22 +1,25 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Extensions;
 using Items.Base;
-using Items.Storages.Placers;
-using Unity.Mathematics;
 using UnityEngine;
 
-namespace Items.Storages
+namespace Items.Storages.Attachers
 {
-    public class AttachmentStorage : StorageAbstract
+    public abstract class AttacherStorageAbstract : StorageAbstract
     {
         public override IReadOnlyCollection<ItemIdentifier> items => selfItems.Select(x => x.identifier).ToList();
+        public IReadOnlyCollection<Item> itemObjects => selfItems;
         [SerializeField] protected List<Item> selfItems;
 
         [Min(0), SerializeField] private int maxCount;
 
         [Space, SerializeField] private bool tryCreateInteractive;
 
+        public event Action<Item> OnItemObjectAdded;
+        public event Action<Item> OnItemObjectRemoved;
+        
         public override ItemIdentifier GetFirstItem(bool invokeCallback = true)
         {
             var fistItem = selfItems.FirstOrDefault();
@@ -44,33 +47,6 @@ namespace Items.Storages
             selfItems.RemoveAll(x => x == null);
         }
 
-        protected override bool TryAddItemInternal(ItemIdentifier identifier)
-        {
-            var definition = identifier.GetDefinition();
-            var prefab = tryCreateInteractive
-                ? (definition.interactivePrefab != null ? definition.interactivePrefab : definition.prefab)
-                : definition.prefab;
-
-            var itemToAdd = Instantiate(prefab, transform);
-            
-            var itemTransform = itemToAdd.transform;
-            
-            if (!itemToAdd.TryGetComponent<AttachmentPoint>(out var point))
-            {
-                itemTransform.localPosition = Vector3.zero; 
-                itemTransform.localRotation = quaternion.identity;
-            }
-            else
-            {
-                itemTransform.localPosition = point.positionOffset;
-                itemTransform.localRotation = quaternion.Euler(point.rotationOffset);
-            }
-
-            selfItems.Add(itemToAdd);
-
-            return true;
-        }
-
         protected override bool TryRemoveItemInternal(ItemIdentifier identifier)
         {
             var itemToRemove = selfItems.FirstOrDefault(x => x.identifier.Equals(identifier));
@@ -83,9 +59,11 @@ namespace Items.Storages
             selfItems.Remove(itemToRemove);
             Destroy(itemToRemove.gameObject);
 
+            InvokeObjectRemoved(itemToRemove);
+            
             return true;
         }
-
+        
         protected override float GetFreeSpaceFloat()
         {
             if (maxCount == 0)
@@ -94,6 +72,28 @@ namespace Items.Storages
             }
 
             return maxCount;
+        }
+
+        protected void InvokeObjectAdded(Item item)
+        {
+            OnItemObjectAdded?.Invoke(item);
+        }
+
+        protected void InvokeObjectRemoved(Item item)
+        {
+            OnItemObjectRemoved?.Invoke(item);
+        }
+        
+        protected Item GetPrefab(ItemIdentifier identifier)
+        {
+            var definition = identifier.GetDefinition();
+
+            if (tryCreateInteractive && definition.interactivePrefab != null)
+            {
+                return definition.interactivePrefab;
+            }
+
+            return definition.prefab;
         }
     }
 }

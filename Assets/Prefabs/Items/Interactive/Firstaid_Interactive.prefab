@@ -180,9 +180,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b8a0d3dacb34948a7810e5a5f1ff2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selfPositionOffset: {x: 0, y: 0, z: 0}
+  selfPositionOffset: {x: 0, y: 0.06839816, z: 0}
   selfRotationOffset: {x: 0, y: 0, z: 0}
-  selfSize: {x: 0.04, y: 0.08, z: 0.04}
+  selfSize: {x: 0.04215769, y: 0.06839436, z: 0.04215769}
 --- !u!54 &4782413519582024205
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -381,5 +381,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.08, y: 0.16, z: 0.08}
-  m_Center: {x: 0, y: 0.0696, z: 0}
+  m_Size: {x: 0.08431538, y: 0.13678873, z: 0.08431538}
+  m_Center: {x: 0, y: 0.06839815, z: 0}

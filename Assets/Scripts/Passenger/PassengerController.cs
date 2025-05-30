@@ -64,7 +64,6 @@ namespace Passenger
                 if (_commands.Any())
                 {
                     _currentCommand = _commands.Dequeue();
-                    Debug.Log($"New command started {_currentCommand}", gameObject);
                 }
 
                 return;

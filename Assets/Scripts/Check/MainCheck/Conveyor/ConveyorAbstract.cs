@@ -1,23 +1,33 @@
-using Grid;
+using System.Collections.Generic;
+using Items.Base;
+using Items.Storages.Attachers;
+using Items.Storages.Placers;
 using UnityEngine;
 
 namespace Check.MainCheck.Conveyor
 {
     //Places object on grid and moves it
     //The move condition should be defined in inheritors
-    [RequireComponent(typeof(ConveyorGrid))]
     public abstract class ConveyorAbstract : MonoBehaviour
     {
-        [SerializeField] private Vector2 speed;
+        [SerializeField] protected GridMovableStorage grid;
 
-        private ConveyorGrid _grid;
+        [Space, SerializeField] protected Vector2 size;
+        [SerializeField] protected Vector2 speed;
 
-        protected bool ShouldMove;
-        protected bool ShouldReverse;
+        [Space, SerializeField] protected bool shouldMove;
+
+        protected Dictionary<Item, AttachmentBounds> ItemBounds = new();
 
         private void Awake()
         {
-            _grid = GetComponent<ConveyorGrid>();
+            foreach (var itemObject in grid.itemObjects)
+            {
+                ItemBounds.Add(itemObject, itemObject.GetComponent<AttachmentBounds>());
+            }
+
+            grid.OnItemObjectAdded += HandleAddItem;
+            grid.OnItemObjectRemoved += HandleRemoveItem;
 
             OnInit();
         }
@@ -27,17 +37,62 @@ namespace Check.MainCheck.Conveyor
 
         }
 
-        private void FixedUpdate()
+        protected virtual void FixedUpdate()
         {
-            if (!ShouldMove && !ShouldReverse)
+            if (!shouldMove)
             {
                 return;
             }
 
-            var modifiedSpeed = speed * Time.fixedDeltaTime;
-            modifiedSpeed *= ShouldReverse ? -1 : 1;
+            var selfBounds = new Bounds(transform.position, new Vector3(size.x, Mathf.Infinity, size.y));
 
-            _grid.TryMove(modifiedSpeed);
+            var objectsToMove = new List<Item>();
+            foreach (var kvp in ItemBounds)
+            {
+                if (!kvp.Value.bounds.Intersects(selfBounds))
+                {
+                    continue;
+                }
+
+                objectsToMove.Add(kvp.Key);
+            }
+
+            grid.Move(speed * Time.fixedDeltaTime, objectsToMove);
+        }
+
+        private void HandleAddItem(Item item)
+        {
+            var attachmentBounds = item.GetComponent<AttachmentBounds>();
+
+            ItemBounds.Add(item, attachmentBounds);
+        }
+
+        private void HandleRemoveItem(Item item)
+        {
+            ItemBounds.Remove(item);
+        }
+
+        private void OnDestroy()
+        {
+            if (grid != null)
+            {
+                grid.OnItemObjectAdded += HandleAddItem;
+                grid.OnItemObjectRemoved += HandleRemoveItem;
+            }
+
+            HandleDestroy();
+        }
+
+        protected virtual void HandleDestroy()
+        {
+
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.yellow;
+
+            Gizmos.DrawCube(transform.position, new Vector3(size.x, 0, size.y));
         }
     }
 }

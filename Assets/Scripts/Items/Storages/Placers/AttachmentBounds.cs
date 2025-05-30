@@ -1,4 +1,5 @@
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 namespace Items.Storages.Placers
@@ -24,20 +25,20 @@ namespace Items.Storages.Placers
 
                 var matrix = Matrix4x4.TRS(worldPosition, worldRotation, Vector3.one);
                 var corners = GetCorners(size * 0.5f);
-                
+
                 var min = Vector3.positiveInfinity;
                 var max = Vector3.negativeInfinity;
-                
+
                 for (var i = 0; i < corners.Length; i++)
                 {
                     var worldCorner = matrix.MultiplyPoint3x4(corners[i]);
                     min = Vector3.Min(min, worldCorner);
                     max = Vector3.Max(max, worldCorner);
                 }
-                
+
                 var boundsSize = max - min;
                 var boundsCenter = min + boundsSize * 0.5f;
-                
+
                 return new Bounds(boundsCenter, boundsSize);
             }
         }
@@ -56,7 +57,7 @@ namespace Items.Storages.Placers
                 new(extents.x, extents.y, extents.z)
             };
         }
-        
+
         [ContextMenu(nameof(Centralize))]
         private void Centralize()
         {
@@ -77,18 +78,21 @@ namespace Items.Storages.Placers
                 max.x = Mathf.Max(max.x, rend.bounds.max.x);
                 max.y = Mathf.Max(max.y, rend.bounds.max.y);
                 max.z = Mathf.Max(max.z, rend.bounds.max.z);
-                
+
                 min.x = Mathf.Min(min.x, rend.bounds.min.x);
                 min.y = Mathf.Min(min.y, rend.bounds.min.y);
                 min.z = Mathf.Min(min.z, rend.bounds.min.z);
             }
 
             var center = (max + min) / 2;
-            selfSize = max - min;
+            var dimensions = max - min;
 
+            selfSize = transform.InverseTransformDirection(dimensions);
             selfPositionOffset = transform.InverseTransformPoint(center);
+
+            EditorUtility.SetDirty(this);
         }
-        
+
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = new Color(0.5f, 0.5f, 1f, 0.5f);
@@ -109,10 +113,10 @@ namespace Items.Storages.Placers
         {
             var worldPosition = transform.TransformPoint(positionOffset);
             var worldRotation = transform.rotation * Quaternion.Euler(rotationOffset);
-            
+
             var matrix = Matrix4x4.TRS(worldPosition, worldRotation, Vector3.one);
             var corners = GetCorners(size * 0.5f);
-            
+
             DrawEdge(corners[0], corners[1], matrix);
             DrawEdge(corners[0], corners[2], matrix);
             DrawEdge(corners[0], corners[4], matrix);
