@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -2956674951995211448}
   - component: {fileID: 4678598381485754379}
   - component: {fileID: 5263741316515406816}
+  - component: {fileID: 1474893133274869764}
   m_Layer: 22
   m_Name: Knife_Interactive
   m_TagString: Untagged
@@ -319,6 +320,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.019340672, y: 0.22584672, z: 0.005320063}
   m_Center: {x: 0.00014533475, y: 0.104718916, z: 0.00009352865}
+--- !u!114 &1474893133274869764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417173036258301370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217e0ca012dd4801acbd32efbec8cd9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5240703005689348085
 GameObject:
   m_ObjectHideFlags: 0

@@ -60,7 +60,7 @@ namespace Items.Storages
                 return Mathf.Infinity;
             }
 
-            return maxCount;
+            return maxCount - selfItems.Count;
         }
     }
 }

@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 4723239197025198970}
   - component: {fileID: 3904104187252803852}
   - component: {fileID: 4905663922854287110}
+  - component: {fileID: -7589936092318076341}
   m_Layer: 20
   m_Name: Plastic Spoon_Interactive
   m_TagString: Untagged
@@ -350,3 +351,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.030160177, y: 0.14079751, z: 0.0122168595}
   m_Center: {x: 0.0000020354055, y: 0.06804334, z: -0.0007741768}
+--- !u!114 &-7589936092318076341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8171514443981842954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217e0ca012dd4801acbd32efbec8cd9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

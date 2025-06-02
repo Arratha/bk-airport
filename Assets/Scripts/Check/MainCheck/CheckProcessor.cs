@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Check.MainCheck.Conveyor;
 using Commands.Commands;
 using Commands.Contexts;
 using Extensions;
@@ -14,14 +15,6 @@ using Random = UnityEngine.Random;
 
 namespace Check.MainCheck
 {
-    public enum CheckStage
-    {
-        PlaceBaggage,
-        PlaceMetallic,
-        PassDetector,
-        TakeItems
-    }
-
     public enum ProcessorState
     {
         Empty,
@@ -38,6 +31,8 @@ namespace Check.MainCheck
         [Space, SerializeField] private StorageAbstract introscopeStorage;
         [SerializeField] private StorageAbstract metallicStorage;
 
+        [Space, SerializeField] private InteractableConveyor introscopeConveyor;
+        
         private PassengerController _processedPassenger;
 
         private ICompletable _lastIssuedCommand;
@@ -86,66 +81,25 @@ namespace Check.MainCheck
             };
         }
 
-        public ICompletable AppointCommand(CheckStage stage)
+        public ICompletable AppointPlaceBaggage()
         {
-            if (_processedPassenger == null)
-            {
-                throw new NullReferenceException(nameof(_processedPassenger));
-            }
-
             var contexts = new List<ICommandContext>();
 
-            switch (stage)
-            {
-                case CheckStage.PlaceBaggage:
-                    contexts = GetBaggageContexts();
-                    break;
-                case CheckStage.PlaceMetallic:
-                    contexts = GetMetallicContexts();
-                    break;
-                case CheckStage.PassDetector:
-                    contexts = GetDetectorContexts();
-                    break;
-                case CheckStage.TakeItems:
-                    contexts = GetTakeItemsContexts();
-                    break;
-            }
-
-            ICompletable lastCommand = null;
-
-            contexts.ForEach(x =>
-                lastCommand = _processedPassenger.EnqueueCommand(x));
-
-            SetLastCommand(lastCommand);
-
-            return lastCommand;
-        }
-
-        private void Awake()
-        {
-            _processorState = ServiceProvider.instance.Resolve<IObservableState<ProcessorState>>();
-            _processorState.HandleUpdate(ProcessorState.Empty);
-        }
-
-        private List<ICommandContext> GetBaggageContexts()
-        {
-            var result = new List<ICommandContext>();
-
-            result.Add(new MoveToContext(pointIntroscope.position));
-            result.Add(new WaitContext(0.5f));
-            result.Add(new TransferItemToContext(introscopeStorage,
+            contexts.Add(new MoveToContext(pointIntroscope.position));
+            contexts.Add(new WaitContext(0.5f));
+            contexts.Add(new TransferItemToContext(introscopeStorage,
                 (storage) => storage.items.Where(item => (item.GetDefinition().tag & ItemTag.Bag) != 0).ToList()));
                 
-            return result;
+            return AppointCommand(contexts);
         }
 
-        private List<ICommandContext> GetMetallicContexts()
+        public ICompletable AppointPlaceMetallic()
         {
-            var result = new List<ICommandContext>();
+            var contexts = new List<ICommandContext>();
 
-            result.Add(new MoveToContext(pointIntroscope.position));
-            result.Add(new WaitContext(0.5f));
-            result.Add(new TransferItemToContext(metallicStorage,
+            contexts.Add(new MoveToContext(pointIntroscope.position));
+            contexts.Add(new WaitContext(0.5f));
+            contexts.Add(new TransferItemToContext(metallicStorage,
                 (storage) =>
                 {
                     var accuracy = _processedPassenger.accuracy;
@@ -167,31 +121,103 @@ namespace Check.MainCheck
                     }).ToList();
                 }));
 
-            return result;
+            return AppointCommand(contexts);
         }
 
-        private List<ICommandContext> GetDetectorContexts()
+        public ICompletable AppointMoveBaggage(List<Item> itemsToMove)
         {
-            var result = new List<ICommandContext>();
+            var contexts = new List<ICommandContext>();
 
-            result.Add(new MoveToContext(pointIntroscope.position));
-            result.Add(new WaitContext(0.5f));
-            result.Add(new MoveToContext(pointDetector.position));
+            var introscopeBatch = new List<ICommandContext>();
+            var detectorBatch = new List<ICommandContext>();
 
-            return result;
+            itemsToMove.ForEach(item =>
+            {
+                var itemPosition = item.transform.position;
+
+                if (Vector3.Distance(itemPosition, pointIntroscope.position) <
+                    Vector3.Distance(itemPosition, pointDetector.position))
+                {
+                    introscopeBatch.Add(new MoveConveyorItemContext(item, introscopeConveyor));
+                }
+                else
+                {
+                    detectorBatch.Add(new MoveConveyorItemContext(item, introscopeConveyor));
+                }
+            });
+
+            if (introscopeBatch.Any())
+            {
+                introscopeBatch.Insert(0, new MoveToContext(pointIntroscope.position));
+            }
+
+            if (detectorBatch.Any())
+            {
+                detectorBatch.Insert(0, new MoveToContext(pointDetector.position));
+            }
+
+            var passengerPosition = _processedPassenger.transform.position;
+
+            if (Vector3.Distance(passengerPosition, pointIntroscope.position) <
+                Vector3.Distance(passengerPosition, pointDetector.position))
+            {
+                contexts.AddRange(introscopeBatch);
+                contexts.AddRange(detectorBatch);
+            }
+            else
+            {
+                contexts.AddRange(detectorBatch);
+                contexts.AddRange(introscopeBatch);
+            }
+
+            return AppointCommand(contexts);
         }
 
-        private List<ICommandContext> GetTakeItemsContexts()
+        public ICompletable AppointPassDetector()
         {
-            var result = new List<ICommandContext>();
+            var contexts = new List<ICommandContext>();
 
-            result.Add(new MoveToContext(pointDetector.position));
-            result.Add(new WaitContext(0.5f));
-            result.Add(new TransferItemFromContext(introscopeStorage, (storage) => storage.items.ToList()));
-            result.Add(new WaitContext(0.5f));
-            result.Add(new TransferItemFromContext(metallicStorage, (storage) => storage.items.ToList()));
+            contexts.Add(new MoveToContext(pointIntroscope.position));
+            contexts.Add(new WaitContext(0.5f));
+            contexts.Add(new MoveToContext(pointDetector.position));
 
-            return result;
+            return AppointCommand(contexts);
+        }
+
+        public ICompletable AppointTakeItems()
+        {
+            var contexts = new List<ICommandContext>();
+
+            contexts.Add(new MoveToContext(pointDetector.position));
+            contexts.Add(new WaitContext(0.5f));
+            contexts.Add(new TransferItemFromContext(introscopeStorage, (storage) => storage.items.ToList()));
+            contexts.Add(new WaitContext(0.5f));
+            contexts.Add(new TransferItemFromContext(metallicStorage, (storage) => storage.items.ToList()));
+
+            return AppointCommand(contexts);
+        }
+
+        private void Awake()
+        {
+            _processorState = ServiceProvider.instance.Resolve<IObservableState<ProcessorState>>();
+            _processorState.HandleUpdate(ProcessorState.Empty);
+        }
+        
+        private ICompletable AppointCommand(List<ICommandContext> contexts)
+        {
+            if (_processedPassenger == null)
+            {
+                throw new NullReferenceException(nameof(_processedPassenger));
+            }
+
+            ICompletable lastCommand = null;
+
+            contexts.ForEach(x =>
+                lastCommand = _processedPassenger.EnqueueCommand(x));
+
+            SetLastCommand(lastCommand);
+
+            return lastCommand;
         }
 
         private void SetLastCommand(ICompletable command)

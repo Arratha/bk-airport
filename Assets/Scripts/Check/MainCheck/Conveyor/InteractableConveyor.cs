@@ -1,141 +1,94 @@
 using System.Collections.Generic;
-using System.Linq;
 using Items.Base;
-using Items.Storages.Placers;
-using Runtime;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.XR.Interaction.Toolkit;
-using Utils.SimpleDI;
 
 namespace Check.MainCheck.Conveyor
 {
+    public enum QueueItemMoveResult
+    {
+        NotFound,
+        InPosition,
+        Queued
+    }
+
     public class InteractableConveyor : UsableDrivenConveyor
     {
         [Space, SerializeField] private float speedModifier;
-        
-        private InputActionReference _leftGrabReference;
-        private InputActionReference _rightGrabReference;
 
-        private XRDirectInteractor _leftInteractor;
-        private XRDirectInteractor _rightInteractor;
-
-        private Item _grabbedItem;
-        private Side _grabbedSide;
-        private Vector3 _grabbedOffset;
-
-        protected override void OnInit()
-        {
-            base.OnInit();
-
-            var serviceProvider = ServiceProvider.instance;
-
-            _leftInteractor = serviceProvider.Resolve<XRDirectInteractor>(Side.Left);
-            _rightInteractor = serviceProvider.Resolve<XRDirectInteractor>(Side.Right);
-
-            _leftGrabReference = serviceProvider.Resolve<InputActionReference>((Side.Left, PlayerActions.Select));
-            _rightGrabReference = serviceProvider.Resolve<InputActionReference>((Side.Right, PlayerActions.Select));
-        }
+        private List<Item> _queuedItems = new();
 
         protected override void FixedUpdate()
         {
-            var objectsToMove = new List<Item>();
-            
-            var selfBounds = new Bounds(transform.position, new Vector3(size.x, Mathf.Infinity, size.y));
+            var selfTransform = transform;
+            var selfBounds = new Bounds(selfTransform.position, new Vector3(size.x, Mathf.Infinity, size.y));
 
-            foreach (var kvp in ItemBounds)
+            if (shouldMove)
             {
-                if (!kvp.Value.bounds.Intersects(selfBounds))
+                var conveyorMove = new List<Item>();
+
+                foreach (var kvp in ItemBounds)
+                {
+                    if (!kvp.Value.bounds.Intersects(selfBounds))
+                    {
+                        continue;
+                    }
+
+                    conveyorMove.Add(kvp.Key);
+                }
+
+                grid.Move(speed * Time.fixedDeltaTime, conveyorMove);
+            }
+
+            var worldSpeedDirection = transform.TransformDirection(new Vector3(speed.x, 0, speed.y)).normalized;
+
+            var conveyorCoord = Vector3.Dot(selfBounds.center, worldSpeedDirection);
+
+            foreach (var item in _queuedItems)
+            {
+                var itemBounds = ItemBounds[item];
+
+                if (itemBounds.bounds.Intersects(selfBounds))
                 {
                     continue;
                 }
 
-                objectsToMove.Add(kvp.Key);
+                var itemCoord = Vector3.Dot(itemBounds.bounds.center, worldSpeedDirection);
+
+                var sign = Mathf.Sign(conveyorCoord - itemCoord);
+                var resultingSpeed = Mathf.Min(Mathf.Abs(conveyorCoord - itemCoord),
+                    speedModifier * speed.magnitude);
+
+                grid.Move(speed.normalized * sign * resultingSpeed * Time.fixedDeltaTime,
+                    new List<Item> { item });
             }
 
-            if (shouldMove)
-            {
-                grid.Move(speed * Time.fixedDeltaTime, objectsToMove);
-            }
-
-            if (_grabbedItem == null || objectsToMove.Contains(_grabbedItem))
-            {
-                return;
-            }
-
-            var interactor = _grabbedSide == Side.Left ? _leftInteractor : _rightInteractor;
-
-            var worldSpeedDirection = transform.TransformDirection(new Vector3(speed.x, 0, speed.y)).normalized;
-
-            var interactorCoord = Vector3.Dot(interactor.transform.position, worldSpeedDirection);
-            var grabbedCoord = Vector3.Dot(_grabbedItem.transform.position + _grabbedOffset, worldSpeedDirection);
-
-            var sign = Mathf.Sign(interactorCoord - grabbedCoord);
-            var resultingSpeed = Mathf.Min(Mathf.Abs(interactorCoord - grabbedCoord),
-                speedModifier * speed.magnitude);
-
-            grid.Move(speed.normalized * sign * resultingSpeed * Time.fixedDeltaTime, new List<Item> { _grabbedItem });
+            _queuedItems.Clear();
         }
 
-        private void HandleGrab(InputAction.CallbackContext context)
+        public QueueItemMoveResult QueueItemMoveToConveyor(Item item)
         {
-            if (_grabbedItem != null)
+            if (!ItemBounds.TryGetValue(item, out var attachmentBounds))
             {
-                return;
+                return QueueItemMoveResult.NotFound;
             }
 
-            var side = context.action.id == _leftGrabReference.action.id ? Side.Left : Side.Right;
-            var interactor = side == Side.Left ? _leftInteractor : _rightInteractor;
+            var selfBounds = new Bounds(transform.position, new Vector3(size.x, Mathf.Infinity, size.y));
 
-            var interactorPosition = interactor.transform.position;
-
-            var grabbedBounds = ItemBounds.FirstOrDefault(x => x.Value.bounds.Contains(interactorPosition));
-
-            if (grabbedBounds.Equals(new KeyValuePair<Item, AttachmentBounds>()))
+            if (attachmentBounds.bounds.Intersects(selfBounds))
             {
-                return;
+                return QueueItemMoveResult.InPosition;
             }
 
-            _grabbedSide = side;
-            _grabbedItem = grabbedBounds.Key;
-            _grabbedOffset = interactorPosition - _grabbedItem.transform.position;
-            
-            Debug.Log(_grabbedItem);
+            _queuedItems.Add(item);
+
+            return QueueItemMoveResult.Queued;
         }
 
-        private void HandleRelease(InputAction.CallbackContext context)
+        protected override void HandleRemoveItem(Item item)
         {
-            if (_grabbedItem == null)
-            {
-                return;
-            }
+            base.HandleRemoveItem(item);
 
-            var side = context.action.id == _leftGrabReference.action.id ? Side.Left : Side.Right;
-
-            if (side != _grabbedSide)
-            {
-                return;
-            }
-
-            _grabbedItem = null;
-        }
-
-        private void OnEnable()
-        {
-            _leftGrabReference.action.started += HandleGrab;
-            _leftGrabReference.action.canceled += HandleRelease;
-
-            _rightGrabReference.action.started += HandleGrab;
-            _rightGrabReference.action.canceled += HandleRelease;
-        }
-
-        private void OnDisable()
-        {
-            _leftGrabReference.action.started -= HandleGrab;
-            _leftGrabReference.action.canceled -= HandleRelease;
-
-            _rightGrabReference.action.started -= HandleGrab;
-            _rightGrabReference.action.canceled -= HandleRelease;
+            _queuedItems.Remove(item);
         }
     }
 }

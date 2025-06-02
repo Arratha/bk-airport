@@ -8,12 +8,12 @@ using Utils.SimpleDI;
 
 namespace Interactive.XR
 {
-    [RequireComponent(typeof(StorageAbstract))]
     public class SearchItemSpawner : MonoBehaviour
     {
+        [SerializeField] private StorageAbstract storage;
+        
         [SerializeField, Range(0.01f, 10)] private float radius;
         [SerializeField] private Vector3 offset;
-        private StorageAbstract _storage;
         
         private XRDirectInteractor _leftInteractor;
         private XRDirectInteractor _rightInteractor;
@@ -28,7 +28,7 @@ namespace Interactive.XR
         {
             var serviceProvider = ServiceProvider.instance;
 
-            _storage = GetComponent<StorageAbstract>();
+            storage = GetComponent<StorageAbstract>();
             
             _leftInteractor = serviceProvider.Resolve<XRDirectInteractor>(Side.Left);
             _rightInteractor = serviceProvider.Resolve<XRDirectInteractor>(Side.Right);
@@ -60,7 +60,7 @@ namespace Interactive.XR
                 return;
             }
 
-            var item = _storage.GetFirstItem();
+            var item = storage.GetFirstItem();
 
             if (item == null)
             {

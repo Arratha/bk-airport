@@ -71,7 +71,7 @@ namespace Items.Storages.Attachers
                 return Mathf.Infinity;
             }
 
-            return maxCount;
+            return maxCount - selfItems.Count;
         }
 
         protected void InvokeObjectAdded(Item item)

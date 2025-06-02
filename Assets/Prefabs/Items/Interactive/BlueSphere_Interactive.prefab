@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2172420287659292433}
   - component: {fileID: 4944582916131809943}
   - component: {fileID: 4277159726067929435}
+  - component: {fileID: -7418400610108067155}
   m_Layer: 21
   m_Name: BlueSphere_Interactive
   m_TagString: Untagged
@@ -318,3 +319,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-7418400610108067155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3193143787792382541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217e0ca012dd4801acbd32efbec8cd9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

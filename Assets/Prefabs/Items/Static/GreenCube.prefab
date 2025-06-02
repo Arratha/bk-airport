@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2388540707988880051}
   - component: {fileID: 846270388832028916}
   - component: {fileID: 6646473380887618817}
+  - component: {fileID: 8443085457581965777}
   m_Layer: 22
   m_Name: GreenCube
   m_TagString: Untagged
@@ -115,3 +116,15 @@ MonoBehaviour:
   selfPositionOffset: {x: 0, y: 0, z: 0}
   selfRotationOffset: {x: 0, y: 0, z: 0}
   selfSize: {x: 0.1, y: 0.1, z: 0.1}
+--- !u!114 &8443085457581965777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2178946427849244587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217e0ca012dd4801acbd32efbec8cd9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

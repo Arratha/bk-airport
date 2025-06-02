@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2728477015438326981}
   - component: {fileID: 1756620892361186548}
   - component: {fileID: -3468875464748323676}
+  - component: {fileID: -8892807214157309093}
   m_Layer: 20
   m_Name: RedCube
   m_TagString: Untagged
@@ -115,3 +116,15 @@ MonoBehaviour:
   selfPositionOffset: {x: 0, y: 0, z: 0}
   selfRotationOffset: {x: 0, y: 0, z: 0}
   selfSize: {x: 0.1, y: 0.1, z: 0.1}
+--- !u!114 &-8892807214157309093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4731195587937981133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217e0ca012dd4801acbd32efbec8cd9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

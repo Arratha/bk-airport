@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb31fc9b3607461d883af90545ea389a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storage: {fileID: 0}
   radius: 0.05
   offset: {x: 0, y: 0, z: 0}
 --- !u!114 &2878254667158552609
@@ -106,7 +107,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   managedComponents:
   - {fileID: 3472290500704309136}
-  - {fileID: 2021373162783133822}
   conditions:
   - rid: 1321932437148926032
   - rid: 1321932437148926033
@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb31fc9b3607461d883af90545ea389a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storage: {fileID: 0}
   radius: 0.05
   offset: {x: 0, y: 0, z: 0}
 --- !u!114 &6203310606225485463
@@ -227,7 +228,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   managedComponents:
   - {fileID: 6222582857706181827}
-  - {fileID: 2972266063739103066}
   conditions:
   - rid: 1321932437148926028
   - rid: 1321932437148926029
@@ -332,6 +332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb31fc9b3607461d883af90545ea389a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storage: {fileID: 0}
   radius: 0.05
   offset: {x: 0, y: 0, z: 0}
 --- !u!114 &4177507451703113992
@@ -348,7 +349,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   managedComponents:
   - {fileID: 9186294921597900990}
-  - {fileID: 4125338606399583757}
   conditions:
   - rid: 1321932437148926034
   - rid: 1321932437148926035
@@ -502,7 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selfItems: []
-  maxCount: 0
+  maxCount: 1
   tryCreateInteractive: 0
 --- !u!1 &7991060446192340966
 GameObject:
@@ -600,7 +600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selfItems: []
-  maxCount: 0
+  maxCount: 1
   tryCreateInteractive: 0
 --- !u!1 &8158573172688961598
 GameObject:
@@ -692,6 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb31fc9b3607461d883af90545ea389a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storage: {fileID: 0}
   radius: 0.05
   offset: {x: 0, y: 0, z: 0}
 --- !u!114 &8156341199200103495
@@ -708,7 +709,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   managedComponents:
   - {fileID: 828410452023302184}
-  - {fileID: 2607292171018739224}
   conditions:
   - rid: 1321932437148926030
   - rid: 1321932437148926031

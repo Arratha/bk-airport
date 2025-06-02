@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5816025355037457288}
   - component: {fileID: 3201040894046025255}
   - component: {fileID: 5674588757877018073}
+  - component: {fileID: -7393655071311742238}
   m_Layer: 20
   m_Name: Plastic Spoon
   m_TagString: Untagged
@@ -115,3 +116,15 @@ MonoBehaviour:
   selfPositionOffset: {x: 0.0000020358711, y: 0.06804334, z: -0.00077417697}
   selfRotationOffset: {x: 0, y: 0, z: 0}
   selfSize: {x: 0.030160177, y: 0.14079751, z: 0.0122168595}
+--- !u!114 &-7393655071311742238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8171514443981842954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217e0ca012dd4801acbd32efbec8cd9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

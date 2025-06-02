@@ -18,8 +18,8 @@ namespace Check.MainCheck.Appointors
 
         private void HandleUsed()
         {
-            processor.AppointCommand(CheckStage.PlaceMetallic);
-            processor.AppointCommand(CheckStage.PassDetector);
+            processor.AppointPlaceMetallic();
+            processor.AppointPassDetector();
         }
 
         private void OnDestroy()

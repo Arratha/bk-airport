@@ -25,7 +25,8 @@ namespace Commands
                 { typeof(TransferItemToContext), CreateTransferToCommand },
                 { typeof(TransferItemFromContext), CreateTransferFromCommand },
                 { typeof(GetItemsContext), CreateGetItemsCommand },
-                { typeof(WaitContext), CreateWaitCommand }
+                { typeof(WaitContext), CreateWaitCommand },
+                { typeof(MoveConveyorItemContext), CreateMoveConveyorItemCommand }
             };
         }
 
@@ -87,6 +88,16 @@ namespace Commands
             }
 
             return new WaitCommand(waitContext);
+        }
+
+        private ICommand CreateMoveConveyorItemCommand(ICommandContext context)
+        {
+            if (!(context is MoveConveyorItemContext moveItemContext))
+            {
+                throw new ArgumentException($"Invalid context type {context.GetType()}");
+            }
+
+            return new MoveConveyorItemCommand(moveItemContext);
         }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using Check;
 using Check.MainCheck;
 using Check.Queue;
+using Check.Tutorial;
 using Utils.Observable;
 using Utils.SimpleDI;
 
@@ -25,6 +26,9 @@ namespace Runtime
             //Passenger transfer from main check
             serviceProvider.Register<IObservableState<ProcessedPassenger>>(
                 new ObservableState<ProcessedPassenger>());
+
+            serviceProvider.Register<IObservableState<TutorialStage>>(
+                new ObservableState<TutorialStage>(TutorialStage.Queue));
         }
     }
 }

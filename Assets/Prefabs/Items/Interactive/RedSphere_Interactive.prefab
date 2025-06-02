@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -5531089971157542030}
   - component: {fileID: 5882086376286558020}
   - component: {fileID: 4723716694742213558}
+  - component: {fileID: 7050156252256337487}
   m_Layer: 20
   m_Name: RedSphere_Interactive
   m_TagString: Untagged
@@ -318,3 +319,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7050156252256337487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4826767131432762358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217e0ca012dd4801acbd32efbec8cd9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -5,10 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68d6b222-8719-4d8e-b579-dbc6c4abc527" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Check/Tutorial.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Check/Tutorial/QueueTutorial.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Check/Tutorial/QueueTutorial.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Check/Tutorial/SimpleTutorial.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Check/Tutorial/SimpleTutorial.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Check/Tutorial/TutorialAbstract.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Check/Tutorial/TutorialAbstract.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.bk-airport/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bk-airport/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/LabelCanvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/LabelCanvas.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/0_MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/0_MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Check/MainCheck/Conveyor/InteractableConveyor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Check/MainCheck/Conveyor/InteractableConveyor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactive/Usables/UsableBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/Usables/UsableBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Check/MainCheck/Appointors/PassengerAppointor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Check/MainCheck/Appointors/PassengerAppointor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactive/Activators/Conditions/QueueHasPassengers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/Activators/Conditions/QueueHasPassengers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactive/Activators/SimpleActivator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactive/Activators/SimpleActivator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/CheckRegistrar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/CheckRegistrar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,6 +175,9 @@
       <workItem from="1748513607696" duration="17575000" />
       <workItem from="1748596594636" duration="24380000" />
       <workItem from="1748624285104" duration="6694000" />
+      <workItem from="1748631712278" duration="447000" />
+      <workItem from="1748792317869" duration="6853000" />
+      <workItem from="1748871113907" duration="4000" />
     </task>
     <servers />
   </component>

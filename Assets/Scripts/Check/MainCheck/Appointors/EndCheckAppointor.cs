@@ -62,9 +62,9 @@ namespace Check.MainCheck.Appointors
 
         private void HandleUsed()
         {
-            _completeCommand = processor.AppointCommand(CheckStage.TakeItems);
+            _completeCommand = processor.AppointTakeItems();
             _completeCommand.OnComplete += HandleComplete;
-            
+
             usable.gameObject.SetActive(false);
             usable.transform.SetParent(null);
         }

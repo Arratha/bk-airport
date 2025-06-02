@@ -80,7 +80,6 @@ namespace Items.Storages
 
         protected abstract bool TryRemoveItemInternal(ItemIdentifier identifier);
 
-
         protected abstract float GetFreeSpaceFloat();
     }
 }

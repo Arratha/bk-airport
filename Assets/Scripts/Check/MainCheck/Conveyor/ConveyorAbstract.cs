@@ -60,14 +60,14 @@ namespace Check.MainCheck.Conveyor
             grid.Move(speed * Time.fixedDeltaTime, objectsToMove);
         }
 
-        private void HandleAddItem(Item item)
+        protected virtual void HandleAddItem(Item item)
         {
             var attachmentBounds = item.GetComponent<AttachmentBounds>();
 
             ItemBounds.Add(item, attachmentBounds);
         }
 
-        private void HandleRemoveItem(Item item)
+        protected virtual void HandleRemoveItem(Item item)
         {
             ItemBounds.Remove(item);
         }

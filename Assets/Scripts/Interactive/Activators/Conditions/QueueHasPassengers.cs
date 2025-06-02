@@ -18,7 +18,6 @@ namespace Interactive.Activators.Conditions
 
         public event Action OnChanged;
 
-
         public void Initialize()
         {
             if (_isInitialized)

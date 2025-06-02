@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Preset_2
   m_EditorClassIdentifier: 
   selfItems:
-  - {fileID: 11400000, guid: ce122f20680319e4395936c6934b7caf, type: 2}
+  - {fileID: 11400000, guid: b6da326910e5f104b9afd9df378b4386, type: 2}
   - {fileID: 11400000, guid: 7c9c0bc95cb443e44be580cc97fcad3d, type: 2}
   - {fileID: 11400000, guid: 7c9c0bc95cb443e44be580cc97fcad3d, type: 2}
   - {fileID: 11400000, guid: 7c9c0bc95cb443e44be580cc97fcad3d, type: 2}

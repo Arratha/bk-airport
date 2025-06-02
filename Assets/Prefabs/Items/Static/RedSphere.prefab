@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6708149260231292609}
   - component: {fileID: 5146293078968103121}
   - component: {fileID: 2748850154737531188}
+  - component: {fileID: 276811806250710545}
   m_Layer: 20
   m_Name: RedSphere
   m_TagString: Untagged
@@ -115,3 +116,15 @@ MonoBehaviour:
   selfPositionOffset: {x: 0, y: 0, z: 0}
   selfRotationOffset: {x: 0, y: 0, z: 0}
   selfSize: {x: 0.1, y: 0.1, z: 0.1}
+--- !u!114 &276811806250710545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4826767131432762358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217e0ca012dd4801acbd32efbec8cd9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

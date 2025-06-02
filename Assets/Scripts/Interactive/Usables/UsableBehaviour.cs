@@ -5,8 +5,21 @@ namespace Interactive.Usables
 {
     public class UsableBehaviour : MonoBehaviour, IUsable
     {
-        public event Action OnUsed;
-        public event Action OnCancelled;
+        public virtual event Action OnUsed
+        {
+            add => _onUsed += value;
+            remove => _onUsed -= value;
+        }
+
+        private Action _onUsed;
+
+        public virtual event Action OnCancelled
+        {
+            add => _onCancelled += value;
+            remove => _onCancelled -= value;
+        }
+
+        private Action _onCancelled;
 
         [ContextMenu(nameof(Use))]
         public void Use()
@@ -16,7 +29,7 @@ namespace Interactive.Usables
                 return;
             }
 
-            OnUsed?.Invoke();
+            _onUsed?.Invoke();
         }
 
         [ContextMenu(nameof(Cancel))]
@@ -27,14 +40,19 @@ namespace Interactive.Usables
                 return;
             }
 
-            OnCancelled?.Invoke();
+            _onCancelled?.Invoke();
+        }
+
+        protected bool HasListeners()
+        {
+            return _onUsed != null || _onCancelled != null;
         }
 
         protected virtual bool TryUse()
         {
             return enabled;
         }
-        
+
         protected virtual bool TryCancel()
         {
             return enabled;

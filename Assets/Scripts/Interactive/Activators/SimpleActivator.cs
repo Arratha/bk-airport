@@ -25,7 +25,7 @@ namespace Interactive.Activators
             conditions.Add(condition);
         }
 
-        private void Awake()
+        private void Start()
         {
             conditions.ForEach(x => x.Initialize());
             conditions.ForEach(x => x.OnChanged += UpdateState);

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -1915133211941878986}
   - component: {fileID: -8212813542314189742}
   - component: {fileID: 5557580696268503235}
+  - component: {fileID: 6829219773271401343}
   m_Layer: 22
   m_Name: Table Spoon_Interactive
   m_TagString: Untagged
@@ -319,6 +320,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.04283975, y: 0.19425295, z: 0.022524051}
   m_Center: {x: -0.000000074505806, y: 0.09219832, z: 0.0059871306}
+--- !u!114 &6829219773271401343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836035744964790350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217e0ca012dd4801acbd32efbec8cd9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4448772746681716172
 GameObject:
   m_ObjectHideFlags: 0

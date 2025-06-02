@@ -15,3 +15,5 @@ MonoBehaviour:
   selfId: {fileID: 11400000, guid: ce122f20680319e4395936c6934b7caf, type: 2}
   selfTag: 4
   prefab: {fileID: 4332784226004145500, guid: 00b5c827e11563b419020861a8cdf107, type: 3}
+  interactivePrefab: {fileID: 4332784226004145500, guid: 59698d5a65c627c4db5445b42fdcb31c,
+    type: 3}

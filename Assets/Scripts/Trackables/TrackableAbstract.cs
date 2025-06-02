@@ -7,23 +7,25 @@ namespace Trackables
     //Manages self addition or removal from collection of trackable objects of type
     public abstract class TrackableAbstract<T> : MonoBehaviour where T : TrackableAbstract<T>
     {
+        protected abstract T castSelf { get; }
+
         private IWriteOnlyCollection<T> _state;
 
         private void Awake()
         {
             _state = ServiceProvider.instance.Resolve<IWriteOnlyCollection<T>>();
-
+            
             OnInit();
         }
 
         private void OnEnable()
         {
-            _state.Add((T)this);
+            _state.Add(castSelf);
         }
 
         private void OnDisable()
         {
-            _state.Remove((T)this);
+            _state.Remove(castSelf);
         }
         
         protected virtual void OnInit()

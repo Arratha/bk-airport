@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6837528160358008958}
   - component: {fileID: 7950498833302252765}
   - component: {fileID: 3316362846641516642}
+  - component: {fileID: 7454173479668305500}
   m_Layer: 22
   m_Name: GreenSphere
   m_TagString: Untagged
@@ -115,3 +116,15 @@ MonoBehaviour:
   selfPositionOffset: {x: 0, y: 0, z: 0}
   selfRotationOffset: {x: 0, y: 0, z: 0}
   selfSize: {x: 0.1, y: 0.1, z: 0.1}
+--- !u!114 &7454173479668305500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7628257039237779918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217e0ca012dd4801acbd32efbec8cd9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

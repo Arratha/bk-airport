@@ -15,9 +15,10 @@ namespace Runtime
         {
             //Tracking active metal objects. Used by metal detector.
             //Ideally, it is worth replacing collections with a separate class.
-            var metallicTrackable = new ActiveTrackableState<MetallicTrackable>();
-            serviceProvider.Register<uo::IObservable<IReadOnlyCollection<MetallicTrackable>>>(metallicTrackable);
-            serviceProvider.Register<IWriteOnlyCollection<MetallicTrackable>>(metallicTrackable);
+            var metallicTrackable = new ActiveTrackableState<MetallicTrackableAbstract>();
+            serviceProvider
+                .Register<uo::IObservable<IReadOnlyCollection<MetallicTrackableAbstract>>>(metallicTrackable);
+            serviceProvider.Register<IWriteOnlyCollection<MetallicTrackableAbstract>>(metallicTrackable);
         }
     }
 }

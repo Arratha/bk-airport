@@ -7,7 +7,7 @@ namespace Trackables.Items
 {
     [RequireComponent(typeof(StorageAbstract))]
     [DisallowMultipleComponent]
-    public class MetallicTrackable : TrackableAbstract<MetallicTrackable>
+    public class MetallicStorageTrackable : MetallicTrackableAbstract
     {
         private StorageAbstract _storage;
 

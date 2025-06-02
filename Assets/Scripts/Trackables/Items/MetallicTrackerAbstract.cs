@@ -5,7 +5,7 @@ using Utils.Zones;
 
 namespace Trackables.Items
 {
-    public abstract class MetallicTrackerAbstract : TrackerBehaviour<IReadOnlyCollection<MetallicTrackable>>
+    public abstract class MetallicTrackerAbstract : TrackerBehaviour<IReadOnlyCollection<MetallicTrackableAbstract>>
     {
         public IZone zone
         {
@@ -29,7 +29,7 @@ namespace Trackables.Items
         private HashSet<Transform> _metallicTrackable = new();
         private HashSet<Transform> _metallicInside = new();
 
-        public override void HandleUpdate(IReadOnlyCollection<MetallicTrackable> message)
+        public override void HandleUpdate(IReadOnlyCollection<MetallicTrackableAbstract> message)
         {
             _metallicTrackable = message.Select(x => x.transform).ToHashSet();
         }
