@@ -9,7 +9,13 @@ namespace Check.Tutorial
     {
         None,
         Queue,
-        ConveyorBelt
+        ConveyorBelt,
+        MetallicDetector,
+        Decision,
+        PassengerSearch,
+        BaggageSearch,
+        SearchDecision,
+        Done
     }
 
     public abstract class TutorialAbstract : MonoBehaviour, IObserver<TutorialStage>

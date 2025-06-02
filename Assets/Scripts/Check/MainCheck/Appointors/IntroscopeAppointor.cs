@@ -45,7 +45,7 @@ namespace Check.MainCheck.Appointors
 
         private void HandleItemAdded(Item item)
         {
-            var usable = item.GetComponentInChildren<UsableBehaviour>();
+            var usable = item.GetComponentInChildren<IUsable>();
 
             if (usable == null)
             {

@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1935892e1a6e49bfb103eb02e4e16ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.05
+  radius: 0.075
   offset: {x: 0, y: 0, z: 0}
   amplitude: 1
   duration: 0.1
@@ -90,8 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb31fc9b3607461d883af90545ea389a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storage: {fileID: 0}
-  radius: 0.05
+  storage: {fileID: 2905804798131830767}
+  radius: 0.075
   offset: {x: 0, y: 0, z: 0}
 --- !u!114 &2878254667158552609
 MonoBehaviour:
@@ -110,6 +110,7 @@ MonoBehaviour:
   conditions:
   - rid: 1321932437148926032
   - rid: 1321932437148926033
+  - rid: 4848118461109370961
   references:
     version: 2
     RefIds:
@@ -117,10 +118,18 @@ MonoBehaviour:
       type: {class: RequiredCheckType, ns: Interactive.Activators.Conditions, asm: Assembly-CSharp}
       data:
         requiredState: 1
+        isInversed: 0
     - rid: 1321932437148926033
       type: {class: StorageHasItems, ns: Interactive.Activators.Conditions, asm: Assembly-CSharp}
       data:
         storage: {fileID: 2905804798131830767}
+        isInversed: 0
+    - rid: 4848118461109370961
+      type: {class: TutorialStageHasBeenPassed, ns: Interactive.Activators.Conditions,
+        asm: Assembly-CSharp}
+      data:
+        requiredStage: 5
+        isInversed: 0
 --- !u!1 &1129817553208771356
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1935892e1a6e49bfb103eb02e4e16ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.05
+  radius: 0.075
   offset: {x: 0, y: 0, z: 0}
   amplitude: 1
   duration: 0.1
@@ -211,8 +220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb31fc9b3607461d883af90545ea389a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storage: {fileID: 0}
-  radius: 0.05
+  storage: {fileID: 2522292396200199821}
+  radius: 0.075
   offset: {x: 0, y: 0, z: 0}
 --- !u!114 &6203310606225485463
 MonoBehaviour:
@@ -231,6 +240,7 @@ MonoBehaviour:
   conditions:
   - rid: 1321932437148926028
   - rid: 1321932437148926029
+  - rid: 4848118461109370959
   references:
     version: 2
     RefIds:
@@ -238,10 +248,18 @@ MonoBehaviour:
       type: {class: RequiredCheckType, ns: Interactive.Activators.Conditions, asm: Assembly-CSharp}
       data:
         requiredState: 1
+        isInversed: 0
     - rid: 1321932437148926029
       type: {class: StorageHasItems, ns: Interactive.Activators.Conditions, asm: Assembly-CSharp}
       data:
         storage: {fileID: 2522292396200199821}
+        isInversed: 0
+    - rid: 4848118461109370959
+      type: {class: TutorialStageHasBeenPassed, ns: Interactive.Activators.Conditions,
+        asm: Assembly-CSharp}
+      data:
+        requiredStage: 5
+        isInversed: 0
 --- !u!1 &2524893478718418137
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,7 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1935892e1a6e49bfb103eb02e4e16ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.05
+  radius: 0.075
   offset: {x: 0, y: 0, z: 0}
   amplitude: 1
   duration: 0.1
@@ -332,8 +350,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb31fc9b3607461d883af90545ea389a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storage: {fileID: 0}
-  radius: 0.05
+  storage: {fileID: 6591376433788381859}
+  radius: 0.075
   offset: {x: 0, y: 0, z: 0}
 --- !u!114 &4177507451703113992
 MonoBehaviour:
@@ -352,6 +370,7 @@ MonoBehaviour:
   conditions:
   - rid: 1321932437148926034
   - rid: 1321932437148926035
+  - rid: 4848118461109370962
   references:
     version: 2
     RefIds:
@@ -359,10 +378,18 @@ MonoBehaviour:
       type: {class: RequiredCheckType, ns: Interactive.Activators.Conditions, asm: Assembly-CSharp}
       data:
         requiredState: 1
+        isInversed: 0
     - rid: 1321932437148926035
       type: {class: StorageHasItems, ns: Interactive.Activators.Conditions, asm: Assembly-CSharp}
       data:
         storage: {fileID: 6591376433788381859}
+        isInversed: 0
+    - rid: 4848118461109370962
+      type: {class: TutorialStageHasBeenPassed, ns: Interactive.Activators.Conditions,
+        asm: Assembly-CSharp}
+      data:
+        requiredStage: 5
+        isInversed: 0
 --- !u!1 &2542250380790119567
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,7 +480,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7811688890628589844}
-  - component: {fileID: 3517618786061528734}
   - component: {fileID: 6252359002557573299}
   m_Layer: 0
   m_Name: BagAttachment
@@ -477,18 +503,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1348063029610163890}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3517618786061528734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4262871309176901052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b866fab79d314d25a3e2a6abe64a7aa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6252359002557573299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -551,7 +565,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6384485502570920135}
-  - component: {fileID: 1830398214674024774}
   - component: {fileID: 6061407521429691517}
   m_Layer: 0
   m_Name: BagAttachment
@@ -575,18 +588,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1348063029610163890}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1830398214674024774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8147768236250571874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b866fab79d314d25a3e2a6abe64a7aa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6061407521429691517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -676,7 +677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1935892e1a6e49bfb103eb02e4e16ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.05
+  radius: 0.075
   offset: {x: 0, y: 0, z: 0}
   amplitude: 1
   duration: 0.1
@@ -692,8 +693,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb31fc9b3607461d883af90545ea389a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storage: {fileID: 0}
-  radius: 0.05
+  storage: {fileID: 7363709017547518750}
+  radius: 0.075
   offset: {x: 0, y: 0, z: 0}
 --- !u!114 &8156341199200103495
 MonoBehaviour:
@@ -712,6 +713,7 @@ MonoBehaviour:
   conditions:
   - rid: 1321932437148926030
   - rid: 1321932437148926031
+  - rid: 4848118461109370960
   references:
     version: 2
     RefIds:
@@ -719,10 +721,18 @@ MonoBehaviour:
       type: {class: RequiredCheckType, ns: Interactive.Activators.Conditions, asm: Assembly-CSharp}
       data:
         requiredState: 1
+        isInversed: 0
     - rid: 1321932437148926031
       type: {class: StorageHasItems, ns: Interactive.Activators.Conditions, asm: Assembly-CSharp}
       data:
         storage: {fileID: 7363709017547518750}
+        isInversed: 0
+    - rid: 4848118461109370960
+      type: {class: TutorialStageHasBeenPassed, ns: Interactive.Activators.Conditions,
+        asm: Assembly-CSharp}
+      data:
+        requiredStage: 5
+        isInversed: 0
 --- !u!1001 &7654289716921747952
 PrefabInstance:
   m_ObjectHideFlags: 0

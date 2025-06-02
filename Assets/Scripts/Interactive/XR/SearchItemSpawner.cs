@@ -28,8 +28,6 @@ namespace Interactive.XR
         {
             var serviceProvider = ServiceProvider.instance;
 
-            storage = GetComponent<StorageAbstract>();
-            
             _leftInteractor = serviceProvider.Resolve<XRDirectInteractor>(Side.Left);
             _rightInteractor = serviceProvider.Resolve<XRDirectInteractor>(Side.Right);
 

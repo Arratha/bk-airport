@@ -1,5 +1,5 @@
 using System;
-using Check;
+using Check.Tutorial;
 using UnityEngine;
 using Utils.Observable;
 using Utils.SimpleDI;
@@ -7,14 +7,14 @@ using Utils.SimpleDI;
 namespace Interactive.Activators.Conditions
 {
     [Serializable]
-    public class RequiredCheckType : ICondition, Utils.Observable.IObserver<CheckType>
+    public class TutorialStageHasBeenPassed : ICondition, Utils.Observable.IObserver<TutorialStage>
     {
-        public bool isSatisfied => !isInversed == (_currentState == requiredState);
+        public bool isSatisfied => !isInversed == _hasBeenPassed;
 
-        [SerializeField] private CheckType requiredState;
-        private CheckType _currentState;
-        
+        [SerializeField] private TutorialStage requiredStage;
         [SerializeField] private bool isInversed;
+
+        private bool _hasBeenPassed;
 
         public bool isInitialized => _isInitialized;
         private bool _isInitialized;
@@ -31,7 +31,7 @@ namespace Interactive.Activators.Conditions
 
             _isInitialized = true;
 
-            var state = ServiceProvider.instance.Resolve<IObservableState<CheckType>>();
+            var state = ServiceProvider.instance.Resolve<IObservableState<TutorialStage>>();
             state.RegisterObserver(this, true);
         }
 
@@ -39,13 +39,17 @@ namespace Interactive.Activators.Conditions
         {
             _isInitialized = false;
 
-            var state = ServiceProvider.instance.Resolve<IObservableState<CheckType>>();
+            var state = ServiceProvider.instance.Resolve<IObservableState<TutorialStage>>();
             state.UnregisterObserver(this);
         }
 
-        public void HandleUpdate(CheckType message)
+        public void HandleUpdate(TutorialStage message)
         {
-            _currentState = message;
+            if (requiredStage == message || message == TutorialStage.None)
+            {
+                _hasBeenPassed = true;
+            }
+
             OnChanged?.Invoke();
         }
     }

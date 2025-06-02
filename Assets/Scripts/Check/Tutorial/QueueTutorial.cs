@@ -2,20 +2,16 @@ using Check.MainCheck;
 using Interactive.Usables;
 using UnityEngine;
 using Utils.Observable;
-using Utils.SimpleDI;
 
 namespace Check.Tutorial
 {
-    public class QueueTutorial : TutorialAbstract, IObserver<ProcessorState>
+    public class QueueTutorial : TutorialAbstract
     {
         [TextArea(1, 5), SerializeField] private string enabledText;
-        [TextArea(1, 5), SerializeField] private string disabledText;
 
         [Space, SerializeField] private UsableBehaviour usable;
 
-        private ProcessorState _processState;
-
-        private bool _wasActivated;
+        private bool _wasCorrectStage;
         private bool _wasUsed;
 
         private IObservableState<ProcessorState> _processorState;
@@ -30,20 +26,8 @@ namespace Check.Tutorial
 
             if (message == stage)
             {
-                _wasActivated = true;
+                _wasCorrectStage = true;
             }
-
-            SetText();
-        }
-
-        public void HandleUpdate(ProcessorState message)
-        {
-            if (!_wasActivated)
-            {
-                return;
-            }
-
-            _processState = message;
 
             SetText();
         }
@@ -56,20 +40,15 @@ namespace Check.Tutorial
             usable.OnUsed -= Use;
         }
 
-        protected override void HandleInit()
+        private void OnEnable()
         {
-            var serviceProvider = ServiceProvider.instance;
+            if (_wasUsed || usable == null)
+            {
+                return;
+            }
 
-            _processorState = serviceProvider.Resolve<IObservableState<ProcessorState>>();
-            _processorState.RegisterObserver(this, true);
+            usable.OnUsed += Use;
         }
-
-        protected override void HandleDestroy()
-        {
-            _processorState.UnregisterObserver(this);
-        }
-
-        private void OnEnable() => usable.OnUsed += Use;
 
         private void OnDisable()
         {
@@ -81,7 +60,7 @@ namespace Check.Tutorial
 
         private void SetText()
         {
-            if (!_wasActivated)
+            if (!_wasCorrectStage)
             {
                 Label.text = string.Empty;
                 return;
@@ -93,7 +72,7 @@ namespace Check.Tutorial
                 return;
             }
 
-            Label.text = _processState == ProcessorState.Empty ? enabledText : disabledText;
+            Label.text = enabledText;
         }
     }
 }

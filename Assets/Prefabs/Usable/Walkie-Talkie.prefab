@@ -61,6 +61,7 @@ MonoBehaviour:
   conditions:
   - rid: 1321932456271544384
   - rid: 1321932456271544385
+  - rid: 4848118461109370957
   references:
     version: 2
     RefIds:
@@ -68,11 +69,19 @@ MonoBehaviour:
       type: {class: RequiredCheckType, ns: Interactive.Activators.Conditions, asm: Assembly-CSharp}
       data:
         requiredState: 0
+        isInversed: 0
     - rid: 1321932456271544385
       type: {class: RequiredProcessorState, ns: Interactive.Activators.Conditions,
         asm: Assembly-CSharp}
       data:
         requiredState: 1
+        isInversed: 0
+    - rid: 4848118461109370957
+      type: {class: TutorialStageHasBeenPassed, ns: Interactive.Activators.Conditions,
+        asm: Assembly-CSharp}
+      data:
+        requiredStage: 4
+        isInversed: 0
 --- !u!1 &5255194051679636737
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,6 +142,7 @@ MonoBehaviour:
   managedComponents: []
   conditions:
   - rid: 1321932456271544384
+  - rid: 4848118461109370958
   references:
     version: 2
     RefIds:
@@ -140,6 +150,13 @@ MonoBehaviour:
       type: {class: RequiredCheckType, ns: Interactive.Activators.Conditions, asm: Assembly-CSharp}
       data:
         requiredState: 1
+        isInversed: 0
+    - rid: 4848118461109370958
+      type: {class: TutorialStageHasBeenPassed, ns: Interactive.Activators.Conditions,
+        asm: Assembly-CSharp}
+      data:
+        requiredStage: 7
+        isInversed: 0
 --- !u!1 &6920690854254064120
 GameObject:
   m_ObjectHideFlags: 0

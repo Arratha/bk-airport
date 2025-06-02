@@ -8,9 +8,10 @@ namespace Interactive.Activators.Conditions
     [Serializable]
     public class StorageHasItems : ICondition
     {
-        public bool isSatisfied => storage.items.Count > 0;
+        public bool isSatisfied => !isInversed == storage.items.Count > 0;
 
         [SerializeField] private StorageAbstract storage;
+        [SerializeField] private bool isInversed;
 
         public bool isInitialized => _isInitialized;
         private bool _isInitialized;
@@ -33,12 +34,6 @@ namespace Interactive.Activators.Conditions
 
         public void Deinitialize()
         {
-            if (!_isInitialized)
-            {
-                Debug.LogError($"The object {this} is not initialized.");
-                return;
-            }
-
             _isInitialized = false;
 
             if (storage == null)

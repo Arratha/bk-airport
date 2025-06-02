@@ -115,6 +115,7 @@ MonoBehaviour:
   conditions:
   - rid: 1321932437148926036
   - rid: 1321932437148926037
+  - rid: 4848118461109370963
   references:
     version: 2
     RefIds:
@@ -122,10 +123,18 @@ MonoBehaviour:
       type: {class: RequiredCheckType, ns: Interactive.Activators.Conditions, asm: Assembly-CSharp}
       data:
         requiredState: 1
+        isInversed: 0
     - rid: 1321932437148926037
       type: {class: StorageHasItems, ns: Interactive.Activators.Conditions, asm: Assembly-CSharp}
       data:
         storage: {fileID: 7620132669058337137}
+        isInversed: 0
+    - rid: 4848118461109370963
+      type: {class: TutorialStageHasBeenPassed, ns: Interactive.Activators.Conditions,
+        asm: Assembly-CSharp}
+      data:
+        requiredStage: 6
+        isInversed: 0
 --- !u!114 &5826909635187452993
 MonoBehaviour:
   m_ObjectHideFlags: 0

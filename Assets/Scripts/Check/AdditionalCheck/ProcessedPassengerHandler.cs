@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Check.MainCheck;
 using Items.Storages;
@@ -9,7 +10,7 @@ namespace Check.AdditionalCheck
 {
     //Receives and places in the passenger's room for additional checking
     //Hides the passenger when current check type changed to main check
-    public class ProcessedPassengerHandler : MonoBehaviour, IObserver<ProcessedPassenger>, IObserver<CheckType>
+    public class ProcessedPassengerHandler : MonoBehaviour, Utils.Observable.IObserver<ProcessedPassenger>, Utils.Observable.IObserver<CheckType>
     {
         [SerializeField] private Transform passengerPoint;
         [SerializeField] private StorageAbstract bagStorage;
@@ -20,16 +21,21 @@ namespace Check.AdditionalCheck
 
         private GameObject _passenger;
 
+        public event Action OnSetPassenger;
+        
         public void HandleUpdate(ProcessedPassenger message)
         {
             _passenger = message.passenger.gameObject;
             var passengerTransform = _passenger.transform;
 
+            passengerTransform.SetParent(passengerPoint);
             passengerTransform.position = passengerPoint.position;
             passengerTransform.rotation = passengerPoint.rotation;
 
             message.bags.ForEach(x => bagStorage.TryAddItem(x));
             message.items.ForEach(x => itemStorage.TryAddItem(x));
+
+            OnSetPassenger?.Invoke();
         }
 
         public void HandleUpdate(CheckType message)

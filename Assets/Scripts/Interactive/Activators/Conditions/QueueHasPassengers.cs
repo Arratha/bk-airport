@@ -9,10 +9,11 @@ namespace Interactive.Activators.Conditions
     [Serializable]
     public class QueueHasPassengers : ICondition, Utils.Observable.IObserver<DequeuedPassenger>
     {
-        public bool isSatisfied => queue.count > 0;
+        public bool isSatisfied => !isInversed == queue.count > 0;
 
         [SerializeField] private PassengersQueue queue;
-
+        [SerializeField] private bool isInversed;
+        
         public bool isInitialized => _isInitialized;
         private bool _isInitialized;
 
@@ -34,12 +35,6 @@ namespace Interactive.Activators.Conditions
 
         public void Deinitialize()
         {
-            if (!_isInitialized)
-            {
-                Debug.LogError($"The object {this} is not initialized.");
-                return;
-            }
-
             _isInitialized = false;
 
             var state = ServiceProvider.instance.Resolve<IObservableState<DequeuedPassenger>>();
